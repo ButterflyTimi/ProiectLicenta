@@ -1,0 +1,53 @@
+﻿body 
+{
+    background: url(back.jpg) no-repeat bottom right fixed;
+}
+@font-face {
+    font-family: fontHeader;
+    src: url(font4.ttf);
+}
+#header
+{
+	height: 130px;
+	background-color: #706664;
+	color: white;
+	padding: 3px;
+}
+h1
+{
+    font-family: fontHeader;
+    cursor: pointer;
+}
+#banner
+{
+    float: left;
+	height: 80%;
+	padding-left: 30px;
+	padding-right: 30px;
+	display: inline;
+}
+#footer 
+{
+	position: fixed;
+	height: 30px;
+	font-size: 70%;
+	bottom: 0;
+	background-color: #706664;
+	color: white;	
+	padding: 3px;
+	width: 100%;
+	left: 0;
+}
+
+#registrationButton, #loginButton
+{
+    float: right;
+    background-color: #706664;
+    color: White;  
+    margin: 5px;
+    border-radius: 10px;
+}
+#registrationButton:hover, #loginButton:hover
+{
+    background-color: #787878;    
+}
