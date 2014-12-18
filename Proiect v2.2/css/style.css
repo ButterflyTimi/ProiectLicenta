@@ -47,7 +47,14 @@ h1
     margin: 5px;
     border-radius: 10px;
 }
-#registrationButton:hover, #loginButton:hover
+#ContentPlaceHolder1_CompleteRegistrationFormButton
+{
+    background-color: #706664;
+    color: White;  
+    margin: 5px;
+    border-radius: 10px;
+}
+#registrationButton:hover, #loginButton:hover, #ContentPlaceHolder1_CompleteRegistrationFormButton:hover
 {
     background-color: #787878;    
 }

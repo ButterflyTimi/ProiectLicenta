@@ -26,22 +26,17 @@
 
 
             <h1>Carul cu carti</h1>
-
             
         </div>
 
-
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
         </asp:ContentPlaceHolder>
 
-    <div class="col-sm-12 text-center" id="footer">
-		Copyright &copy; 2014-2015 Gavrila Timea-Maria. <br /> Toate drepturile rezervate.
-    </div>
+        <div class="col-sm-12 text-center" id="footer">
+		    Copyright &copy; 2014-2015 Gavrila Timea-Maria. <br /> Toate drepturile rezervate.
+        </div>
     </div>
     </form>
-
-
     <!-- Scripts -->
     <script type="text/javascript" src="Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="Scripts/myOwnCode.js"></script>
