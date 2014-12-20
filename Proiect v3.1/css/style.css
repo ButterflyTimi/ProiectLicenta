@@ -1,0 +1,93 @@
+﻿body 
+{
+    background: url(back.jpg) no-repeat bottom right fixed;
+}
+@font-face {
+    font-family: fontHeader;
+    src: url(font4.ttf);
+}
+#header
+{
+	height: 130px;
+	background-color: #706664;
+	color: white;
+	padding: 3px;
+}
+h1
+{
+    font-family: fontHeader;
+    cursor: pointer;
+}
+#banner
+{
+    float: left;
+	height: 80%;
+	padding-left: 30px;
+	padding-right: 30px;
+	display: inline;
+}
+#footer 
+{
+	position: fixed;
+	height: 30px;
+	font-size: 70%;
+	bottom: 0;
+	background-color: #706664;
+	color: white;	
+	padding: 3px;
+	width: 100%;
+	left: 0;
+}
+
+.loginAndRegister
+{
+    float: right;
+    color: White;  
+    margin: 5px;
+}
+LoggedInTemplate
+{
+    float: right;
+    color: White;  
+}
+.loginAndRegister:hover
+{
+    color: #EA8F74;    
+    cursor: pointer;
+}
+.loginForm
+{
+    background-color: #E6E6E6;
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    display: none;
+    color: black;
+    padding: 0px 20px 20px 20px;
+    border: solid 1px grey;
+	border-radius: 15px;
+	box-shadow: 1px 1px 15px black;
+}
+.blackBackground
+{
+    display: none;
+    position: absolute;
+    height:auto;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    background-color : black;
+    opacity: 0.6;  
+}
+#ContentPlaceHolder1_CompleteRegistrationFormButton, .loginButton
+{
+    background-color: #706664;
+    color: White;  
+    margin: 5px;
+    border-radius: 10px;
+}
+#ContentPlaceHolder1_CompleteRegistrationFormButton:hover, .loginButton:hover
+{
+    background-color: #787878;    
+}

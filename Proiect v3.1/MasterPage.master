@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Carul cu carti</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1"> 
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script type="text/javascript" src="Scripts/jquery-2.1.1.js"></script>
+    <!--Bootstrat CSS-->
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="blackBackground"></div>
+    <div class="container">
+        <div class="col-sm-12" id="header">
+	        <img src="banner.png" alt="carti" id="banner">
+
+        <asp:LoginView ID="LoginView1" runat="server">
+        <AnonymousTemplate>
+
+            <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister"></asp:Label>
+            <asp:Label ID="registrationButton" runat="server" Text="Inregistrare" CssClass="loginAndRegister"></asp:Label>
+
+            
+            <div class="loginForm">
+            <h3>Conecteaza-te</h3>
+            <asp:Login ID="Login1" runat="server" LoginButtonText="Login" 
+                PasswordLabelText="Parola:" RememberMeText="Tine minte" TitleText="" 
+                    FailureText="Login nereusit. Va rugam incercati din nou." LoginButtonStyle-CssClass="loginButton">
+            </asp:Login>
+            </div>
+         </AnonymousTemplate>
+         <LoggedInTemplate>
+            Bine ai venit, 
+            <asp:LoginName ID="LoginName1" runat="server" />!
+            <asp:LoginStatus ID="LoginStatus1" runat="server" />
+         </LoggedInTemplate>
+
+
+        </asp:LoginView>
+
+        <h1>Carul cu carti</h1>
+
+        </div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <div class="col-sm-12 text-center" id="footer">
+		    Copyright &copy; 2014-2015 Gavrila Timea-Maria. <br /> Toate drepturile rezervate.
+        </div>
+    </div>
+    </form>
+    <!-- Scripts -->
+    <script type="text/javascript" src="Scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="Scripts/myOwnCode.js"></script>
+</body>
+</html>
