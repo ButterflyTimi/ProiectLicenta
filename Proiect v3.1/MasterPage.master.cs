@@ -11,4 +11,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
 
     }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        string q = Server.UrlEncode(searchTB.Text);
+        Response.Redirect("Search.aspx?q=" + q);
+    }
 }
