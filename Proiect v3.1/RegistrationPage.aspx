@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
- <div class="col-sm-12" style="background-color: rgba(195, 195, 195, 0.4);" id="content">
+    <div class="col-sm-12" style="background-color: rgba(195, 195, 195, 0.4);" id="content">
     <div style="width:50%; margin: 0 auto;">
 
         <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" 
@@ -14,7 +14,6 @@
             InvalidEmailErrorMessage="Va rugam introduceti o adresa de email valida." 
             InvalidPasswordErrorMessage="Caractere minime pentru parola: {0}. Minim {1} caracter non-alphanumeric." 
             InvalidQuestionErrorMessage="Va rugam introduceti alta intrebare de securitate." 
-            
             UnknownErrorMessage="Contul nu a putut fi creat. Va rugam incercati din nou!" 
             ContinueButtonText="Inapoi la pagina principala">
             <WizardSteps>
@@ -120,14 +119,14 @@
                     <ContentTemplate>
                         <table>
                             <tr>
-                                <td align="center" colspan="2">
+                                <td align="center">
                                     Inregistrare realizata cu succes!</td>
                             </tr>
                             <tr>
-                                <td align="right" colspan="2">
+                                <td align="right">
                                     <asp:Button ID="ContinueButton" runat="server" CausesValidation="False" 
                                         CommandName="Continue" Text="Inapoi la pagina principala" 
-                                        ValidationGroup="CreateUserWizard1" />
+                                        ValidationGroup="CreateUserWizard1" onclick="ContinueButton_Click" />
                                 </td>
                             </tr>
                         </table>

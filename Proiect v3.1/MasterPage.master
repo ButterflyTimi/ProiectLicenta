@@ -34,6 +34,7 @@
             <asp:Login ID="Login1" runat="server" LoginButtonText="Login" 
                 PasswordLabelText="Parola:" RememberMeText="Tine minte" TitleText="" 
                     FailureText="Login nereusit. Va rugam incercati din nou." LoginButtonStyle-CssClass="loginButton">
+                <LoginButtonStyle CssClass="loginButton" />
             </asp:Login>
             </div>
          </AnonymousTemplate>
