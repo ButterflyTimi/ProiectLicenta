@@ -112,4 +112,25 @@ public partial class InsertDatas : System.Web.UI.Page
             ErrorLabel.Text = ErrorLabel.Text + err;
         }
     }
+    protected void submit_descriere(object sender, EventArgs e)
+    {
+        try
+        {
+            string t = TBDescriere.Text;
+            int id_titlu = int.Parse(DDLTitlu.SelectedValue);
+            string sql = "INSERT INTO DESCRIERECARTI (Text_Descriere, ID_CARTE) VALUES (@DESCRIERE, @ID_CARTE)";
+            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\BazaDateCarti.mdf;Integrated Security=True;User Instance=True");
+            con.Open();
+            SqlCommand com = new SqlCommand(sql, con);
+            com.Parameters.AddWithValue("DESCRIERE", t);
+            com.Parameters.AddWithValue("ID_CARTE", id_titlu);
+            com.ExecuteNonQuery();
+            con.Close();
+            Response.Redirect(Request.RawUrl);
+        }
+        catch (Exception err)
+        {
+            ErrorLabel.Text = ErrorLabel.Text + err;
+        }
+    }
 }
