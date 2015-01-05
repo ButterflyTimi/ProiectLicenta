@@ -174,6 +174,8 @@
             SelectCommand="SELECT Id, Titlu FROM Carti">
             </asp:SqlDataSource>
 
+                 
+
                 <asp:DropDownList ID="DDLTitlu" runat="server" DataSourceID="SqlDataSourceTitluCarti" DataTextField="Titlu" DataValueField="Id">
                 </asp:DropDownList>
              
@@ -188,15 +190,10 @@
                 <asp:TextBox id="TBDescriere" TextMode="multiline" Columns="50" Rows="5" runat="server" />  
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ForeColor="Red"
                 ErrorMessage="*" ControlToValidate="TBDescriere" ValidationGroup="validatorDescriere"></asp:RequiredFieldValidator>
-            </asp:TableCell>
-    </asp:TableRow>
-    <asp:TableRow ID="TableRow21" runat="server">
+            </asp:TableCell></asp:TableRow><asp:TableRow ID="TableRow21" runat="server">
             <asp:TableCell ID="TableCell35" runat="server">
                 <asp:Button ID="Button5" runat="server" Text="Insereaza" ValidationGroup="validatorDescriere" OnClick="submit_descriere"/>
-            </asp:TableCell>
-        </asp:TableRow>
-</asp:Table>
+            </asp:TableCell></asp:TableRow></asp:Table><asp:Label ID="ErrorLabel" runat="server"></asp:Label>
 
-    <asp:Label ID="ErrorLabel" runat="server"></asp:Label>
     </div>
 </asp:Content>

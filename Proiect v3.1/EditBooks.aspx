@@ -66,6 +66,7 @@
          
                     <asp:SqlDataSource ID="SqlDataSourceEditura" runat="server" ConnectionString="<%$ ConnectionStrings:BazaDate %>" 
                     SelectCommand="SELECT Id, Nume_Editura FROM Edituri">
+
                     </asp:SqlDataSource>
                     <asp:DropDownList ID="DDLEditura" runat="server" DataSourceID="SqlDataSourceEditura" DataTextField="Nume_Editura" DataValueField="Id">
                     </asp:DropDownList>
@@ -84,6 +85,9 @@
                 <asp:TableCell></asp:TableCell>
                 <asp:TableCell ID="TableCell13" runat="server">
                     <asp:Button ID="ButtonInsertData" runat="server" Text="Modifica" OnClick="submit_updateCarte"/>
+                </asp:TableCell>
+                <asp:TableCell ID="TableCell12" runat="server">
+                    <asp:Button ID="Button2" runat="server" Text="Inapoi la pagina" onclick="back_home" />
                 </asp:TableCell>
            </asp:TableRow>
        </asp:Table>

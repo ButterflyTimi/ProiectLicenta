@@ -65,7 +65,7 @@ public partial class EditBooks : System.Web.UI.Page
                 string isbn = TBIsbn.Text;
                 string descriere = TBDescriere.Text;
                 string sql = "UPDATE Carti SET Titlu = @Titlu, Isbn = @Isbn, Id_Autor = @Id_Autor, Id_Editura = @Id_Editura, Id_Gen = @Id_Gen WHERE Id = @id";
-                SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\BazaDateCarti.mdf;Integrated Security=True;User Instance=True");
+                SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|;Integrated Security=True;User Instance=True");
                 con.Open();
                 SqlCommand com = new SqlCommand(sql, con);
                 com.Parameters.AddWithValue("id", id);
@@ -93,4 +93,9 @@ public partial class EditBooks : System.Web.UI.Page
             Response.Redirect("~/Home.aspx");
         }
     }
+    protected void back_home(object sender, EventArgs e)
+    {
+        Response.Redirect("~/Home.aspx");
+    }
+    
 }

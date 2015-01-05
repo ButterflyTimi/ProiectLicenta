@@ -22,6 +22,13 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     SqlDataSource1.SelectParameters.Clear();
                     SqlDataSource1.SelectParameters.Add("q", q);
                     SqlDataSource1.DataBind();
+
+                    /*
+                    SqlDataSource2.SelectCommand = " SELECT a.UserName AS UserName, b.Comentariu_Text, b.Data  FROM ASPNETDB.MDF.aspnet_Users a inner join BazaDateCarti.mdf.Comentarii b  ON a.UserId=b.Id_User WHERE Id_Carte = @q";
+                    SqlDataSource2.SelectParameters.Clear();
+                    SqlDataSource2.SelectParameters.Add("q", q);
+                    SqlDataSource2.DataBind();*/
+                    
                 }
                 catch (Exception err)
                 {
@@ -30,4 +37,10 @@ public partial class IndividualBookPage : System.Web.UI.Page
             }
         }
     }
+
+    protected void post_comment(object sender, EventArgs e)
+    {
+        Response.Redirect(Request.RawUrl);
+    }
+
 }

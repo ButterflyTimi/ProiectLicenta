@@ -60,6 +60,8 @@
             <RoleGroups>
                 <asp:RoleGroup Roles="Admin">
                     <ContentTemplate>
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/InsertDatas.aspx" CssClass="insertDataLink">Adauga date</asp:HyperLink>
+
 
                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" EmptyDataText="0 rezultate"
                         DataSourceID="SqlDataSource1" AllowPaging="True" Width="100%" 

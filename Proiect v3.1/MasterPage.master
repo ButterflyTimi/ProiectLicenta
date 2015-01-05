@@ -28,7 +28,6 @@
             <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister"></asp:Label>
             <asp:Label ID="registrationButton" runat="server" Text="Inregistrare" CssClass="loginAndRegister"></asp:Label>
 
-            
             <div class="loginForm">
             <h3>Conecteaza-te</h3>
             <asp:Login ID="Login1" runat="server" LoginButtonText="Login" 
@@ -38,14 +37,14 @@
             </asp:Login>
             </div>
          </AnonymousTemplate>
+        
          <LoggedInTemplate>
             <span id="loggedInText"> Bine ai venit, 
                 <asp:LoginName ID="LoginName1" runat="server" />!
                 <asp:LoginStatus ID="LoginStatus" runat="server" ForeColor="White" />
             </span>
          </LoggedInTemplate>
-
-
+                        
         </asp:LoginView>
 
         <h1>Carul cu carti</h1>
