@@ -80,7 +80,7 @@
         </asp:TableRow>
 </asp:Table>
 
-<asp:Table ID="TabelCarti" runat="server">
+    <asp:Table ID="TabelCarti" runat="server">
     <asp:TableRow ID="TableRow1" runat="server">
             <asp:TableCell ID="TableCell1" runat="server">
                 <asp:Label ID="LabelTitlu" runat="server" Text="Titlu"></asp:Label>

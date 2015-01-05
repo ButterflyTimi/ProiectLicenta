@@ -11,23 +11,20 @@ public partial class Delete : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!Page.IsPostBack)
+        string id = Request.Params["id"];
+        if (id != null)
         {
-            string id = Request.Params["id"];
-            if (id != null)
+            try
             {
-                try
-                {
-                    id = Server.UrlDecode(id);
-                    SqlDataSource1.SelectCommand = "SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Isbn, Carti.Poza_Coperta, Carti.Id_Gen, Carti.Id_Editura, Carti.Id_Autor, Edituri.Nume_Editura, Genuri.Gen, Autori.Prenume +' ' + Autori.Nume AS NumeAutor, DescriereCarti.Text_Descriere FROM Autori INNER JOIN Carti ON Autori.Id = Carti.Id_Autor INNER JOIN Edituri ON Carti.Id_Editura = Edituri.Id INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN DescriereCarti ON Carti.Id = DescriereCarti.Id_Carte WHERE Carti.Id = @id";
-                    SqlDataSource1.SelectParameters.Clear();
-                    SqlDataSource1.SelectParameters.Add("id", id);
-                    SqlDataSource1.DataBind();
-                }
-                catch (Exception err)
-                {
-                    ErrorLabel.Text = ErrorLabel.Text + err;
-                }
+                id = Server.UrlDecode(id);
+                SqlDataSource1.SelectCommand = "SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Isbn, Carti.Poza_Coperta, Carti.Id_Gen, Carti.Id_Editura, Carti.Id_Autor, Edituri.Nume_Editura, Genuri.Gen, Autori.Prenume +' ' + Autori.Nume AS NumeAutor, DescriereCarti.Text_Descriere FROM Autori INNER JOIN Carti ON Autori.Id = Carti.Id_Autor INNER JOIN Edituri ON Carti.Id_Editura = Edituri.Id INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN DescriereCarti ON Carti.Id = DescriereCarti.Id_Carte WHERE Carti.Id = @id";
+                SqlDataSource1.SelectParameters.Clear();
+                SqlDataSource1.SelectParameters.Add("id", id);
+                SqlDataSource1.DataBind();
+            }
+            catch (Exception err)
+            {
+                ErrorLabel.Text = ErrorLabel.Text + err;
             }
         }
     }

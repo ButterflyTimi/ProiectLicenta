@@ -92,7 +92,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <asp:HyperLinkField DataNavigateUrlFields="CartiId" DataNavigateUrlFormatString="~/Edit.aspx?id={0}" Text="Modifica" ItemStyle-Width="10%" />       
+                            <asp:HyperLinkField DataNavigateUrlFields="CartiId" DataNavigateUrlFormatString="~/EditBooks.aspx?id={0}" Text="Modifica" ItemStyle-Width="10%" />       
                             <asp:HyperLinkField DataNavigateUrlFields="CartiId" DataNavigateUrlFormatString="~/Delete.aspx?id={0}" Text="Sterge" ItemStyle-Width="10%" />
 
                         </Columns>

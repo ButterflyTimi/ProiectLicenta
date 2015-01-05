@@ -16,7 +16,7 @@
                   <asp:TemplateField  ItemStyle-Width="25%">
                         <ItemTemplate>
                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>'>
-                                <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                <asp:Image ID="Image1" runat="server" CssClass="imaginiCoperti" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
                             </asp:HyperLink>
                         </ItemTemplate>
                     </asp:TemplateField>
@@ -43,7 +43,9 @@
                     
                   <asp:TemplateField ItemStyle-Width="35%">
                       <ItemTemplate>
-                          <asp:Label ID="Label10" runat="server" Text="Descriere Carte aici"></asp:Label>
+                      <div class="textDescriereCarte">
+                          <asp:Label ID="Label5" runat="server" Text='<%# Bind("Text_Descriere") %>'></asp:Label>
+                      </div>
                       </ItemTemplate>
                   </asp:TemplateField>
 

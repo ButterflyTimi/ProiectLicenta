@@ -58,7 +58,6 @@
         <asp:Button ID="Button2" runat="server" Text="Inapoi la pagina" onclick="Button2_Click" />
         <br />
 
-        <!--<asp:TextBox ID="ImagePath" runat="server" Text='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>'></asp:TextBox>-->
         <asp:Label ID="ErrorLabel" runat="server"></asp:Label>
 
     </div>

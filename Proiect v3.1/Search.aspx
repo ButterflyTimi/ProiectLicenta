@@ -3,8 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="col-sm-12" 
-        style="margin-bottom: 50px; padding-bottom: 20px; top: 0px; left: 0px;">
+    <div class="col-sm-12" style="margin-bottom: 50px; padding-bottom: 20px; top: 0px; left: 0px;">
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BazaDate %>">
         </asp:SqlDataSource>
 
@@ -98,7 +97,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <asp:HyperLinkField DataNavigateUrlFields="CartiId" DataNavigateUrlFormatString="~/Edit.aspx?id={0}" Text="Modifica" ItemStyle-Width="10%" />       
+                            <asp:HyperLinkField DataNavigateUrlFields="CartiId" DataNavigateUrlFormatString="~/EditBooks.aspx?id={0}" Text="Modifica" ItemStyle-Width="10%" />       
                             <asp:HyperLinkField DataNavigateUrlFields="CartiId" DataNavigateUrlFormatString="~/Delete.aspx?id={0}" Text="Sterge" ItemStyle-Width="10%" />
 
                         </Columns>
