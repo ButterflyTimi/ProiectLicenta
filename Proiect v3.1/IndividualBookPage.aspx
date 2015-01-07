@@ -5,9 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
      <div class="col-sm-12" style="margin-bottom: 50px; padding-bottom: 20px;">
         
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BazaDate %>">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>">
         </asp:SqlDataSource>
-
+       
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
               DataSourceID="SqlDataSource1" Width="100%" 
               ShowHeader="False" GridLines="Horizontal" PageSize="5" 
@@ -48,8 +48,6 @@
                       </div>
                       </ItemTemplate>
                   </asp:TemplateField>
-
-
               </Columns>
               <PagerStyle ForeColor="#706664" HorizontalAlign="Center" Font-Size="Larger" Font-Bold="True" />
               <HeaderStyle Wrap="False" />
@@ -57,11 +55,27 @@
                   <asp:Label ID="Label9" runat="server" Text="0 rezultate"></asp:Label>
               </EmptyDataTemplate>
           </asp:GridView>
+          <!--
+         <asp:Repeater ID="Repeater1" runat="server">
+         <ItemTemplate>
+
+         </ItemTemplate>
+
+         </asp:Repeater>-->
           
 
-         <asp:Label ID="Label13" runat="server" Text="Introduceti un comentariu:" 
+         <asp:Label ID="Label13" runat="server" Text="Adaugati un comentariu:" 
              Font-Size="Large" Font-Bold="True"></asp:Label><br />
+                
+        <asp:LoginView ID="LoginView1" runat="server">
+        <AnonymousTemplate>
+                
+                <asp:Label ID="Label13" runat="server" Text="Trebuie sa va logati pentru a putea comenta" 
+             Font-Size="Medium"></asp:Label><br />
 
+        </AnonymousTemplate>
+        <LoggedInTemplate>
+         
          <asp:Table ID="Table1" runat="server" style="margin: 10px;">
          
             <asp:TableRow ID="TableRow1" runat="server" Width="100%">
@@ -71,34 +85,19 @@
                 </div>
                 </asp:TableCell>
                  <asp:TableCell ID="TableCell2" runat="server" Width="90%">
-                    <asp:TextBox id="TextBox1" TextMode="MultiLine" Rows="3" Columns="200" style="resize:none;" runat="server" CssClass="form-control input-lg" />
-                 </asp:TableCell>
-                 </asp:TableRow>
-                 <asp:TableRow ID="TableRow2" runat="server">
+                    
+                     <asp:TextBox id="TBComentariu" TextMode="MultiLine" Rows="3" Columns="200" style="resize:none;" runat="server" CssClass="form-control input-lg" />
+                                     
+                    </asp:TableCell></asp:TableRow><asp:TableRow ID="TableRow2" runat="server">
                 <asp:TableCell>
                     <asp:Button ID="Button1" runat="server" Text="Posteaza" OnClick="post_comment" CssClass="ButtonPostComment" />
                 
-                </asp:TableCell></asp:TableRow></asp:Table><!--
-            </AnonymousTemplate>
-            <RoleGroups>
-                <asp:RoleGroup Roles="Admin">
-                    <ContentTemplate>
-                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/InsertDatas.aspx" CssClass="insertDataLink">Adauga date</asp:HyperLink>
-
-
-
-                    </ContentTemplate>
-                </asp:RoleGroup>
-                <asp:RoleGroup Roles="User">
-                    <ContentTemplate>
-
-
-
-                    </ContentTemplate>
-                </asp:RoleGroup>
-            </RoleGroups>
-        </asp:LoginView>-->
-        
-        <asp:Label ID="ErrorLabel" runat="server"></asp:Label>
-    </div>
-</asp:Content>
+                </asp:TableCell>
+                </asp:TableRow>
+                </asp:Table>
+                </LoggedInTemplate>
+                </asp:LoginView>
+                <asp:Label ID="ErrorLabel" runat="server"></asp:Label>
+         </div>
+         
+    </asp:Content>

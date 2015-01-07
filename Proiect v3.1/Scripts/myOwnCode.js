@@ -26,32 +26,21 @@
         $("#ContentPlaceHolder1_TabelGenuri").css("display", "none");
         $("#ContentPlaceHolder1_TabelEdituri").css("display", "none");
         $("#ContentPlaceHolder1_TabelCarti").css("display", "none");
-        $("#ContentPlaceHolder1_TabelDescrieri").css("display", "none");
     })
     $("#inserareGenuri").click(function () {
         $("#ContentPlaceHolder1_TabelGenuri").css("display", "initial");
         $("#ContentPlaceHolder1_TabelAutori").css("display", "none");
         $("#ContentPlaceHolder1_TabelEdituri").css("display", "none");
         $("#ContentPlaceHolder1_TabelCarti").css("display", "none");
-        $("#ContentPlaceHolder1_TabelDescrieri").css("display", "none");
     })
     $("#inserareEdituri").click(function () {
         $("#ContentPlaceHolder1_TabelEdituri").css("display", "initial");
         $("#ContentPlaceHolder1_TabelAutori").css("display", "none");
         $("#ContentPlaceHolder1_TabelGenuri").css("display", "none");
         $("#ContentPlaceHolder1_TabelCarti").css("display", "none");
-        $("#ContentPlaceHolder1_TabelDescrieri").css("display", "none");
     })
     $("#inserareCarti").click(function () {
         $("#ContentPlaceHolder1_TabelCarti").css("display", "initial");
-        $("#ContentPlaceHolder1_TabelAutori").css("display", "none");
-        $("#ContentPlaceHolder1_TabelEdituri").css("display", "none");
-        $("#ContentPlaceHolder1_TabelGenuri").css("display", "none");
-        $("#ContentPlaceHolder1_TabelDescrieri").css("display", "none");
-    })
-    $("#inserareDescrieri").click(function () {
-        $("#ContentPlaceHolder1_TabelDescrieri").css("display", "initial");
-        $("#ContentPlaceHolder1_TabelCarti").css("display", "none");
         $("#ContentPlaceHolder1_TabelAutori").css("display", "none");
         $("#ContentPlaceHolder1_TabelEdituri").css("display", "none");
         $("#ContentPlaceHolder1_TabelGenuri").css("display", "none");

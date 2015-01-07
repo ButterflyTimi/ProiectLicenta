@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="col-sm-12" style="margin-bottom: 50px; padding-bottom: 20px; top: 0px; left: 0px;">
-         
+        
         <asp:Table ID="TabelUpdate" runat="server">
 
             <asp:TableRow ID="TableRow6" runat="server">
@@ -28,7 +28,7 @@
                 </asp:TableCell>
                 <asp:TableCell ID="TableCell4" runat="server">
                
-                    <asp:SqlDataSource ID="SqlDataSourceAutor" runat="server" ConnectionString="<%$ ConnectionStrings:BazaDate %>" 
+                    <asp:SqlDataSource ID="SqlDataSourceAutor" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
                     SelectCommand="SELECT Prenume+' '+Nume AS NumeAutor, Id FROM Autori">
                     </asp:SqlDataSource>
                     <asp:DropDownList ID="DDLAutor" runat="server" DataSourceID="SqlDataSourceAutor" DataTextField="NumeAutor" DataValueField="Id">
@@ -50,7 +50,7 @@
                 </asp:TableCell>
                 <asp:TableCell ID="TableCell8" runat="server">
 
-                    <asp:SqlDataSource ID="SqlDataSourceGen" runat="server" ConnectionString="<%$ ConnectionStrings:BazaDate %>" 
+                    <asp:SqlDataSource ID="SqlDataSourceGen" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
                     SelectCommand="SELECT Gen, Id FROM Genuri">
                     </asp:SqlDataSource>
                     <asp:DropDownList ID="DDLGen" runat="server" DataSourceID="SqlDataSourceGen" DataTextField="Gen" DataValueField="Id">
@@ -64,7 +64,7 @@
                 </asp:TableCell>
                 <asp:TableCell ID="TableCell10" runat="server">
          
-                    <asp:SqlDataSource ID="SqlDataSourceEditura" runat="server" ConnectionString="<%$ ConnectionStrings:BazaDate %>" 
+                    <asp:SqlDataSource ID="SqlDataSourceEditura" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
                     SelectCommand="SELECT Id, Nume_Editura FROM Edituri">
 
                     </asp:SqlDataSource>

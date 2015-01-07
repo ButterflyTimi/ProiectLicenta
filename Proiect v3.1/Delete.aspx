@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <div class="col-sm-12" style="margin-bottom: 50px; padding-bottom: 20px;">
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
-            ConnectionString="<%$ ConnectionStrings:BazaDate %>"> 
+            ConnectionString="<%$ ConnectionStrings:ASPNETDB %>"> 
         </asp:SqlDataSource>
 
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
