@@ -9,6 +9,11 @@
         </asp:SqlDataSource>
 
         <h2>Cautare:</h2>
+        <!--
+        <div class="sortare">
+        Sortare 
+        <asp:RadioButton ID="RadioButton1" runat="server" />
+        </div>-->
 
         <asp:LoginView ID="LoginView1" runat="server">
             <AnonymousTemplate>

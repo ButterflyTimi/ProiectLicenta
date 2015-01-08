@@ -3,7 +3,43 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="col-sm-12" style="margin-bottom: 50px;">
+<div class="col-sm-2" style="margin-bottom: 50px;">
+<asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
+        SelectCommand="SELECT Gen FROM Genuri">
+        </asp:SqlDataSource>
+
+<asp:DataList id="datalist1" runat="server" DataSourceID="SqlDataSource2">
+
+<HeaderTemplate>
+<h3>Genuri:</h3>
+</HeaderTemplate>
+
+<ItemTemplate>
+<asp:HyperLink ID="HyperLink4" runat="server"  Font-Underline="false" NavigateUrl='<%# "~/Search.aspx?q=" + Eval("Gen") %>' ForeColor="Gray">
+    <asp:Label ID="Label10" runat="server" CssClass="categorii" Text='<%# Eval("Gen") %>'></asp:Label>
+</asp:HyperLink>                 
+</ItemTemplate>
+</asp:DataList>
+
+<asp:SqlDataSource ID="SqlDataSource3" runat="server"  ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
+        SelectCommand="SELECT Prenume + ' ' + Nume AS NumeAutor FROM Autori">
+        </asp:SqlDataSource>
+<asp:DataList id="datalist2" runat="server" DataSourceID="SqlDataSource3">
+
+<HeaderTemplate>
+<h3>Autori:</h3>
+</HeaderTemplate>
+
+<ItemTemplate>
+<asp:HyperLink ID="HyperLink4" runat="server"  Font-Underline="false" NavigateUrl='<%# "~/Search.aspx?q=" + Eval("NumeAutor") %>' ForeColor="Gray">
+    <asp:Label ID="Label10" runat="server" CssClass="categorii" Text='<%# Eval("NumeAutor") %>'></asp:Label>
+</asp:HyperLink>                 
+</ItemTemplate>
+</asp:DataList>
+
+</div>
+
+    <div class="col-sm-10" style="margin-bottom: 50px;">
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
         SelectCommand="SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Isbn, Carti.Poza_Coperta, Genuri.Gen, Edituri.Nume_Editura, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor FROM Autori INNER JOIN Genuri INNER JOIN Carti ON Genuri.Id = Carti.Id_Gen INNER JOIN Edituri ON Carti.Id_Editura = Edituri.Id ON Autori.Id = Carti.Id_Autor">
         </asp:SqlDataSource>

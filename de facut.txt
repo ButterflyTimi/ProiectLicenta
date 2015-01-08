@@ -1,0 +1,16 @@
+de facut:
+-categorii in stanga tabelului cu
+genuri, edituri, autori
+-SORTARI!
+-pagina carte single -aproape gata, vizualizare comentarii
+-rating carte
+-casuta comentarii pentru fiecare carte
+
+-in partea de jos a paginii, ultimele 5 carti adaugate
+
+-PARTEA DE FRONTEND
+
+-------------------
+
+-login/signup cu facebook,google,yahoo
+

@@ -55,13 +55,63 @@
                   <asp:Label ID="Label9" runat="server" Text="0 rezultate"></asp:Label>
               </EmptyDataTemplate>
           </asp:GridView>
-          <!--
-         <asp:Repeater ID="Repeater1" runat="server">
-         <ItemTemplate>
+          
+          <h3>Comentarii:</h3>
 
-         </ItemTemplate>
+          <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
+             DataSourceID="SqlDataSource2" Width="100%" 
+              ShowHeader="False" GridLines="None">
 
-         </asp:Repeater>-->
+              <Columns>
+                  <asp:TemplateField  ItemStyle-Width="100%">
+                        <ItemTemplate>
+    <asp:Table ID="Table1" runat="server" CssClass="comentarii">
+         
+            <asp:TableRow ID="TableRow1" runat="server" Width="100%">
+                <asp:TableCell ID="TableCell1" runat="server" rowspan="3" Width="10%"  style="vertical-align: top;">
+                <div class="userIcon">
+                    <asp:Image ID="Image3" runat="server" ImageUrl="~/usericon.png" />
+                </div>
+                </asp:TableCell>
+                 <asp:TableCell ID="TableCell2" runat="server" Width="90%">
+                    Postat de <i><%#Eval("UserName")%></i> la <i><%#Eval("Data")%></i>:
+                 </asp:TableCell>
+                </asp:TableRow>
+
+                <asp:TableRow ID="TableRow33" runat="server" Width="100%">
+                 <asp:TableCell ID="TableCell3" runat="server" Width="90%">
+                    <span class="comentariu"><%#Eval("Comentariu_Text")%>
+                 </asp:TableCell>
+                 </asp:TableRow>
+                
+                 <asp:TableRow ID="TableRow3" runat="server">
+                 <asp:TableCell ID="TableCell5" runat="server">
+                 <asp:LoginView ID="LoginView2" runat="server">
+                 <RoleGroups>
+    <asp:RoleGroup Roles="Admin">
+    <ContentTemplate>
+                  
+                  
+    <asp:HyperLink runat="server" NavigateUrl='<%# "~/DeleteComm.aspx?q=" + Eval("Id") %>'>Sterge</asp:HyperLink>
+    </ContentTemplate>
+    </asp:RoleGroup>
+    </RoleGroups>
+    </asp:LoginView>
+    </asp:TableCell>
+                 </asp:TableRow>
+    
+                 </asp:Table>
+                        </ItemTemplate>
+
+                    </asp:TemplateField>
+                    </Columns>
+              <EmptyDataTemplate>
+                  <asp:Label ID="Label14" runat="server" Text="0 comentarii"></asp:Label>
+              </EmptyDataTemplate>
+              </asp:GridView>
+          
+
+         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>"></asp:SqlDataSource>
           
 
          <asp:Label ID="Label13" runat="server" Text="Adaugati un comentariu:" 
@@ -90,14 +140,13 @@
                                      
                     </asp:TableCell></asp:TableRow><asp:TableRow ID="TableRow2" runat="server">
                 <asp:TableCell>
-                    <asp:Button ID="Button1" runat="server" Text="Posteaza" OnClick="post_comment" CssClass="ButtonPostComment" />
+                    <asp:Button ID="Button1" runat="server" Text="Posteaza" OnClientClick="adaugareComm()" OnClick="post_comment" CssClass="ButtonPostComment" />
                 
-                </asp:TableCell>
-                </asp:TableRow>
-                </asp:Table>
-                </LoggedInTemplate>
-                </asp:LoginView>
-                <asp:Label ID="ErrorLabel" runat="server"></asp:Label>
-         </div>
-         
-    </asp:Content>
+                </asp:TableCell></asp:TableRow></asp:Table>
+         </LoggedInTemplate>
+    </asp:LoginView>
+ 
+
+
+ </div>
+ </asp:Content>

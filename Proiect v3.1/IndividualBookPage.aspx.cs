@@ -24,16 +24,15 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     SqlDataSource1.SelectParameters.Add("q", q);
                     SqlDataSource1.DataBind();
 
-                    /*
-                    SqlDataSource2.SelectCommand = " SELECT a.UserName AS UserName, b.Comentariu_Text, b.Data  FROM ASPNETDB.MDF.aspnet_Users a inner join BazaDateCarti.mdf.Comentarii b  ON a.UserId=b.Id_User WHERE Id_Carte = @q";
+                    
+                    SqlDataSource2.SelectCommand = " SELECT Comentarii.Id, Comentarii.Comentariu_Text, Comentarii.Data, Comentarii.Id_Carte, aspnet_Users.UserName FROM aspnet_Users INNER JOIN Comentarii ON aspnet_Users.UserId = Comentarii.Id_User WHERE Comentarii.Id_Carte = @q";
                     SqlDataSource2.SelectParameters.Clear();
                     SqlDataSource2.SelectParameters.Add("q", q);
-                    SqlDataSource2.DataBind();*/
-                    
+                    SqlDataSource2.DataBind();
+
                 }
                 catch (Exception err)
                 {
-                    ErrorLabel.Text = ErrorLabel.Text + err;
                 }
             }
         }
