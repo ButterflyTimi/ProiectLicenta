@@ -23,6 +23,28 @@
 
                   <asp:TemplateField ItemStyle-Width="40%">
                       <ItemTemplate>
+
+                      <div class="starRating">
+                          <div>
+                            <div>
+                              <div>
+                                <div>
+                                  <input id="rating1" type="radio" name="rating" value="1">
+                                  <label for="rating1"><span>1</span></label>
+                                </div>
+                                <input id="rating2" type="radio" name="rating" value="2">
+                                <label for="rating2"><span>2</span></label>
+                              </div>
+                              <input id="rating3" type="radio" name="rating" value="3">
+                              <label for="rating3"><span>3</span></label>
+                            </div>
+                            <input id="rating4" type="radio" name="rating" value="4">
+                            <label for="rating4"><span>4</span></label>
+                          </div>
+                          <input id="rating5" type="radio" name="rating" value="5">
+                          <label for="rating5"><span>5</span></label>
+                        </div>
+                        <br />
                       <asp:HyperLink ID="HyperLink2" runat="server" Font-Underline="false" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>' ForeColor="Black" CssClass="titluCarte">
                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' Font-Bold="True" Font-Italic="True" Font-Size="XX-Large"></asp:Label>
                          </asp:HyperLink> 
@@ -137,7 +159,7 @@
                  <asp:TableCell ID="TableCell2" runat="server" Width="90%">
                     
                      <asp:TextBox id="TBComentariu" TextMode="MultiLine" Rows="3" Columns="200" style="resize:none;" runat="server" CssClass="form-control input-lg" />
-                                     
+                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="" ControlToValidate="TBComentariu"></asp:RequiredFieldValidator>                
                     </asp:TableCell></asp:TableRow><asp:TableRow ID="TableRow2" runat="server">
                 <asp:TableCell>
                     <asp:Button ID="Button1" runat="server" Text="Posteaza" OnClientClick="adaugareComm()" OnClick="post_comment" CssClass="ButtonPostComment" />

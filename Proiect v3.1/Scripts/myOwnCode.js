@@ -11,8 +11,7 @@ var ui = $(".userIcon");
 for (var i = 0; i < ui.length; i++) {
     var random = Math.floor((Math.random() * 4)); ;
     var randomColor = colors[random];
-    console.log(ui[i]);
-    //ui[i].css("background-color", randomColor);
+    $(ui[i]).css("background-color", randomColor);
 }
 
 $(document).ready(function () {
@@ -62,5 +61,6 @@ $(document).ready(function () {
         $("#ContentPlaceHolder1_TabelEdituri").css("display", "none");
         $("#ContentPlaceHolder1_TabelGenuri").css("display", "none");
     })
+
 
 });

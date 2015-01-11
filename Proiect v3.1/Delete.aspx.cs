@@ -45,12 +45,27 @@ public partial class Delete : System.Web.UI.Page
                 SqlCommand com = new SqlCommand(sql, con);
                 com.Parameters.AddWithValue("id", id);
                 com.ExecuteNonQuery();
-                con.Close();             
+                con.Close();
+
+                sql = "DELETE FROM Comentarii WHERE Id_Carte = @id";
+                con.Open();
+                com = new SqlCommand(sql, con);
+                com.Parameters.AddWithValue("id", id);
+                com.ExecuteNonQuery();
+                con.Close();
+
+                //String path = Server.MapPath("~/pozeCoperti/");
+                //if (System.IO.File.Exists(path)) { System.IO.File.Delete(path); }
+
             }
             catch (Exception err)
             {
                 ErrorLabel.Text = ErrorLabel.Text + err;
             }
+         else
+         {
+             Response.Redirect("~/Home.aspx");
+         }
         Response.Redirect("~/Home.aspx");
          
     }

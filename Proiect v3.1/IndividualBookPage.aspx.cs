@@ -49,14 +49,23 @@ public partial class IndividualBookPage : System.Web.UI.Page
         SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
         con.Open();
         SqlCommand com = new SqlCommand(sql, con);
-        int idCarte = Int32.Parse(Request.Params["q"]);
-        com.Parameters.AddWithValue("Comentariu_Text", tb);
-        com.Parameters.AddWithValue("Data", data);
-        com.Parameters.AddWithValue("Id_User", user);
-        com.Parameters.AddWithValue("Id_Carte", idCarte);
-        com.ExecuteNonQuery();
-        con.Close();
-        Response.Redirect(Request.RawUrl);
+
+        string q = Request.Params["q"];
+        if (q != null)
+        {
+            int idCarte = Int32.Parse(Request.Params["q"]);
+            com.Parameters.AddWithValue("Comentariu_Text", tb);
+            com.Parameters.AddWithValue("Data", data);
+            com.Parameters.AddWithValue("Id_User", user);
+            com.Parameters.AddWithValue("Id_Carte", idCarte);
+            com.ExecuteNonQuery();
+            con.Close();
+            Response.Redirect(Request.RawUrl);
+        }
+        else
+        {
+            Response.Redirect("~/Home.aspx");
+        }
     }
 
 }

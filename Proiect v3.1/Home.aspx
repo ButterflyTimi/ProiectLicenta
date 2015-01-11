@@ -4,6 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <div class="col-sm-2" style="margin-bottom: 50px;">
+
 <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
         SelectCommand="SELECT Gen FROM Genuri">
         </asp:SqlDataSource>
@@ -41,7 +42,7 @@
 
     <div class="col-sm-10" style="margin-bottom: 50px;">
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
-        SelectCommand="SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Isbn, Carti.Poza_Coperta, Genuri.Gen, Edituri.Nume_Editura, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor FROM Autori INNER JOIN Genuri INNER JOIN Carti ON Genuri.Id = Carti.Id_Gen INNER JOIN Edituri ON Carti.Id_Editura = Edituri.Id ON Autori.Id = Carti.Id_Autor">
+        SelectCommand="SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Isbn, Carti.Poza_Coperta, Genuri.Gen, Edituri.Nume_Editura, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor FROM Autori INNER JOIN Genuri INNER JOIN Carti ON Genuri.Id = Carti.Id_Gen INNER JOIN Edituri ON Carti.Id_Editura = Edituri.Id ON Autori.Id = Carti.Id_Autor ORDER BY CartiId desc;">
         </asp:SqlDataSource>
 
         <asp:LoginView ID="LoginView1" runat="server">
@@ -107,7 +108,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                            <asp:TemplateField SortExpression="CartiTitlu" ItemStyle-Width="40%">
+                            <asp:TemplateField SortExpression="CartiTitlu" ItemStyle-Width="37%">
                                 <ItemTemplate>
                                     <asp:HyperLink ID="HyperLink2" runat="server" Font-Underline="false" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>' ForeColor="Black" CssClass="titluCarte">
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' Font-Bold="True" Font-Italic="True" Font-Size="XX-Large"></asp:Label>
@@ -117,7 +118,7 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                   
-                            <asp:TemplateField ItemStyle-Height="20%">
+                            <asp:TemplateField ItemStyle-Height="23%">
                                 <ItemTemplate>
                                     <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="labeluriCarti"></asp:Label>
                                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Gen") %>'></asp:Label>
@@ -139,8 +140,9 @@
                         </asp:GridView>
                     </ContentTemplate>
                 </asp:RoleGroup>
-                <asp:RoleGroup Roles="User">
-                    <ContentTemplate>
+                </RoleGroups>
+                   <LoggedInTemplate>
+              <!--      <ContentTemplate>-->
 
                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
                 DataSourceID="SqlDataSource1" AllowPaging="True" Width="100%" 
@@ -182,9 +184,10 @@
               <HeaderStyle Wrap="False" />
               </asp:GridView>
 
-                    </ContentTemplate>
+               <!--     </ContentTemplate>
                 </asp:RoleGroup>
-            </RoleGroups>
+            </RoleGroups>-->
+            </LoggedInTemplate>
         </asp:LoginView>
 </div>
 </asp:Content>

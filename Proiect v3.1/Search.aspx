@@ -8,12 +8,17 @@
             ConnectionString="<%$ ConnectionStrings:ASPNETDB %>">
         </asp:SqlDataSource>
 
-        <h2>Cautare:</h2>
-        <!--
-        <div class="sortare">
-        Sortare 
-        <asp:RadioButton ID="RadioButton1" runat="server" />
-        </div>-->
+        <h2 style="display:inline-block;">Cautare:</h2>
+        <div class="sortare" style="float: right;">
+        Sortati dupa:
+        <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal">
+         <asp:ListItem Selected="True" Value="data" >Data</asp:ListItem>
+         <asp:ListItem Value="titlu">Titlu</asp:ListItem>
+     </asp:RadioButtonList> 
+
+        <asp:Button ID="sortButton" CssClass="sortButton" runat="server" Text="Sorteaza" onclick="Button1_Click"/>
+        
+        </div>
 
         <asp:LoginView ID="LoginView1" runat="server">
             <AnonymousTemplate>
@@ -114,8 +119,8 @@
                         </asp:GridView>
                     </ContentTemplate>
                 </asp:RoleGroup>
-                <asp:RoleGroup Roles="User">
-                    <ContentTemplate>
+                </RoleGroups>
+                   <LoggedInTemplate>
 
                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" EmptyDataText="0 rezultate"
                 DataSourceID="SqlDataSource1" AllowPaging="True" Width="100%" 
@@ -157,9 +162,7 @@
               <HeaderStyle Wrap="False" />
               </asp:GridView>
 
-                    </ContentTemplate>
-                </asp:RoleGroup>
-            </RoleGroups>
+                    </LoggedInTemplate>
         </asp:LoginView>
 
     </div>
