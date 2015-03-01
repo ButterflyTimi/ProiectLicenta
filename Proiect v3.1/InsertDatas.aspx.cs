@@ -56,49 +56,26 @@ public partial class InsertDatas : System.Web.UI.Page
             ErrorLabel.Text = ErrorLabel.Text + err;
         }
     }
-    protected void submit_editura(object sender, EventArgs e)
-    {
-        try
-        {
-            string ed = TBEditura.Text;
-            string sql = "INSERT INTO EDITURI (NUME_EDITURA) VALUES (@EDITURA)";
-            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
-            con.Open();
-            SqlCommand com = new SqlCommand(sql, con);
-            com.Parameters.AddWithValue("editura", ed);
-            com.ExecuteNonQuery();
-            con.Close();
-            Response.Redirect(Request.RawUrl);
-        }
-        catch (Exception err)
-        {
-            ErrorLabel.Text = ErrorLabel.Text + err;
-        }
-    }
 
     protected void submit_carte(object sender, EventArgs e)
     {
         try
         {
             string t = TBTitlu.Text;
-            string isbn = TBIsbn.Text;
             string d = TBDescriere.Text;
             int id_autor = int.Parse(DDLAutor.SelectedValue);
             int id_gen = int.Parse(DDLGen.SelectedValue);
-            int id_editura = int.Parse(DDLEditura.SelectedValue);
 
             String type = FileUploadPozaCoperta.PostedFile.ContentType.ToLower() ;
             if (FileUploadPozaCoperta.HasFile && (type.Contains("jpg") || type.Contains("jpeg")))
             {
                 FileUploadPozaCoperta.SaveAs(Server.MapPath("~") + "/pozeCoperti/" + t + ".jpg");
-                string sql = "INSERT INTO Carti (TITLU, ISBN, POZA_COPERTA, ID_GEN, ID_EDITURA, ID_AUTOR, TEXT_DESCRIERE) VALUES (@TITLU, @ISBN, @POZA, @ID_GEN, @ID_EDITURA, @ID_AUTOR, @TEXT_DESCRIERE)";
+                string sql = "INSERT INTO Carti (TITLU, POZA_COPERTA, ID_GEN, ID_AUTOR, TEXT_DESCRIERE) VALUES (@TITLU, @POZA, @ID_GEN, @ID_AUTOR, @TEXT_DESCRIERE)";
                 SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
                 con.Open();
                 SqlCommand com = new SqlCommand(sql, con);
                 com.Parameters.AddWithValue("TITLU", t);
-                com.Parameters.AddWithValue("ISBN", isbn);
                 com.Parameters.AddWithValue("ID_GEN", id_gen);
-                com.Parameters.AddWithValue("ID_EDITURA", id_editura);
                 com.Parameters.AddWithValue("ID_AUTOR", id_autor);
                 com.Parameters.AddWithValue("TEXT_DESCRIERE", d);
                 string urlPoza = t + ".jpg";

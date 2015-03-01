@@ -9,7 +9,6 @@
 <tr>
     <td><h4 id="inserareAutori">Inserati Autori</h4></td>
     <td><h4 id="inserareGenuri">Inserati Genuri</h4></td>
-    <td><h4 id="inserareEdituri">Inserati Edituri</h4></td>
     <td><h4 id="inserareCarti">Inserati Carti</h4></td>
 </tr>
 </table>
@@ -61,24 +60,6 @@
         </asp:TableRow>
 </asp:Table>
 
-<asp:Table ID="TabelEdituri" runat="server">
-    <asp:TableRow ID="TableRow12" runat="server">
-            <asp:TableCell ID="TableCell21" runat="server">
-                <asp:Label ID="Label4" runat="server" Text="Editura"></asp:Label>
-            </asp:TableCell>
-            <asp:TableCell ID="TableCell22" runat="server">
-                <asp:TextBox ID="TBEditura" runat="server"></asp:TextBox>  
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ForeColor="Red"
-                ErrorMessage="*" ControlToValidate="TBEditura" ValidationGroup="validatorEdituri"></asp:RequiredFieldValidator>
-            </asp:TableCell>
-    </asp:TableRow>
-    <asp:TableRow ID="TableRow14" runat="server">
-            <asp:TableCell ID="TableCell24" runat="server">
-                <asp:Button ID="Button2" runat="server" Text="Insereaza" OnClick="submit_editura" ValidationGroup="validatorEdituri" />
-            </asp:TableCell>
-        </asp:TableRow>
-</asp:Table>
-
     <asp:Table ID="TabelCarti" runat="server">
     <asp:TableRow ID="TableRow1" runat="server">
             <asp:TableCell ID="TableCell1" runat="server">
@@ -104,16 +85,6 @@
 
             </asp:TableCell>
     </asp:TableRow>
-    <asp:TableRow ID="TableRow3" runat="server">
-            <asp:TableCell ID="TableCell5" runat="server">
-                <asp:Label ID="LabelIsbn" runat="server" Text="ISBN"></asp:Label>
-            </asp:TableCell>
-            <asp:TableCell ID="TableCell6" runat="server">
-                <asp:TextBox ID="TBIsbn" runat="server"></asp:TextBox>  
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ForeColor="Red"
-                ErrorMessage="*" ControlToValidate="TBIsbn" ValidationGroup="validatorCarti"></asp:RequiredFieldValidator>
-            </asp:TableCell>
-    </asp:TableRow>
     <asp:TableRow ID="TableRow4" runat="server">
             <asp:TableCell ID="TableCell7" runat="server">
                 <asp:Label ID="LabelGen" runat="server" Text="Gen"></asp:Label>
@@ -127,21 +98,6 @@
             <asp:DropDownList ID="DDLGen" runat="server" DataSourceID="SqlDataSourceGen" DataTextField="Gen" DataValueField="Id">
             </asp:DropDownList>
 
-            </asp:TableCell>
-    </asp:TableRow>
-    <asp:TableRow ID="TableRow5" runat="server">
-            <asp:TableCell ID="TableCell9" runat="server">
-                <asp:Label ID="LabelEditura" runat="server" Text="Editura"></asp:Label>
-            </asp:TableCell>
-            <asp:TableCell ID="TableCell10" runat="server">
-         
-                <asp:SqlDataSource ID="SqlDataSourceEditura" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
-            SelectCommand="SELECT Id, Nume_Editura FROM Edituri">
-            </asp:SqlDataSource>
-
-                <asp:DropDownList ID="DDLEditura" runat="server" DataSourceID="SqlDataSourceEditura" DataTextField="Nume_Editura" DataValueField="Id">
-                </asp:DropDownList>
-             
             </asp:TableCell>
     </asp:TableRow>
 

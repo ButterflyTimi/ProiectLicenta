@@ -3,46 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div class="col-sm-2" style="margin-bottom: 50px;">
 
-<asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
-        SelectCommand="SELECT Gen FROM Genuri">
-        </asp:SqlDataSource>
-
-<asp:DataList id="datalist1" runat="server" DataSourceID="SqlDataSource2">
-
-<HeaderTemplate>
-<h3>Genuri:</h3>
-</HeaderTemplate>
-
-<ItemTemplate>
-<asp:HyperLink ID="HyperLink4" runat="server"  Font-Underline="false" NavigateUrl='<%# "~/Search.aspx?q=" + Eval("Gen") %>' ForeColor="Gray">
-    <asp:Label ID="Label10" runat="server" CssClass="categorii" Text='<%# Eval("Gen") %>'></asp:Label>
-</asp:HyperLink>                 
-</ItemTemplate>
-</asp:DataList>
-
-<asp:SqlDataSource ID="SqlDataSource3" runat="server"  ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
-        SelectCommand="SELECT Prenume + ' ' + Nume AS NumeAutor FROM Autori">
-        </asp:SqlDataSource>
-<asp:DataList id="datalist2" runat="server" DataSourceID="SqlDataSource3">
-
-<HeaderTemplate>
-<h3>Autori:</h3>
-</HeaderTemplate>
-
-<ItemTemplate>
-<asp:HyperLink ID="HyperLink4" runat="server"  Font-Underline="false" NavigateUrl='<%# "~/Search.aspx?q=" + Eval("NumeAutor") %>' ForeColor="Gray">
-    <asp:Label ID="Label10" runat="server" CssClass="categorii" Text='<%# Eval("NumeAutor") %>'></asp:Label>
-</asp:HyperLink>                 
-</ItemTemplate>
-</asp:DataList>
-
-</div>
-
-    <div class="col-sm-10" style="margin-bottom: 50px;">
+    <div class="col-sm-12">
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
-        SelectCommand="SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Isbn, Carti.Poza_Coperta, Genuri.Gen, Edituri.Nume_Editura, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor FROM Autori INNER JOIN Genuri INNER JOIN Carti ON Genuri.Id = Carti.Id_Gen INNER JOIN Edituri ON Carti.Id_Editura = Edituri.Id ON Autori.Id = Carti.Id_Autor ORDER BY CartiId desc;">
+        
+            SelectCommand="SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, Carti.Text_Descriere FROM Autori INNER JOIN Genuri INNER JOIN Carti ON Genuri.Id = Carti.Id_Gen ON Autori.Id = Carti.Id_Autor ORDER BY CartiId DESC">
         </asp:SqlDataSource>
 
         <asp:LoginView ID="LoginView1" runat="server">
@@ -75,12 +40,6 @@
                         <ItemTemplate>
                             <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="labeluriCarti"></asp:Label>
                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("Gen") %>'></asp:Label>
-                            <br />
-                            <asp:Label ID="Label7" runat="server" Text="Editura: " CssClass="labeluriCarti"></asp:Label>
-                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("Nume_Editura") %>'></asp:Label>
-                            <br />
-                            <asp:Label ID="Label8" runat="server" Text="ISBN: " CssClass="labeluriCarti"></asp:Label>
-                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("Isbn") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
               </Columns>
@@ -122,12 +81,6 @@
                                 <ItemTemplate>
                                     <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="labeluriCarti"></asp:Label>
                                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Gen") %>'></asp:Label>
-                                    <br />
-                                    <asp:Label ID="Label7" runat="server" Text="Editura: " CssClass="labeluriCarti"></asp:Label>
-                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("Nume_Editura") %>'></asp:Label>
-                                    <br />
-                                    <asp:Label ID="Label8" runat="server" Text="ISBN: " CssClass="labeluriCarti"></asp:Label>
-                                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Isbn") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
 
@@ -171,12 +124,6 @@
                         <ItemTemplate>
                             <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="labeluriCarti"></asp:Label>
                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("Gen") %>'></asp:Label>
-                            <br />
-                            <asp:Label ID="Label7" runat="server" Text="Editura: " CssClass="labeluriCarti"></asp:Label>
-                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("Nume_Editura") %>'></asp:Label>
-                            <br />
-                            <asp:Label ID="Label8" runat="server" Text="ISBN: " CssClass="labeluriCarti"></asp:Label>
-                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("Isbn") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
               </Columns>

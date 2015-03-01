@@ -36,14 +36,6 @@
 
                 </asp:TableCell>
             </asp:TableRow>
-            <asp:TableRow ID="TableRow3" runat="server">
-                <asp:TableCell ID="TableCell5" runat="server">
-                    <asp:Label ID="LabelIsbn" runat="server" Text="ISBN"></asp:Label>
-                </asp:TableCell>
-                <asp:TableCell ID="TableCell6" runat="server">
-                    <asp:TextBox ID="TBIsbn" runat="server"></asp:TextBox>  
-                    </asp:TableCell>
-            </asp:TableRow>
             <asp:TableRow ID="TableRow4" runat="server">
                 <asp:TableCell ID="TableCell7" runat="server">
                     <asp:Label ID="LabelGen" runat="server" Text="Gen"></asp:Label>
@@ -56,21 +48,6 @@
                     <asp:DropDownList ID="DDLGen" runat="server" DataSourceID="SqlDataSourceGen" DataTextField="Gen" DataValueField="Id">
                     </asp:DropDownList>
 
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow ID="TableRow5" runat="server">
-                <asp:TableCell ID="TableCell9" runat="server">
-                    <asp:Label ID="LabelEditura" runat="server" Text="Editura"></asp:Label>
-                </asp:TableCell>
-                <asp:TableCell ID="TableCell10" runat="server">
-         
-                    <asp:SqlDataSource ID="SqlDataSourceEditura" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
-                    SelectCommand="SELECT Id, Nume_Editura FROM Edituri">
-
-                    </asp:SqlDataSource>
-                    <asp:DropDownList ID="DDLEditura" runat="server" DataSourceID="SqlDataSourceEditura" DataTextField="Nume_Editura" DataValueField="Id">
-                    </asp:DropDownList>
-             
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>

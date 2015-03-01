@@ -53,12 +53,6 @@
                           <br />
                           <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="labeluriCarti"></asp:Label>
                           <asp:Label ID="Label2" runat="server" Text='<%# Bind("Gen") %>'></asp:Label>
-                          <br />
-                          <asp:Label ID="Label7" runat="server" Text="Editura: " CssClass="labeluriCarti"></asp:Label>
-                          <asp:Label ID="Label4" runat="server" Text='<%# Bind("Nume_Editura") %>'></asp:Label>
-                          <br />
-                          <asp:Label ID="Label8" runat="server" Text="ISBN: " CssClass="labeluriCarti"></asp:Label>
-                          <asp:Label ID="Label5" runat="server" Text='<%# Bind("Isbn") %>'></asp:Label>
 
                       </ItemTemplate>
                   </asp:TemplateField>

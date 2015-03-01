@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="col-sm-12" style="margin-bottom: 50px; padding-bottom: 20px; top: 0px; left: 0px;">
+    <div class="col-sm-12">
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
             ConnectionString="<%$ ConnectionStrings:ASPNETDB %>">
         </asp:SqlDataSource>
@@ -52,12 +52,6 @@
                         <ItemTemplate>
                             <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="labeluriCarti"></asp:Label>
                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("Gen") %>'></asp:Label>
-                            <br />
-                            <asp:Label ID="Label7" runat="server" Text="Editura: " CssClass="labeluriCarti"></asp:Label>
-                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("Nume_Editura") %>'></asp:Label>
-                            <br />
-                            <asp:Label ID="Label8" runat="server" Text="ISBN: " CssClass="labeluriCarti"></asp:Label>
-                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("Isbn") %>'></asp:Label>
                         </ItemTemplate>
                         <ItemStyle Height="20%" />
                     </asp:TemplateField>
@@ -101,12 +95,6 @@
                                 <ItemTemplate>
                                     <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="labeluriCarti"></asp:Label>
                                     <asp:Label ID="Label2" runat="server" Text='<%# Bind("Gen") %>'></asp:Label>
-                                    <br />
-                                    <asp:Label ID="Label7" runat="server" Text="Editura: " CssClass="labeluriCarti"></asp:Label>
-                                    <asp:Label ID="Label4" runat="server" Text='<%# Bind("Nume_Editura") %>'></asp:Label>
-                                    <br />
-                                    <asp:Label ID="Label8" runat="server" Text="ISBN: " CssClass="labeluriCarti"></asp:Label>
-                                    <asp:Label ID="Label5" runat="server" Text='<%# Bind("Isbn") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
 
@@ -149,12 +137,6 @@
                         <ItemTemplate>
                             <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="labeluriCarti"></asp:Label>
                             <asp:Label ID="Label2" runat="server" Text='<%# Bind("Gen") %>'></asp:Label>
-                            <br />
-                            <asp:Label ID="Label7" runat="server" Text="Editura: " CssClass="labeluriCarti"></asp:Label>
-                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("Nume_Editura") %>'></asp:Label>
-                            <br />
-                            <asp:Label ID="Label8" runat="server" Text="ISBN: " CssClass="labeluriCarti"></asp:Label>
-                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("Isbn") %>'></asp:Label>
                         </ItemTemplate>
                     </asp:TemplateField>
               </Columns>

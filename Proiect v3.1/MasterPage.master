@@ -18,72 +18,125 @@
 <body>
     <form id="form1" runat="server">
     <div class="blackBackground"></div>
-    <div class="container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 headers" id="header">
+                <div class="row">
+                    <div class="col-sm-2">
+	                    <img src="banner.png" alt="carti" id="banner"/>
+                    </div>
 
-        <div class="col-sm-12" id="header">
-	        <img src="banner.png" alt="carti" id="banner"/>
+                    <div class="col-sm-7">
+                        <div class="row">
+                        <div class="col-sm-12">
+                        <h1>Carul cu carti</h1>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-12">
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server"  ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
+                                    SelectCommand="SELECT Prenume + ' ' + Nume AS NumeAutor FROM Autori">
+                            </asp:SqlDataSource>
 
-        <asp:LoginView ID="LoginView1" runat="server">
+                            <div class="dropdown">
+                              <button class="primaryButton dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                Autori
+                              </button>
+                              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 
+                            <asp:DataList id="datalist2" runat="server" DataSourceID="SqlDataSource1">
 
-        <AnonymousTemplate>
+                            <ItemTemplate>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+                            <asp:HyperLink ID="HyperLink4" runat="server"  Font-Underline="false" NavigateUrl='<%# "~/Search.aspx?q=" + Eval("NumeAutor") %>' ForeColor="Gray">
+                                <asp:Label ID="Label10" runat="server" CssClass="categorii" Text='<%# Eval("NumeAutor") %>'></asp:Label>
+                            </asp:HyperLink>    
+                            </a></li>             
+                            </ItemTemplate>
+                            </asp:DataList>
+                              </ul>
+                            </div>
 
-            <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister"></asp:Label>
-            <asp:Label ID="registrationButton" runat="server" Text="Inregistrare" CssClass="loginAndRegister"></asp:Label>
+                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
+                                SelectCommand="SELECT Gen FROM Genuri">
+                            </asp:SqlDataSource>
+                            <div class="dropdown">
+                              <button class="primaryButton dropdown-toggle" type="button" id="Button1" data-toggle="dropdown" aria-expanded="true">
+                                Genuri
+                              </button>
+                              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 
-            <div class="loginForm">
-            <h3>Conecteaza-te</h3>
-            <asp:Login ID="Login1" runat="server" LoginButtonText="Login" 
-                PasswordLabelText="Parola:" RememberMeText="Tine minte" TitleText="" 
-                    FailureText="Login nereusit. Va rugam incercati din nou." LoginButtonStyle-CssClass="loginButton">
-                <LoginButtonStyle CssClass="loginButton" />
-            </asp:Login>
-            </div>
-         </AnonymousTemplate>
+                            <asp:DataList id="datalist1" runat="server" DataSourceID="SqlDataSource2">
+
+                            <ItemTemplate>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+                            <asp:HyperLink ID="HyperLink4" runat="server"  Font-Underline="false" NavigateUrl='<%# "~/Search.aspx?q=" + Eval("Gen") %>' ForeColor="Gray">
+                                <asp:Label ID="Label10" runat="server" CssClass="categorii" Text='<%# Eval("Gen") %>'></asp:Label>
+                            </asp:HyperLink>  
+                            </a></li>             
+                            </ItemTemplate>
+                            </asp:DataList>
+                              </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row">
+
+                        <asp:LoginView ID="LoginView1" runat="server">
+
+                        <AnonymousTemplate>
+                            <div class="col-sm-12 text-right">
+                            <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister"></asp:Label>
+                            <asp:Label ID="registrationButton" runat="server" Text="Inregistrare" CssClass="loginAndRegister"></asp:Label>
+                            </div>
+
+                            <div class="loginForm">
+                                <h3>Conecteaza-te</h3>
+                                <asp:Login ID="Login1" runat="server" LoginButtonText="Login" 
+                                    PasswordLabelText="Parola:" RememberMeText="Tine minte" TitleText="" 
+                                        FailureText="Login nereusit. Va rugam incercati din nou." LoginButtonStyle-CssClass="loginButton">
+                                    <LoginButtonStyle CssClass="primaryButton" />
+                                </asp:Login>
+                            </div>
+                        </AnonymousTemplate>
         
-         <LoggedInTemplate>
-            <span id="loggedInText"> Bine ai venit, 
-                <asp:LoginName ID="LoginName1" runat="server" />!
-                <asp:LoginStatus ID="LoginStatus" runat="server" ForeColor="White" />
-            </span>
-         </LoggedInTemplate>
+                        <LoggedInTemplate>
+                            <div class="col-sm-12 text-right">
+                                <span id="loggedInText"> Bine ai venit, 
+                                    <asp:LoginName ID="LoginName1" runat="server" />!
+                                    <asp:LoginStatus ID="LoginStatus" runat="server" ForeColor="White" />
+                                </span>
+                            </div>
+                        </LoggedInTemplate>
                         
-        </asp:LoginView>
+                    </asp:LoginView>
 
-        <h1>Carul cu carti</h1>
+                        </div>
 
-        <div class="searchDiv">
-        <asp:TextBox ID="searchTB" runat="server"></asp:TextBox>
-        <asp:Button ID="searchButton" runat="server" Text="Cauta" onclick="Button1_Click" ValidationGroup="separat" />
-        </div>
-
-        </div>
-        <!--
-        <div class="col-sm-12" id="menu">
-            <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <asp:HyperLink ID="HyperLink1" runat="server" Font-Underline="false" NavigateUrl='<%# "~/Home.aspx"%>'>Acasa</asp:HyperLink>
-            </button>
+                        <div class="row">
+                            <div class="col-sm-12 text-right searchDiv">
+                                <div class="input-group">
+                                <asp:TextBox ID="searchTB" CssClass="form-control" runat="server"></asp:TextBox>
+                                <span class="input-group-btn">
+                                    <asp:Button ID="searchButton" CssClass="btn btn-default " runat="server" Text="Cauta" onclick="Button1_Click" ValidationGroup="separat" />
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            Action <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-            </ul>
-</div>
-</div>-->
+        </div>
 
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
 
-        <div class="col-sm-12 text-center" id="footer">
-		    Copyright &copy; 2014-2015 Gavrila Timea-Maria. <br /> Toate drepturile rezervate.
+        <div class="row">
+            <div class="col-sm-12 text-center headers" id="footer">
+		        Copyright &copy; 2014-2015 Gavrila Timea-Maria. <br /> Toate drepturile rezervate.
+            </div>
         </div>
     </div>
     </form>
