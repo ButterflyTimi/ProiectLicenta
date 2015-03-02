@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <div class="col-sm-12" style="margin-bottom: 50px; padding-bottom: 20px; top: 0px; left: 0px;">
+    <div class="col-md-12" style="margin-bottom: 50px; padding-bottom: 20px; top: 0px; left: 0px;">
         
         <asp:Table ID="TabelUpdate" runat="server">
 

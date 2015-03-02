@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <div class="col-sm-12">
+    <div class="col-md-12">
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
         
             SelectCommand="SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, Carti.Text_Descriere FROM Autori INNER JOIN Genuri INNER JOIN Carti ON Genuri.Id = Carti.Id_Gen ON Autori.Id = Carti.Id_Autor ORDER BY CartiId DESC">
@@ -51,8 +51,6 @@
             <RoleGroups>
                 <asp:RoleGroup Roles="Admin">
                     <ContentTemplate>
-                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/InsertDatas.aspx" CssClass="insertDataLink">Adauga date</asp:HyperLink>
-
 
                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
                         DataSourceID="SqlDataSource1" AllowPaging="True" Width="100%" 

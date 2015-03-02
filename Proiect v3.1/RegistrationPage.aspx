@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-    <div class="col-sm-12" style="background-color: rgba(195, 195, 195, 0.4);" id="content">
+    <div class="col-md-12" style="background-color: rgba(195, 195, 195, 0.4);" id="content">
     <div style="width:50%; margin: 0 auto;">
 
         <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" 

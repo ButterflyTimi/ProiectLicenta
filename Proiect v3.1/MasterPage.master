@@ -11,6 +11,7 @@
     <script type="text/javascript" src="Scripts/jquery-2.1.1.js"></script>
     <!--Bootstrat CSS-->
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/masterpage.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -20,20 +21,20 @@
     <div class="blackBackground"></div>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 headers" id="header">
+            <div class="col-md-12 headers" id="header">
                 <div class="row">
-                    <div class="col-sm-2">
+                    <div class="col-md-2">
 	                    <img src="banner.png" alt="carti" id="banner"/>
                     </div>
 
-                    <div class="col-sm-7">
+                    <div class="col-md-7">
                         <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-md-12">
                         <h1>Carul cu carti</h1>
                         </div>
                         </div>
                         <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-md-12">
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server"  ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
                                     SelectCommand="SELECT Prenume + ' ' + Nume AS NumeAutor FROM Autori">
                             </asp:SqlDataSource>
@@ -81,13 +82,13 @@
                         </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-md-3">
                         <div class="row">
 
                         <asp:LoginView ID="LoginView1" runat="server">
 
                         <AnonymousTemplate>
-                            <div class="col-sm-12 text-right">
+                            <div class="col-md-12 text-right">
                             <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister"></asp:Label>
                             <asp:Label ID="registrationButton" runat="server" Text="Inregistrare" CssClass="loginAndRegister"></asp:Label>
                             </div>
@@ -102,8 +103,26 @@
                             </div>
                         </AnonymousTemplate>
         
+                        <RoleGroups>
+                            <asp:RoleGroup Roles="Admin">
+                                <ContentTemplate>
+                                    <div class="panou-admin">
+                                        <span class="insertDataLink">Tablou de bord (admin) | </span>
+                                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/InsertDatas.aspx" CssClass="insertDataLink">Adauga date</asp:HyperLink>
+
+                                    </div>
+                                    <div class="col-md-12 text-right">
+                                        <span id="loggedInText"> Bine ai venit, 
+                                            <asp:LoginName ID="LoginName1" runat="server" />!
+                                            <asp:LoginStatus ID="LoginStatus" runat="server" ForeColor="White" />
+                                        </span>
+                                    </div>
+                                </ContentTemplate>
+                            </asp:RoleGroup>
+                        </RoleGroups>
+
                         <LoggedInTemplate>
-                            <div class="col-sm-12 text-right">
+                            <div class="col-md-12 text-right">
                                 <span id="loggedInText"> Bine ai venit, 
                                     <asp:LoginName ID="LoginName1" runat="server" />!
                                     <asp:LoginStatus ID="LoginStatus" runat="server" ForeColor="White" />
@@ -116,7 +135,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-12 text-right searchDiv">
+                            <div class="col-md-12 text-right searchDiv">
                                 <div class="input-group">
                                 <asp:TextBox ID="searchTB" CssClass="form-control" runat="server"></asp:TextBox>
                                 <span class="input-group-btn">
@@ -134,7 +153,7 @@
         </asp:ContentPlaceHolder>
 
         <div class="row">
-            <div class="col-sm-12 text-center headers" id="footer">
+            <div class="col-md-12 text-center headers" id="footer">
 		        Copyright &copy; 2014-2015 Gavrila Timea-Maria. <br /> Toate drepturile rezervate.
             </div>
         </div>
