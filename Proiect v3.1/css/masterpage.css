@@ -1,0 +1,65 @@
+﻿body 
+{
+    background-image: url('back.jpg');
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: right bottom; 
+}
+@font-face {
+    font-family: fontHeader;
+    src: url(font4.ttf);
+}
+#header
+{
+	background-color: #706664;
+	color: white;
+	padding-top: 16px;
+	-webkit-box-shadow: inset 0px 10px 50px 0px rgba(221, 221, 221, 0.75);
+    -moz-box-shadow:    inset 0px 10px 50px 0px rgba(221, 221, 221, 0.75);
+    box-shadow:         inset 0px 10px 50px 0px rgba(221, 221, 221, 0.75);
+}
+#searchTB
+{
+}
+.dropdown 
+{
+    display:inline-block;    
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+ }
+.primaryButton {
+     background-color: #706664;
+     color: White;  
+     margin: 5px;
+     border-radius: 4px;
+     padding: 6px 8px;
+ }
+ .primaryButton:hover 
+ {
+   background-color: #787878; 
+ }  
+ .searchDiv 
+ {
+    margin-top: 5px;    
+ }
+ .panou-admin 
+ {
+    position: fixed;
+    top: 0px;
+    left: 0px;    
+    height: 16px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+ }
+ .insertDataLink
+{
+    font-size: 12px;
+    text-decoration: none; 
+    color: White;
+}
+ .insertDataLink:hover 
+ {
+     text-decoration: none; 
+     color: White;
+ }
