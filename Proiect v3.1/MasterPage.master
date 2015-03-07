@@ -12,7 +12,7 @@
     <!--Bootstrat CSS-->
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/masterpage.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -23,11 +23,12 @@
         <div class="row">
             <div class="col-md-12 headers" id="header">
                 <div class="row">
-                    <div class="col-md-2">
-	                    <img src="banner.png" alt="carti" id="banner"/>
+                    <div class="col-sm-6">
+	                    <img src="logo3.png" alt="carti" id="banner"/>
                     </div>
-
+                    <!--
                     <div class="col-md-7">
+                    <!--
                         <div class="row">
                         <div class="col-md-12">
                         <h1>Carul cu carti</h1>
@@ -82,6 +83,7 @@
                         </div>
                         </div>
                     </div>
+                    -->
                     <div class="col-md-3">
                         <div class="row">
 

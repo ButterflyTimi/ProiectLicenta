@@ -10,8 +10,8 @@
        
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
               DataSourceID="SqlDataSource1" Width="100%" 
-              ShowHeader="False" GridLines="Horizontal" PageSize="5" 
-              BorderColor="White" BorderStyle="Dotted" BorderWidth="2px">
+              ShowHeader="False" GridLines="None" PageSize="5" 
+              BorderStyle="None">
               <Columns>
                   <asp:TemplateField  ItemStyle-Width="25%">
                         <ItemTemplate>

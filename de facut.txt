@@ -1,14 +1,15 @@
-de facut:
--categorii in stanga tabelului cu
-genuri, edituri, autori
--SORTARI!
--pagina carte single -aproape gata, vizualizare comentarii
--rating carte
--casuta comentarii pentru fiecare carte
+-rating carte (design, implementare + baza de date)
 
 -in partea de jos a paginii, ultimele 5 carti adaugate
 
--PARTEA DE FRONTEND
+-pe homepage, cele mai populare carti (pe baza rating-ului)
+
+-psd cu logo-ul site-ului (de vazut cum arata header-ul pe worthpoint.com/worthpedia)
+
+-meniul, boostrap responsive
+------ Autori --- Genuri --- Despre noi --- Contact
+
+-Butoane social media
 
 -------------------
 
