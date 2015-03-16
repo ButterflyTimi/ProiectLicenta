@@ -1,0 +1,188 @@
+.form-group
+{
+    padding: 10px 0px 10px 0px;    
+}
+#banner
+{
+	padding: 10px 0px;
+}
+.loginAndRegister
+{
+    color: White;  
+    margin: 5px;
+}
+.loginAndRegister:hover
+{
+    color: #EA8F74;    
+    cursor: pointer;
+}
+.loginForm
+{
+    background-color: #E6E6E6;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+  	margin: -175px 0 0 -175px;
+  	width: 350px;
+    display: none;
+    color: black;
+    padding: 0px 20px 20px 20px;
+    border: solid 1px grey;
+	border-radius: 4px;
+	box-shadow: 1px 1px 15px black;
+}
+.blackBackground
+{
+    display: none;
+    position: absolute;
+    height:auto;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    background-color : black;
+    opacity: 0.6;  
+}
+#ContentPlaceHolder1_CompleteRegistrationFormButton, .ButtonPostComment, .sortButton
+{
+    background-color: #706664;
+    color: White;  
+    margin: 5px;
+    border-radius: 10px;
+}
+#ContentPlaceHolder1_CompleteRegistrationFormButton:hover, .ButtonPostComment:hover, .sortButton:hover
+{
+    background-color: #787878;    
+}
+td
+{
+    padding: 5px;
+}
+
+h4,h3
+{
+    padding: 0px 10px 0px 10px;  
+}
+.categorii
+{
+    text-decoration: none;
+}
+h4:hover, .categorii:hover
+{
+    cursor:pointer;
+    text-shadow: 5px 0px 10px rgba(150, 150, 150, 1);
+}
+#ContentPlaceHolder1_TabelGenuri
+{
+    display: none;    
+}
+#ContentPlaceHolder1_TabelEdituri
+{
+    display: none;    
+}
+#ContentPlaceHolder1_TabelCarti
+{
+    display: none;    
+}
+#ContentPlaceHolder1_TabelDescrieri
+{
+    display: none;    
+}
+.imaginiCoperti
+{
+    width: 100%; 
+    box-shadow: 0px 0px 58px -2px rgba(0,0,0,0.75); 
+}
+.labeluriCarti
+{
+    font-size: large;
+    font-weight: bold;
+}
+.titluCarte:hover
+{
+    text-shadow: 5px 0px 10px rgba(150, 150, 150, 1);
+}
+.textDescriereCarte
+{
+    margin: 10px 10px 10px 10px;
+    border: 2px solid #706664;
+    padding: 10px;
+    border-radius: 10px;
+	box-shadow: 3px 5px 5px #9A9A9A;
+	z-index: 10;
+	transform: rotate(2deg);
+	background-color: White;  
+	text-align:justify; 
+}
+.textDescriereCarte::first-letter
+	{
+		font-size: 30px;
+	}
+.userIcon
+	{
+	    width: 67px;
+	    height: 67px;
+        border: 3px solid #000;    
+        border-radius: 10px;
+        margin: 0 auto;
+        box-shadow: 0px 0px 30px 0px #EA8F74;
+	}
+	.comentarii
+	{
+	    width: 100%;
+	    /*border: 2px dotted white;*/
+	    margin: 10px 0px 10px 0px;
+	}
+	.comentariu
+	{
+	    font-size: 18px;
+}
+/* 'star-rating' component */
+.starRating {
+  display        : inline-block;
+  position       : relative;
+  height         : 24px;
+  background     : url('stars.png') repeat-x 0 0;
+  vertical-align : bottom;
+}
+
+.starRating div{
+  float    : left;
+  position : relative;
+  height   : 24px;
+}
+
+.starRating input{
+  position : relative;
+  z-index  : 1;
+  width    : 24px;
+  height   : 24px;
+  margin   : 0;
+  padding  : 0;
+  opacity  : 0;
+}
+
+.starRating label{
+  position : absolute;
+  top      : 0;
+  left     : 0;
+  width    : 100%;
+  height   : 24px;
+}
+
+.starRating span{
+  display : none;
+}
+
+.starRating       input:checked       + label,
+.starRating:hover input:checked:hover + label{
+  background : url('stars.png') repeat-x 0 -24px;
+}
+
+.starRating:hover input:checked + label{
+  background : transparent;
+}
+
+.starRating:hover input:hover + label{
+  background : url('stars.png') repeat-x 0 -48px;
+}

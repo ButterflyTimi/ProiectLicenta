@@ -15,3 +15,6 @@
 
 -login/signup cu facebook,google,yahoo
 
+
+Paleta culori:
+http://www.colourlovers.com/palette/723615/clairedelune
