@@ -1,0 +1,58 @@
+<!--
+                    <div class="col-md-7">
+                    <!--
+                        <div class="row">
+                        <div class="col-md-12">
+                        <h1>Carul cu carti</h1>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-md-12">
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server"  ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
+                                    SelectCommand="SELECT Prenume + ' ' + Nume AS NumeAutor FROM Autori">
+                            </asp:SqlDataSource>
+
+                            <div class="dropdown">
+                              <button class="primaryButton dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                                Autori
+                              </button>
+                              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+                            <asp:DataList id="datalist2" runat="server" DataSourceID="SqlDataSource1">
+
+                            <ItemTemplate>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+                            <asp:HyperLink ID="HyperLink4" runat="server"  Font-Underline="false" NavigateUrl='<%# "~/Search.aspx?q=" + Eval("NumeAutor") %>' ForeColor="Gray">
+                                <asp:Label ID="Label10" runat="server" CssClass="categorii" Text='<%# Eval("NumeAutor") %>'></asp:Label>
+                            </asp:HyperLink>    
+                            </a></li>             
+                            </ItemTemplate>
+                            </asp:DataList>
+                              </ul>
+                            </div>
+
+                            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
+                                SelectCommand="SELECT Gen FROM Genuri">
+                            </asp:SqlDataSource>
+                            <div class="dropdown">
+                              <button class="primaryButton dropdown-toggle" type="button" id="Button1" data-toggle="dropdown" aria-expanded="true">
+                                Genuri
+                              </button>
+                              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+                            <asp:DataList id="datalist1" runat="server" DataSourceID="SqlDataSource2">
+
+                            <ItemTemplate>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">
+                            <asp:HyperLink ID="HyperLink4" runat="server"  Font-Underline="false" NavigateUrl='<%# "~/Search.aspx?q=" + Eval("Gen") %>' ForeColor="Gray">
+                                <asp:Label ID="Label10" runat="server" CssClass="categorii" Text='<%# Eval("Gen") %>'></asp:Label>
+                            </asp:HyperLink>  
+                            </a></li>             
+                            </ItemTemplate>
+                            </asp:DataList>
+                              </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    -->
