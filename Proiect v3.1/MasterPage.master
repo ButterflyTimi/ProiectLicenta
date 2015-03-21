@@ -175,12 +175,12 @@
                         </asp:HyperLink>
                     </li>
                     <li>
-                        <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl='~/Home.aspx'> 
+                        <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl='~/AboutUs.aspx'> 
                         Despre noi
                         </asp:HyperLink>
                     </li>
                     <li>
-                        <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl='~/Home.aspx'> 
+                        <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl='~/Contact.aspx'> 
                         Contact
                         </asp:HyperLink>
                     </li>
