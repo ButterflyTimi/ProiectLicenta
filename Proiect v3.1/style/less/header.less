@@ -1,27 +1,85 @@
+.blackBackground
+{
+    display: none;
+    position: absolute;
+    height:auto;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    background-color : @brand-primary;
+    opacity: 0.6;  
+}
 header, footer
 {
 	background-color: @brand-primary;
 	color: @brand-neutral;
 	//padding-top: 16px;
-	#footer {
-		height: 30px;
-		font-size: 70%;
-		padding: 3px;
+	.header-wraper {
+		.make-row();
+		.header-logo {
+			.make-sm-column(6);
+			img {
+				padding: 10px 0px;
+			}
+		}
+		.header-loginAndSearch {
+			.make-sm-column(6);
+			.login-wraper {
+				.make-row;
+				.login-buttons {
+					.make-md-column(12);
+					text-align: right;
+					.loginAndRegister {
+						color: White;  
+						margin: 5px;
+						&:hover {
+							color: @brand-primary-inverse-lighter;    
+							cursor: pointer;
+						}
+					}
+				}
+				.loginForm {
+					background-color: @brand-neutral;
+					position: fixed;
+					left: 50%;
+					top: 50%;
+  					margin: -175px 0 0 -175px;
+  					width: 350px;
+					display: none;
+					color: black;
+					padding: 0px 20px 20px 20px;
+					border: solid 1px grey;
+					border-radius: 4px;
+					box-shadow: 1px 1px 15px black;
+				}
+			}
+			.search-wraper {
+				.make-row;
+				.search-container {
+					.make-sm-column(12);
+					text-align: right;
+					.input-group {
+
+					}
+				}
+			}
+		}
 	}
-}
-#searchTB
-{
-    padding-left: 25px;
-}
-#searchTB:before {
-    content: "***"; /* \f002 */
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 1px;
-    left: 1px;
-}
-    
+
+	.footer-wraper {
+		.make-row();
+		.footer-copyright {
+			.make-md-column(12);
+			text-align: center;
+			height: 30px;
+			font-size: 70%;
+			padding: 3px;
+		}
+	}
+}  
+
+  
 .dropdown 
 {
     display:inline-block;    
@@ -40,10 +98,6 @@ header, footer
  {
    background-color: #787878; 
  }  
- .searchDiv 
- {
-    //margin-top: 5px;    
- }
  .panou-admin 
  {
     position: fixed;

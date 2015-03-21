@@ -19,17 +19,17 @@
     <form id="form1" runat="server">
     <div class="blackBackground"></div>
     <header class="container-fluid">
-        <div class="row">
-            <div class="col-sm-6">
-	            <img src="logo3.png" alt="carti" id="banner"/>
+        <div class="header-wraper">
+            <div class="header-logo">
+	            <img src="logo4.png" alt="carti"/>
             </div>
-            <div class="col-sm-6">
-                        <div class="row">
+            <div class="header-loginAndSearch">
+                <div class="login-wraper">
 
-                        <asp:LoginView ID="LoginView1" runat="server">
+                    <asp:LoginView ID="LoginView1" runat="server">
 
                         <AnonymousTemplate>
-                            <div class="col-md-12 text-right">
+                            <div class="login-buttons">
                             <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister"></asp:Label>
                             <asp:Label ID="registrationButton" runat="server" Text="Inregistrare" CssClass="loginAndRegister"></asp:Label>
                             </div>
@@ -52,7 +52,7 @@
                                         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/InsertDatas.aspx" CssClass="insertDataLink">Adauga date</asp:HyperLink>
 
                                     </div>
-                                    <div class="col-md-12 text-right">
+                                    <div class="login-buttons">
                                         <span id="loggedInText"> Bine ai venit, 
                                             <asp:LoginName ID="LoginName1" runat="server" />!
                                             <asp:LoginStatus ID="LoginStatus" runat="server" ForeColor="White" />
@@ -63,7 +63,7 @@
                         </RoleGroups>
 
                         <LoggedInTemplate>
-                            <div class="col-md-12 text-right">
+                            <div class="login-buttons">
                                 <span id="loggedInText"> Bine ai venit, 
                                     <asp:LoginName ID="LoginName1" runat="server" />!
                                     <asp:LoginStatus ID="LoginStatus" runat="server" ForeColor="White" />
@@ -73,18 +73,17 @@
                         
                     </asp:LoginView>
 
+                </div>
+                <div class="search-wraper">
+                    <div class="search-container">
+                        <div class="input-group">
+                            <asp:TextBox ID="searchTB" CssClass="form-control" runat="server"></asp:TextBox>
+                            <span class="input-group-btn">
+                                <asp:Button ID="searchButton" CssClass="btn btn-default " runat="server" Text="Cauta" onclick="Button1_Click" ValidationGroup="separat" />
+                            </span>
                         </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 text-right searchDiv">
-                                <div class="input-group">
-                                <asp:TextBox ID="searchTB" CssClass="form-control" runat="server"></asp:TextBox>
-                                <span class="input-group-btn">
-                                    <asp:Button ID="searchButton" CssClass="btn btn-default " runat="server" Text="Cauta" onclick="Button1_Click" ValidationGroup="separat" />
-                                </span>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -95,8 +94,8 @@
     </div>
 
     <footer class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 text-center" id="footer">
+        <div class="footer-wraper">
+            <div class="footer-copyright">
 		        Copyright &copy; 2014-2015 Gavrila Timea-Maria. <br /> Toate drepturile rezervate.
             </div>
         </div>
