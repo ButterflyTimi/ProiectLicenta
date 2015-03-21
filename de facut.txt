@@ -4,13 +4,6 @@
 
 -pe homepage, cele mai populare carti (pe baza rating-ului)
 
--psd cu logo-ul site-ului (de vazut cum arata header-ul pe worthpoint.com/worthpedia)
-
--meniul, boostrap responsive
------- Autori --- Genuri --- Despre noi --- Contact
-
--Butoane social media
-
 -------------------
 
 -login/signup cu facebook,google,yahoo
@@ -18,3 +11,14 @@
 
 Paleta culori:
 http://www.colourlovers.com/palette/723615/clairedelune
++ un gri deschis pentru hover butoane
+
+-----LOGIN MODAL-ul
+Cand este eroare de login da refresh la pagina si dispare modalul... trebuie sa dai click din nou pe login ca sa vezi mesajul de eroare
+
+------------ Carousel
+Cate 3-4 li-uri pe item active
+cu diferite genuri
+la carousel-caption scriu genul
+
+http://sorgalla.com/jcarousel/docs/plugins/autoscroll/

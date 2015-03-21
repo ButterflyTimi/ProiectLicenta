@@ -17,45 +17,85 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div class="blackBackground"></div>
     <header class="container-fluid">
-        <div class="header-wraper">
+        <div class="header-wrapper">
             <div class="header-logo">
-	            <img src="logo4.png" alt="carti"/>
+                <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='~/Home.aspx'>        
+	                <img src="logo3.png" alt="carti"/>
+                </asp:HyperLink>
             </div>
-            <div class="header-loginAndSearch">
-                <div class="login-wraper">
+            <div class="header-search search-wrapper">
+                    <div class="search-container">
+                        <div class="input-group">
+                            <asp:TextBox ID="searchTB" CssClass="form-control" runat="server" placeholder="Autor / Titlu / Gen"></asp:TextBox>
+                            <span class="input-group-btn">
+                                <asp:Button ID="searchButton" CssClass="btn btn-default " runat="server" Text="Cauta" onclick="Button1_Click" ValidationGroup="separat" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            <div class="header-loginAndSocialMedia">
+                <div class="login-wrapper">
 
                     <asp:LoginView ID="LoginView1" runat="server">
 
                         <AnonymousTemplate>
                             <div class="login-buttons">
-                            <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister"></asp:Label>
+                            <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister" data-toggle="modal" data-target="#loginModal"></asp:Label>
                             <asp:Label ID="registrationButton" runat="server" Text="Inregistrare" CssClass="loginAndRegister"></asp:Label>
                             </div>
 
-                            <div class="loginForm">
-                                <h3>Conecteaza-te</h3>
-                                <asp:Login ID="Login1" runat="server" LoginButtonText="Login" 
-                                    PasswordLabelText="Parola:" RememberMeText="Tine minte" TitleText="" 
-                                        FailureText="Login nereusit. Va rugam incercati din nou." LoginButtonStyle-CssClass="loginButton">
-                                    <LoginButtonStyle CssClass="primaryButton" />
-                                </asp:Login>
+                            <div class="blackBackground">
+                                <div class="loginModal">
+                                    <div class="loginModal-header">
+                                        <div class="loginModal-title">
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                            <div class="modal fade" id="loginModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h3 class="modal-title">
+                                                <i class="fa fa-sign-in"></i>
+                                                Conecteaza-te
+                                            </h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <asp:Login ID="Login" runat="server" 
+                                                LoginButtonText="Login" 
+                                                PasswordLabelText="Parola:" 
+                                                UserNameLabelText="Nume utilizator:" 
+                                                RememberMeText="Tine minte" TitleText="" 
+                                                FailureText="Login nereusit. Va rugam incercati din nou."
+                                                CssClass="login-form-table">
+                                            <LoginButtonStyle CssClass="primaryButton" />
+                                            </asp:Login>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </AnonymousTemplate>
         
                         <RoleGroups>
                             <asp:RoleGroup Roles="Admin">
                                 <ContentTemplate>
+                                <!--
                                     <div class="panou-admin">
                                         <span class="insertDataLink">Tablou de bord (admin) | </span>
                                         <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/InsertDatas.aspx" CssClass="insertDataLink">Adauga date</asp:HyperLink>
 
                                     </div>
+                                    -->
                                     <div class="login-buttons">
                                         <span id="loggedInText"> Bine ai venit, 
                                             <asp:LoginName ID="LoginName1" runat="server" />!
-                                            <asp:LoginStatus ID="LoginStatus" runat="server" ForeColor="White" />
+                                            <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="logOut"/>
                                         </span>
                                     </div>
                                 </ContentTemplate>
@@ -66,7 +106,7 @@
                             <div class="login-buttons">
                                 <span id="loggedInText"> Bine ai venit, 
                                     <asp:LoginName ID="LoginName1" runat="server" />!
-                                    <asp:LoginStatus ID="LoginStatus" runat="server" ForeColor="White" />
+                                    <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="logOut"/>
                                 </span>
                             </div>
                         </LoggedInTemplate>
@@ -74,19 +114,81 @@
                     </asp:LoginView>
 
                 </div>
-                <div class="search-wraper">
-                    <div class="search-container">
-                        <div class="input-group">
-                            <asp:TextBox ID="searchTB" CssClass="form-control" runat="server"></asp:TextBox>
-                            <span class="input-group-btn">
-                                <asp:Button ID="searchButton" CssClass="btn btn-default " runat="server" Text="Cauta" onclick="Button1_Click" ValidationGroup="separat" />
-                            </span>
+                <div class="social-media-wrapper">
+                    <div class="social-media-icons">
+                        <div class="social-media-icon">
+                            <a href="https://www.facebook.com/Tymy.Maria" target="_blank">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </div>
+                        <div class="social-media-icon">
+                            <a href="https://twitter.com/ButterflyTimi" target="_blank">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </div>
+                        <div class="social-media-icon">
+                            <a href="https://plus.google.com/u/2/107688735434603983603/posts" target="_blank">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </div>
+                        <div class="social-media-icon">
+                            <a href="https://www.pinterest.com/butterflytimi/" target="_blank">
+                                <i class="fa fa-pinterest"></i>
+                            </a>
+                        </div>
+                        <div class="social-media-icon">
+                            <a href="https://instagram.com/butterflytimi/" target="_blank">
+                                <i class="fa fa-instagram"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </header>
+ 
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl='~/Home.aspx'> 
+                        Acasa
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl='~/Home.aspx'> 
+                        Carti
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl='~/Home.aspx'> 
+                        Citate
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl='~/Home.aspx'> 
+                        Despre noi
+                        </asp:HyperLink>
+                    </li>
+                    <li>
+                        <asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl='~/Home.aspx'> 
+                        Contact
+                        </asp:HyperLink>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
 
     <div class="container">
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
@@ -94,9 +196,9 @@
     </div>
 
     <footer class="container-fluid">
-        <div class="footer-wraper">
+        <div class="footer-wrapper">
             <div class="footer-copyright">
-		        Copyright &copy; 2014-2015 Gavrila Timea-Maria. <br /> Toate drepturile rezervate.
+		        &copy; 2014 - 2015 Gavrila Timea-Maria
             </div>
         </div>
     </footer>

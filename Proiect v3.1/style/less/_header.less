@@ -1,0 +1,149 @@
+header, footer
+{
+	background-color: @brand-primary;
+	.header-wrapper {
+		.make-row();
+		.header-logo {
+			.make-sm-column(3);
+			img {
+				padding: 10px 0px;
+				width: 100%;
+				height: auto;
+			}
+		}
+		.header-search {
+			.make-sm-column(6);
+			margin-top: 20px;
+			margin-bottom: 20px;
+			.input-group {
+				#searchButton {
+					color: @brand-primary-inverse;
+					.transition( 0.3s, ease);
+					&:hover {
+						//background-color: @brand-primary-inverse;
+						//color: white;
+					}
+				}
+			}
+		}
+		.header-loginAndSocialMedia {
+			.make-sm-column(3);
+			.login-wrapper {
+				.make-row;
+				.login-buttons {
+					.make-md-column(12);
+					text-align: right;
+					color: White; 
+					#loggedInText {
+						.logOut {
+							color: White;
+							&:hover {
+								text-decoration: none;
+								color: @brand-primary-inverse;  
+								cursor: pointer;
+							}
+						} 
+					}
+					.loginAndRegister { 
+						margin: 5px;
+						.transition( 0.3s, ease);
+						&:hover {
+							color: @brand-primary-inverse;  
+							cursor: pointer;
+						}
+					}
+				}
+			}
+			.social-media-wrapper {
+				.make-row;
+				.social-media-icons {
+					.make-md-column(12);
+					text-align: right;
+					padding-top: 5x;
+					padding-bottom: 5px;
+					.social-media-icon {
+						display: inline-block;
+						background-color: @brand-primary-inverse-lighter;
+						.border-radius(4px, 4px, 4px, 4px);
+						width: 20px;
+						height: 20px;
+						margin: 3px;
+						text-align: center;
+						padding-top: 3px;						
+						&:hover {
+							cursor: pointer;
+							a {
+								color: @brand-primary-inverse;
+							}
+						}
+						a {
+							.transition( 0.3s, ease);
+							color: white;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.footer-wrapper {
+		.make-row();
+		.footer-copyright {
+			.make-md-column(12);
+			text-align: center;
+			height: 25px;
+			font-size: 90%;
+			padding: 3px;
+			color: white;
+		}
+	}
+}  
+#navbar-collapse, .navbar-header {
+	border-top: 2px solid @brand-neutral;
+	border-bottom: 1px solid @brand-neutral;
+	text-align:center;
+	ul {
+		float: none;
+		display: inline-block;
+		text-align: center;
+		li {
+			a {
+				color: @brand-primary-inverse;
+				.transition( 0.3s, ease);
+				&:hover {
+					background-color: #e6e6e6;
+				}
+			}
+		}
+	}
+}
+
+  
+.dropdown 
+{
+    display:inline-block;    
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+ }
+ 
+ .panou-admin 
+ {
+    position: fixed;
+    top: 0px;
+    left: 0px;    
+    height: 16px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+ }
+ .insertDataLink
+{
+    font-size: 12px;
+    text-decoration: none; 
+    color: White;
+}
+ .insertDataLink:hover 
+ {
+     text-decoration: none; 
+     color: White;
+ }
