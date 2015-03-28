@@ -22,3 +22,7 @@ cu diferite genuri
 la carousel-caption scriu genul
 
 http://sorgalla.com/jcarousel/docs/plugins/autoscroll/
+
+
+Pentru Rating:
+http://bootsnipp.com/snippets/featured/font-awesome-star-ratings

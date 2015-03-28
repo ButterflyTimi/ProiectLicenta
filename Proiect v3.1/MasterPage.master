@@ -41,19 +41,8 @@
 
                         <AnonymousTemplate>
                             <div class="login-buttons">
-                            <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister" data-toggle="modal" data-target="#loginModal"></asp:Label>
-                            <asp:Label ID="registrationButton" runat="server" Text="Inregistrare" CssClass="loginAndRegister"></asp:Label>
-                            </div>
-
-                            <div class="blackBackground">
-                                <div class="loginModal">
-                                    <div class="loginModal-header">
-                                        <div class="loginModal-title">
-                                            
-                                        </div>
-                                    </div>
-                                    
-                                </div>
+                                <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister" data-toggle="modal" data-target="#loginModal"></asp:Label>
+                                <asp:Label ID="registrationButton" runat="server" Text="Inregistrare" CssClass="loginAndRegister"></asp:Label>
                             </div>
 
                             <div class="modal fade" id="loginModal">
@@ -68,7 +57,7 @@
                                         </div>
                                         <div class="modal-body">
                                             <asp:Login ID="Login" runat="server" 
-                                                LoginButtonText="Login" 
+                                                LoginButtonText="Intra in cont" 
                                                 PasswordLabelText="Parola:" 
                                                 UserNameLabelText="Nume utilizator:" 
                                                 RememberMeText="Tine minte" TitleText="" 
@@ -206,5 +195,6 @@
     <!-- Scripts -->
     <script type="text/javascript" src="Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="Scripts/myOwnCode.js"></script>
+    <script type="text/javascript" src="Scripts/ratingBook.js"></script>
 </body>
 </html>

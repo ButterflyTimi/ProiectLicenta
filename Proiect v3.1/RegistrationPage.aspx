@@ -7,6 +7,12 @@
     <div class="register-wrapper">
         <div class="register-body">
 
+        <h3>
+            <i class="fa fa-user"></i>
+            Date inregistrare
+        </h3>
+
+            <!--
         <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" 
             CompleteSuccessText="" 
             DuplicateEmailErrorMessage="Adresa introdusa exista deja in baza de date! Va rugam incercati alta adresa!" 
@@ -22,7 +28,10 @@
                         <table>
                             <tr>
                                 <td align="center" colspan="2">
-                                    <h2>Date inregistrare:</h2>
+                                    <h3>
+                                        <i class="fa fa-user"></i>
+                                        Date inregistrare
+                                    </h3>
                                 </td>
                             </tr>
                             <tr>
@@ -150,7 +159,7 @@
                     Text="Next" />
             </StepNavigationTemplate>
         </asp:CreateUserWizard>
-
+        -->
     </div>
 </div>
 
