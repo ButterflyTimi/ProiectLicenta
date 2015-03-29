@@ -12,6 +12,7 @@
             Date inregistrare
         </h3>
 
+
             <!--
         <asp:CreateUserWizard ID="CreateUserWizard1" runat="server" 
             CompleteSuccessText="" 

@@ -12,11 +12,23 @@
     <!--Bootstrat CSS-->
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="style/css/main.css">
+
+    <link rel="stylesheet" href="style/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="style/owl-carousel/owl.theme.css">
+
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
+
+        <asp:ScriptManager ID="ScriptManagerMain"
+            runat="server"
+            EnablePageMethods="true" 
+            ScriptMode="Release" 
+            LoadScriptsBeforeUI="true">
+        </asp:ScriptManager>
+
     <header class="container-fluid">
         <div class="header-wrapper">
             <div class="header-logo">
@@ -38,7 +50,6 @@
                 <div class="login-wrapper">
 
                     <asp:LoginView ID="LoginView1" runat="server">
-
                         <AnonymousTemplate>
                             <div class="login-buttons">
                                 <asp:Label ID="loginButton" runat="server" Text="Login" CssClass="loginAndRegister" data-toggle="modal" data-target="#loginModal"></asp:Label>
@@ -56,6 +67,10 @@
                                             </h3>
                                         </div>
                                         <div class="modal-body">
+
+                                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                            <ContentTemplate>
+
                                             <asp:Login ID="Login" runat="server" 
                                                 LoginButtonText="Intra in cont" 
                                                 PasswordLabelText="Parola:" 
@@ -63,8 +78,12 @@
                                                 RememberMeText="Tine minte" TitleText="" 
                                                 FailureText="Login nereusit. Va rugam incercati din nou."
                                                 CssClass="login-form-table">
-                                            <LoginButtonStyle CssClass="primaryButton" />
+                                            <LoginButtonStyle CssClass="primaryButton butonLoginPopup" />
                                             </asp:Login>
+
+                                            </ContentTemplate>
+                                            </asp:UpdatePanel>
+
                                         </div>
                                     </div>
                                 </div>
@@ -196,5 +215,6 @@
     <script type="text/javascript" src="Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="Scripts/myOwnCode.js"></script>
     <script type="text/javascript" src="Scripts/ratingBook.js"></script>
+    <script type="text/javascript" src="Scripts/owl.carousel.js"></script>
 </body>
 </html>

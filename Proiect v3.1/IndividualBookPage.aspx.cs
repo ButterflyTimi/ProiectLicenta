@@ -75,7 +75,6 @@ public partial class IndividualBookPage : System.Web.UI.Page
     protected void bookRating(object sender, EventArgs e)
     {
         string nota = TBcount.Text;
-        ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('"+nota+"');", true);
         string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
         string sql = "INSERT INTO NoteDateCartilor (Id_Carte, Nota, Id_User) VALUES (@Id_Carte, @Nota, @Id_User)";
         SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
@@ -84,7 +83,6 @@ public partial class IndividualBookPage : System.Web.UI.Page
         string q = Request.Params["q"];
         if (q != null)
         {
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + nota + "');", true);
             try 
             {
                 int idCarte = Int32.Parse(Request.Params["q"]);
