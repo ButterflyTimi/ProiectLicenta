@@ -21,13 +21,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
-
+    <!--
         <asp:ScriptManager ID="ScriptManagerMain"
             runat="server"
             EnablePageMethods="true" 
             ScriptMode="Release" 
             LoadScriptsBeforeUI="true">
         </asp:ScriptManager>
+        -->
 
     <header class="container-fluid">
         <div class="header-wrapper">
@@ -68,8 +69,7 @@
                                         </div>
                                         <div class="modal-body">
 
-                                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                            <ContentTemplate>
+                                            
 
                                             <asp:Login ID="Login" runat="server" 
                                                 LoginButtonText="Intra in cont" 
@@ -81,8 +81,8 @@
                                             <LoginButtonStyle CssClass="primaryButton butonLoginPopup" />
                                             </asp:Login>
 
-                                            </ContentTemplate>
-                                            </asp:UpdatePanel>
+                                            
+                                            
 
                                         </div>
                                     </div>
@@ -173,12 +173,12 @@
                         </asp:HyperLink>
                     </li>
                     <li>
-                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl='~/Home.aspx'> 
+                        <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl='~/Carti.aspx'> 
                         Carti
                         </asp:HyperLink>
                     </li>
                     <li>
-                        <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl='~/Home.aspx'> 
+                        <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl='~/Citate.aspx'> 
                         Citate
                         </asp:HyperLink>
                     </li>

@@ -14,7 +14,7 @@ public partial class RegistrationPage : System.Web.UI.Page
     }
     protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
     {
-        Roles.AddUserToRole(CreateUserWizard1.UserName, "User");
+        //Roles.AddUserToRole(CreateUserWizard1.UserName, "User");
     }
     protected void ContinueButton_Click(object sender, EventArgs e)
     {
