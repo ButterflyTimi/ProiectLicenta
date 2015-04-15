@@ -16,9 +16,9 @@ public partial class Controls_ContactControl : System.Web.UI.UserControl
 
     protected void SendMail()
     {
-        var fromAddress = "Gmail@gmail.com";// Gmail Address from where you send the mail
+        var fromAddress = "timeagavrila.contact@gmail.com";// Gmail Address from where you send the mail
         var toAddress = YourEmail.Text.ToString(); 
-        const string fromPassword = "Password";//Password of your gmail address
+        const string fromPassword = "Parola123";//Password of your gmail address
         string subject = YourSubject.Text.ToString();
         string body = "From: " + YourName.Text + "\n";
         body += "Email: " + YourEmail.Text + "\n";
