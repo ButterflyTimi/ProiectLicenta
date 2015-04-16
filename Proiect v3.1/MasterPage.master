@@ -21,14 +21,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <!--
-        <asp:ScriptManager ID="ScriptManagerMain"
-            runat="server"
-            EnablePageMethods="true" 
-            ScriptMode="Release" 
-            LoadScriptsBeforeUI="true">
-        </asp:ScriptManager>
-        -->
 
     <header class="container-fluid">
         <div class="header-wrapper">
@@ -69,19 +61,22 @@
                                         </div>
                                         <div class="modal-body">
 
-                                            
+                                            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+                                            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                                                <ContentTemplate>
 
-                                            <asp:Login ID="Login" runat="server" 
-                                                LoginButtonText="Intra in cont" 
-                                                PasswordLabelText="Parola:" 
-                                                UserNameLabelText="Nume utilizator:" 
-                                                RememberMeText="Tine minte" TitleText="" 
-                                                FailureText="Login nereusit. Va rugam incercati din nou."
-                                                CssClass="login-form-table">
-                                            <LoginButtonStyle CssClass="primaryButton butonLoginPopup" />
-                                            </asp:Login>
+                                                    <asp:Login ID="Login" runat="server" 
+                                                        LoginButtonText="Intra in cont" 
+                                                        PasswordLabelText="Parola:" 
+                                                        UserNameLabelText="Nume utilizator:" 
+                                                        RememberMeText="Tine minte" TitleText="" 
+                                                        FailureText="Login nereusit. Va rugam incercati din nou."
+                                                        CssClass="login-form-table">
+                                                    <LoginButtonStyle CssClass="primaryButton butonLoginPopup" />
+                                                    </asp:Login>
 
-                                            
+                                                </ContentTemplate>
+                                            </asp:UpdatePanel>
                                             
 
                                         </div>

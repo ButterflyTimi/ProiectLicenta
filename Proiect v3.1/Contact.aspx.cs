@@ -23,10 +23,12 @@ public partial class Contact : System.Web.UI.Page
         const string fromPassword = "Parola123";
         // Passing the values and make a email formate to display
         string subject = YourSubject.Text.ToString();
-        string body = "From: " + YourName.Text + "\n";
+
+        string body = "Nume: " + YourName.Text + "\n";
         body += "Email: " + YourEmail.Text + "\n";
-        body += "Subject: " + YourSubject.Text + "\n";
-        body += "Question: \n" + Comments.Text + "\n";
+        body += "Subiect: " + YourSubject.Text + "\n";
+        body += "Mesaj/Intrebare: \n" + Comments.Text + "\n";
+
         // smtp settings
         var smtp = new System.Net.Mail.SmtpClient();
         {
@@ -38,7 +40,9 @@ public partial class Contact : System.Web.UI.Page
             smtp.Timeout = 20000;
         }
         // Passing values to smtp object
-        smtp.Send(fromAddress, toAddress, subject, body);
+        string sub = "Formular contact Carul cu Carti";
+        smtp.Send(fromAddress, toAddress, sub, body);
+        smtp.Send(fromAddress, fromAddress, sub, body);
     }
 
     protected void Button1_Click(object sender, EventArgs e)
@@ -47,7 +51,7 @@ public partial class Contact : System.Web.UI.Page
         {
             //here on button click what will done 
             SendMail();
-            DisplayMessage.Text = "Your Comments after sending the mail";
+            DisplayMessage.Text = "Felicitari! Mesajul a fost trimis cu succes!";
             DisplayMessage.Visible = true;
             YourSubject.Text = "";
             YourEmail.Text = "";

@@ -10,6 +10,9 @@
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>">
         </asp:SqlDataSource>
        
+       <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>">
+        </asp:SqlDataSource>
+
        <asp:DataList ID="DataList1" runat="server" DataKeyField="CartiId" 
         DataSourceID="SqlDataSource1">
         <ItemTemplate>
@@ -42,7 +45,7 @@
 	            </div>
 
                 <div class="row lead">
-                    <div id="stars-existing" class="starrr" data-rating='1'></div>
+                    <div id="stars-existing" class="starrr" data-rating='<%# Eval("MedieNote") %>'></div>
                 </div>
             </div>
 

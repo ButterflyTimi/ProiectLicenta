@@ -3,47 +3,94 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<asp:Panel ID="Panel1" runat="server" DefaultButton="btnSubmit">
-    <p>
-        Please Fill the Following to Send Mail.</p>
-    <p>
-        Your name:
+<div class="contact-wrapper">
+    <div class="contact-body">
+        <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSubmit">
 
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*"
-            ControlToValidate="YourName" ValidationGroup="save" /><br />
-        <asp:TextBox ID="YourName" runat="server" Width="250px" /><br />
+        <div class="form-horizontal">
+             <div class="form-group">
+                <label class="col-sm-3 control-label">Nume utilizator:</label>
+                <div class="col-sm-8 input-tb">
+                    <asp:TextBox ID="YourName" runat="server"  CssClass="form-control" />
 
-        Your email address:
+                </div>
+                <div class="col-sm-1 validators">
 
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
-            ControlToValidate="YourEmail" ValidationGroup="save" /><br />
-        <asp:TextBox ID="YourEmail" runat="server" Width="250px" />
-        <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator23"
-            SetFocusOnError="true" Text="Example: username@gmail.com" ControlToValidate="YourEmail"
-            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"
-            ValidationGroup="save" /><br />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*"
+                    ControlToValidate="YourName" ValidationGroup="save" />
 
-        Subject:
+                </div>
+             </div>
 
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*"
-            ControlToValidate="YourSubject" ValidationGroup="save" /><br />
-        <asp:TextBox ID="YourSubject" runat="server" Width="400px" /><br />
+             <div class="form-group">
+                <label class="col-sm-3 control-label">Email:</label>
+                <div class="col-sm-8 input-tb">
+                    <asp:TextBox ID="YourEmail" runat="server" CssClass="form-control" />
 
-        Your Question:
+                </div>
+                <div class="col-sm-1 validators">
 
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*"
-            ControlToValidate="Comments" ValidationGroup="save" /><br />
-        <asp:TextBox ID="Comments" runat="server" 
-                TextMode="MultiLine" Rows="10" Width="400px" />
-    </p>
-    <p>
-        <asp:Button ID="btnSubmit" runat="server" Text="Send" 
-                    OnClick="Button1_Click" ValidationGroup="save" />
-    </p>
-</asp:Panel>
-<p>
-    <asp:Label ID="DisplayMessage" runat="server" Visible="false" />
-</p>
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
+                    ControlToValidate="YourEmail" ValidationGroup="save" />
+
+                </div>
+             </div>
+
+             <div class="form-group">
+                <label class="col-sm-3 control-label">Subiect:</label>
+                <div class="col-sm-8 input-tb">
+                    <asp:TextBox ID="YourSubject" runat="server" CssClass="form-control"/>
+
+                </div>
+                <div class="col-sm-1 validators">
+
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*"
+                    ControlToValidate="YourSubject" ValidationGroup="save" />
+
+                </div>
+             </div>
+
+             <div class="form-group">
+                <label class="col-sm-3 control-label">Mesaj/Intrebare:</label>
+                <div class="col-sm-8 input-tb">
+
+                    <asp:TextBox ID="Comments" runat="server" CssClass="form-control"
+                        TextMode="MultiLine" Rows="10"/>
+                </div>
+                <div class="col-sm-1 validators">
+
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*"
+                    ControlToValidate="Comments" ValidationGroup="save" />
+
+                </div>
+             </div>
+
+             <div class="form-group">
+                <div class="col-sm-8 col-sm-offset-3 validators warning-message">
+
+                    <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator23"
+                    SetFocusOnError="true" Text="Email invalid" ControlToValidate="YourEmail"
+                    ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"
+                    ValidationGroup="save" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-8 col-sm-offset-3">
+                    <asp:Button ID="btnSubmit" runat="server" Text="Trimite" CssClass="btn primary-button"
+                            OnClick="Button1_Click" ValidationGroup="save" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-8 col-sm-offset-3 validators good-message">
+                    <asp:Label ID="DisplayMessage" runat="server" Visible="false" />
+                </div>
+            </div>
+    </div>
+
+        </asp:Panel>
+
+    </div>
+</div>
 
 </asp:Content>
 

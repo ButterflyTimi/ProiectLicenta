@@ -154,3 +154,17 @@
   -webkit-background-clip: @argument;
   background-clip: @argument;
 }
+
+.primary-button {
+	background-color: @brand-primary-inverse-lighter;
+	.border-radius(4px, 4px, 4px, 4px);
+	.transition( 0.3s, ease);
+	color: white;
+	font-size: 14px;
+	border: none;
+	.box-shadow( inset 1px 1px 20px 0px rgba(0, 0, 0, 0.1));
+	.transition( 0.3s, ease);
+	&:hover {
+		color: @brand-primary-inverse;
+	}
+}

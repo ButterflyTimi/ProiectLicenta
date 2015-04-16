@@ -30,6 +30,11 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     SqlDataSource2.SelectParameters.Add("q", q);
                     SqlDataSource2.DataBind();
 
+                    SqlDataSource3.SelectCommand = "SELECT ROUND(AVG(Nota), 0) AS MedieNote FROM NoteDateCartilor WHERE Id_Carte = @q";
+                    SqlDataSource2.SelectParameters.Clear();
+                    SqlDataSource2.SelectParameters.Add("q", q);
+                    SqlDataSource2.DataBind();
+
                 }
                 catch (Exception err)
                 {
@@ -74,27 +79,35 @@ public partial class IndividualBookPage : System.Web.UI.Page
     }
     protected void bookRating(object sender, EventArgs e)
     {
-        string nota = TBcount.Text;
-        string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
-        string sql = "INSERT INTO NoteDateCartilor (Id_Carte, Nota, Id_User) VALUES (@Id_Carte, @Nota, @Id_User)";
-        SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
-        con.Open();
-        SqlCommand com = new SqlCommand(sql, con);
-        string q = Request.Params["q"];
-        if (q != null)
+        bool userCheck = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+        if (userCheck)
         {
-            try 
+            
+        }
+        else
+        {
+            string nota = TBcount.Text;
+            string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
+            string sql = "INSERT INTO NoteDateCartilor (Id_Carte, Nota, Id_User) VALUES (@Id_Carte, @Nota, @Id_User)";
+            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+            con.Open();
+            SqlCommand com = new SqlCommand(sql, con);
+            string q = Request.Params["q"];
+            if (q != null)
             {
-                int idCarte = Int32.Parse(Request.Params["q"]);
-                com.Parameters.AddWithValue("Id_Carte", idCarte);
-                com.Parameters.AddWithValue("Id_User", user);
-                com.Parameters.AddWithValue("Nota", nota);
-                com.ExecuteNonQuery();
-                con.Close();
-                //Response.Redirect(Request.RawUrl);
-            }
-            catch (Exception err)
-            {
+                try
+                {
+                    int idCarte = Int32.Parse(Request.Params["q"]);
+                    com.Parameters.AddWithValue("Id_Carte", idCarte);
+                    com.Parameters.AddWithValue("Id_User", user);
+                    com.Parameters.AddWithValue("Nota", nota);
+                    com.ExecuteNonQuery();
+                    con.Close();
+                    //Response.Redirect(Request.RawUrl);
+                }
+                catch (Exception err)
+                {
+                }
             }
         }
     }
