@@ -5,12 +5,25 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net;
+using System.Web.Security;
 
 public partial class Contact : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*bool userCheck = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+        if (userCheck)
+        {
 
+        }
+        else
+        {
+            //string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
+            //string username = System.Web.Security.Membership.GetUser().UserName.ToString();
+            //MembershipUser u = Membership.GetUser(User.Identity.Name);
+            //Response.Write(u);
+        }*/
+            
     }
 
     protected void SendMail()
