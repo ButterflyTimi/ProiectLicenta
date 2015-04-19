@@ -5,6 +5,9 @@
 
 <div class="contact-wrapper">
     <div class="contact-body">
+
+    <asp:Label ID="TB" runat="server" />
+
         <asp:Panel ID="Panel1" runat="server" DefaultButton="btnSubmit">
 
         <div class="form-horizontal">
