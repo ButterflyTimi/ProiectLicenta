@@ -19,7 +19,10 @@ public partial class IndividualBookPage : System.Web.UI.Page
                 try
                 {
                     q = Server.UrlDecode(q);
-                    SqlDataSource1.SelectCommand = " SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, Carti.Text_Descriere FROM Autori INNER JOIN Carti ON Autori.Id = Carti.Id_Autor INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id WHERE Carti.Id = @q";
+                    //SqlDataSource1.SelectCommand = " SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, Carti.Text_Descriere FROM Autori INNER JOIN Carti ON Autori.Id = Carti.Id_Autor INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id WHERE Carti.Id = @q";
+
+                    SqlDataSource1.SelectCommand = "SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Carti.Text_Descriere, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, ROUND(AVG(NoteDateCartilor.Nota), 0) AS MedieNote FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id INNER JOIN NoteDateCartilor ON Carti.Id = NoteDateCartilor.Id_Carte WHERE Carti.Id = @q GROUP BY Carti.Id, Carti.Titlu, Carti.Poza_Coperta, Carti.Text_Descriere, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume";
+                    
                     SqlDataSource1.SelectParameters.Clear();
                     SqlDataSource1.SelectParameters.Add("q", q);
                     SqlDataSource1.DataBind();
@@ -29,12 +32,6 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     SqlDataSource2.SelectParameters.Clear();
                     SqlDataSource2.SelectParameters.Add("q", q);
                     SqlDataSource2.DataBind();
-
-                    SqlDataSource3.SelectCommand = "SELECT ROUND(AVG(Nota), 0) AS MedieNote FROM NoteDateCartilor WHERE Id_Carte = @q";
-                    SqlDataSource2.SelectParameters.Clear();
-                    SqlDataSource2.SelectParameters.Add("q", q);
-                    SqlDataSource2.DataBind();
-
                 }
                 catch (Exception err)
                 {
@@ -82,10 +79,6 @@ public partial class IndividualBookPage : System.Web.UI.Page
         bool userCheck = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
         if (userCheck)
         {
-            
-        }
-        else
-        {
             string nota = TBcount.Text;
             string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
             string sql = "INSERT INTO NoteDateCartilor (Id_Carte, Nota, Id_User) VALUES (@Id_Carte, @Nota, @Id_User)";
@@ -103,12 +96,13 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     com.Parameters.AddWithValue("Nota", nota);
                     com.ExecuteNonQuery();
                     con.Close();
-                    //Response.Redirect(Request.RawUrl);
+                    Response.Redirect(Request.RawUrl);
                 }
                 catch (Exception err)
                 {
                 }
             }
         }
+
     }
 }
