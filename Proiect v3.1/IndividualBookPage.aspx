@@ -17,31 +17,32 @@
     </div>
 
     <div class="book-details">
-        <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' Font-Bold="True" Font-Italic="True" Font-Size="XX-Large"></asp:Label>
-        <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' Font-Italic="True" Font-Size="Large"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
+         de 
+         
+         <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
     
         <div class="book-gen">
-                <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="labeluriCarti"></asp:Label>
-                <asp:Label ID="Label2" runat="server" Text='<%# Bind("Gen") %>'></asp:Label>
+                <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="bookType"></asp:Label>
+                <asp:Label ID="Label2" runat="server" CssClass="bookType" Text='<%# Bind("Gen") %>'></asp:Label>
     </div>
         <div class="book-rating">
-                
-                <div class="row lead">
-                    <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" OnClick="bookRating">
+            <div class="lead">
+                <asp:LinkButton ID="LinkButton1" CssClass="starRating" runat="server" CausesValidation="False" OnClick="bookRating">
                     <div id="stars" class="starrr" data-rating='<%# Eval("MedieNote") %>'></div>
-                    </asp:LinkButton>
-	            </div>
+                </asp:LinkButton>
+	        </div>
+        </div>
+        <div class="book-description-wrapper">
+            <div class="book-description">
+                <asp:Label ID="Label4" CssClass="description" runat="server" Text='<%# Bind("Text_Descriere") %>'></asp:Label>
             </div>
+        </div>
     </div>
-    <div class="book-description">
-        <asp:Label ID="Label4" runat="server" Text='<%# Bind("Text_Descriere") %>'></asp:Label>
-    </div>
-    
-
     
     </ItemTemplate>
     </asp:Repeater>
-
+    </div>
     
           <h3>Comentarii:</h3>
 
