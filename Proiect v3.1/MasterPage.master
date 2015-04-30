@@ -26,7 +26,7 @@
         <div class="header-wrapper">
             <div class="header-logo">
                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='~/Home.aspx'>        
-	                <img src="logo3.png" alt="carti"/>
+	                <img src="logo5.png" alt="carti"/>
                 </asp:HyperLink>
             </div>
             <div class="header-search search-wrapper">
@@ -34,7 +34,7 @@
                         <div class="input-group">
                             <asp:TextBox ID="searchTB" CssClass="form-control" runat="server" placeholder="Autor / Titlu / Gen"></asp:TextBox>
                             <span class="input-group-btn">
-                                <asp:Button ID="searchButton" CssClass="btn btn-default " runat="server" Text="Cauta" onclick="Button1_Click" ValidationGroup="separat" />
+                                <asp:Button ID="searchButton" CssClass="btn btn-default" runat="server" Text="Cauta" onclick="Button1_Click" ValidationGroup="separat" />
                             </span>
                         </div>
                     </div>
@@ -201,7 +201,7 @@
     <footer class="container-fluid">
         <div class="footer-wrapper">
             <div class="footer-copyright">
-		        &copy; 2014 - 2015 Gavrila Timea-Maria
+		        &copy; 2014 - 2015 Gavrila Timea-Maria. Toate drepturile rezervate.
             </div>
         </div>
     </footer>

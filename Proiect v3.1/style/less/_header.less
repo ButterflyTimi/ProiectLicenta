@@ -17,11 +17,11 @@ header
 			margin-bottom: 20px;
 			.input-group {
 				#searchButton {
-					color: @brand-primary-inverse;
+					background-color: @brand-primary-inverse-lighter;
+					color: white;
 					.transition( 0.3s, ease);
 					&:hover {
-						//background-color: @brand-primary-inverse;
-						//color: white;
+						color: @brand-primary-inverse;
 					}
 				}
 			}
@@ -63,7 +63,7 @@ header
 					padding-bottom: 5px;
 					.social-media-icon {
 						display: inline-block;
-						background-color: @brand-primary-inverse-lighter;
+						background-color: @brand-primary-inverse;
 						.border-radius(4px, 4px, 4px, 4px);
 						width: 20px;
 						height: 20px;
@@ -73,7 +73,7 @@ header
 						&:hover {
 							cursor: pointer;
 							a {
-								color: @brand-primary-inverse;
+								color: @brand-primary-inverse-lighter;
 							}
 						}
 						a {
