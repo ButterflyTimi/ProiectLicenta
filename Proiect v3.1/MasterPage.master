@@ -72,7 +72,7 @@
                                                         RememberMeText="Tine minte" TitleText="" 
                                                         FailureText="Login nereusit. Va rugam incercati din nou."
                                                         CssClass="login-form-table">
-                                                    <LoginButtonStyle CssClass="primaryButton butonLoginPopup" />
+                                                    <LoginButtonStyle CssClass="btn primary-button" />
                                                     </asp:Login>
 
                                                 </ContentTemplate>
@@ -97,7 +97,7 @@
                                     -->
                                     <div class="login-buttons">
                                         <span id="loggedInText"> Bine ai venit, 
-                                            <asp:LoginName ID="LoginName1" runat="server" />!
+                                            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='~/UserProfile.aspx'><asp:LoginName ID="LoginName1" CssClass="link" runat="server" /></asp:HyperLink>!
                                             <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="logOut"/>
                                         </span>
                                     </div>

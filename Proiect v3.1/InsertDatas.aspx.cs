@@ -63,6 +63,7 @@ public partial class InsertDatas : System.Web.UI.Page
         {
             string t = TBTitlu.Text;
             string d = TBDescriere.Text;
+            d = d.Replace("(new_line)", "<br />");
             int id_autor = int.Parse(DDLAutor.SelectedValue);
             int id_gen = int.Parse(DDLGen.SelectedValue);
 

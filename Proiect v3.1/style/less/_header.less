@@ -35,8 +35,13 @@ header
 					text-align: right;
 					color: White; 
 					#loggedInText {
+						.link {
+							&:hover {
+								color: white;
+							}
+						}
 						.logOut {
-							color: White;
+							color: white;
 							&:hover {
 								text-decoration: none;
 								color: @brand-primary-inverse;  

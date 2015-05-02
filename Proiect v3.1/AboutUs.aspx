@@ -24,7 +24,7 @@
                 Daca nu ai un cont deja, creaza-ti unul
                 <asp:HyperLink ID="HyperLink1" runat="server" CssClass="link" NavigateUrl='~/RegistrationPage.aspx'>
                     aici</asp:HyperLink>.
-                Dureaza cateva doar minute si promitem ca nu iti cerem prea multe date.
+                Dureaza doar cateva minute si promitem ca nu iti cerem prea multe date.
             
             </div>
 
