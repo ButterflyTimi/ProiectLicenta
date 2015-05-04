@@ -31,6 +31,11 @@
                 <asp:LinkButton ID="LinkButton1" CssClass="starRating" runat="server" CausesValidation="False" OnClick="bookRating">
                     <div id="stars" class="starrr" data-rating='<%# Eval("MedieNote") %>'></div>
                 </asp:LinkButton>
+
+                <div class="lead-error-messages">
+                    <asp:Label ID="NotLoggedInUser" runat="server" Text="Trebuie sa fiti autentificat pentru a putea vota!"></asp:Label>    
+                    <asp:Label ID="AlreadyVoted" runat="server" Text="Deja ati votat aceasta carte!"></asp:Label>
+                </div>
 	        </div>
         </div>
         <div class="book-description-wrapper">
