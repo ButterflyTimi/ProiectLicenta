@@ -1,0 +1,69 @@
+﻿.userProfile-wrapper {
+	.make-row();
+	.userProfile-personalDatas {
+		.make-sm-column(3);
+		.userProfile-picture-wrapper {
+			.make-row();
+			.userProfile-picture {
+				.make-sm-column(12);
+				padding-bottom: 100%;
+				border: 1px solid @brand-primary-inverse-lighter;
+				position: relative;
+				overflow: hidden;
+				@media (max-width: @screen-sm) {
+					margin-left: 15px;
+					margin-right: 15px;
+				}
+				&:hover {
+					.imgUser {
+						opacity: 0.8;
+					}
+					.changePicture {
+						display: block;
+					}
+				}
+				.imgUser {
+					width: 100%;
+					position: absolute;
+					left: 0px;
+					right: 0px;
+					top: 0px;
+					bottom: 0px;
+					//.transition( 0.3s, ease);
+				}
+				.changePicture {
+					display: none;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					margin-left: -57px;
+					.transition( 0.3s, ease);
+				}
+			}
+		}
+		.userProfile-datas-wrapper {
+			.make-row();
+			.userProfile-datas {
+				.make-sm-column(12);
+			}
+		}
+	}
+	.userProfile-books {
+		.make-sm-column(9);
+	}
+}
+/*
+.transition( 0.3s, ease);
+					&:hover {
+						rgba(0, 0, 0, 0.5);
+						.primary-button {
+							display: block;
+						}
+					}
+				}
+				.primary-button {
+					display: none;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					margin-left: -57px;*/

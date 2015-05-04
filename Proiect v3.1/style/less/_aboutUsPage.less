@@ -1,0 +1,49 @@
+﻿.aboutUs-wrapper {
+	.make-row();
+	.aboutUs-body {
+		.make-md-column(12);
+		h2 {
+			text-align: center;
+			color: @brand-primary;
+		}
+		p {
+			text-align: center;
+			color: @brand-primary-lighter;
+			font-size: 20px;
+			margin-top: 10px;
+			&.question {
+				color: @brand-primary-inverse;
+				border-top : 1px solid @brand-primary-inverse;
+				margin: 15px 0px;
+				padding-top: 15px;
+			}
+		}
+		.explanation-wrapper {
+			.make-row();
+			.explanation1, .explanation2, .explanation3 {
+				.make-sm-column(4);
+				border-radius: 50%;
+				padding: 66px;
+				min-height: 280px;
+				text-align: justify;
+				color: @brand-primary-lighter;
+				strong {
+					font-size: 20px;
+				}
+				.link {
+
+				}
+			}
+			.explanation1 {
+				background-color: lighten(@brand-neutral, 5%);
+			}
+			.explanation2 {
+				background-color: lighten(@brand-primary-lighter, 45%);
+			}
+			.explanation3 {
+				background-color: lighten(@brand-primary-inverse-lighter, 15%);
+			}
+		}
+	}
+
+}
