@@ -8,13 +8,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1"> 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+
     <script type="text/javascript" src="Scripts/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="Scripts/jquery.jcarousel.js"></script>
     <!--Bootstrat CSS-->
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="style/css/main.css">
 
-    <link rel="stylesheet" href="style/owl-carousel/owl.carousel.css">
-    <link rel="stylesheet" href="style/owl-carousel/owl.theme.css">
 
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -210,6 +210,5 @@
     <script type="text/javascript" src="Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="Scripts/myOwnCode.js"></script>
     <script type="text/javascript" src="Scripts/ratingBook.js"></script>
-    <script type="text/javascript" src="Scripts/owl.carousel.js"></script>
 </body>
 </html>

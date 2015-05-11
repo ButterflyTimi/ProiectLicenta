@@ -68,3 +68,23 @@
 .count {
 	display: none;
 }
+
+.recommendation-wrapper {
+	.make-row();
+	.recommendation {
+		.make-sm-column(12);
+		.jcarousel {
+			.make-row();
+			ul {
+				li {
+					.make-sm-column(3);
+					img {
+						display: block;
+						max-width: 100%;
+						height: auto !important;
+					}
+				}
+			}
+		}
+	}
+}
