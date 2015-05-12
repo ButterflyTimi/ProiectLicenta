@@ -29,16 +29,7 @@
 	                <img src="logo5.png" alt="carti"/>
                 </asp:HyperLink>
             </div>
-            <div class="header-search search-wrapper">
-                    <div class="search-container">
-                        <div class="input-group">
-                            <asp:TextBox ID="searchTB" CssClass="form-control" runat="server" placeholder="Autor / Titlu / Gen"></asp:TextBox>
-                            <span class="input-group-btn">
-                                <asp:Button ID="searchButton" CssClass="btn btn-default" runat="server" Text="Cauta" onclick="Button1_Click" ValidationGroup="separat" />
-                            </span>
-                        </div>
-                    </div>
-                </div>
+
             <div class="header-loginAndSocialMedia">
                 <div class="login-wrapper">
 
@@ -151,7 +142,6 @@
     </header>
  
     <nav class="navbar navbar-default">
-        <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -159,6 +149,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+
+                <div class="header-search">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <asp:TextBox ID="searchTB" CssClass="form-control" runat="server" placeholder="Autor / Titlu / Gen"></asp:TextBox>
+                            <asp:Button ID="searchButton" CssClass="btn primary-button" runat="server" Text="Cauta" onclick="Button1_Click" ValidationGroup="separat" />
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav">
@@ -189,7 +189,6 @@
                     </li>
                 </ul>
             </div>
-        </div>
     </nav>
 
 

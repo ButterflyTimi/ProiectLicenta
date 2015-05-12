@@ -77,7 +77,7 @@ public partial class EditBooks : System.Web.UI.Page
             {
                 ErrorLabel.Text = ErrorLabel.Text + err;
             }
-            Response.Redirect("~/Home.aspx");
+            //Response.Redirect("~/Home.aspx");
         }
     }
     protected void back_home(object sender, EventArgs e)

@@ -4,30 +4,18 @@ header
 	.header-wrapper {
 		.make-row();
 		.header-logo {
-			.make-sm-column(3);
+			.make-sm-column(6);
+			@media (max-width: (@screen-sm - 1)) {
+				text-align: center;
+			}
 			img {
 				padding: 10px 0px;
-				width: 100%;
+				width: 270px;
 				height: auto;
 			}
 		}
-		.header-search {
-			.make-sm-column(6);
-			margin-top: 20px;
-			margin-bottom: 20px;
-			.input-group {
-				#searchButton {
-					background-color: @brand-primary-inverse;
-					color: white;
-					.transition( 0.3s, ease);
-					&:hover {
-						color: @brand-primary-inverse-lighter;
-					}
-				}
-			}
-		}
 		.header-loginAndSocialMedia {
-			.make-sm-column(3);
+			.make-sm-column(6);
 			.login-wrapper {
 				.make-row;
 				.login-buttons {
@@ -70,11 +58,11 @@ header
 						display: inline-block;
 						background-color: @brand-primary-inverse;
 						.border-radius(4px, 4px, 4px, 4px);
-						width: 20px;
-						height: 20px;
+						width: 30px;
+						height: 30px;
 						margin: 3px;
 						text-align: center;
-						padding-top: 3px;						
+						padding-top: 4px;						
 						&:hover {
 							cursor: pointer;
 							a {
@@ -84,6 +72,7 @@ header
 						a {
 							.transition( 0.3s, ease);
 							color: white;
+							font-size: 22px;
 						}
 					}
 				}
@@ -91,14 +80,61 @@ header
 		}
 	}
 }  
-#navbar-collapse, .navbar-header {
+.navbar-header {
+	width: 50%;
+	@media (max-width: (@screen-sm - 1)) {
+		width: 100%;
+	}
+	.navbar-toggle {
+		height: 34px;
+	}
+	.header-search {
+		margin-top: 8px;
+		margin-bottom: 8px;
+		margin-left: 15px;
+		@media (max-width: (@screen-sm - 1)) {
+			width: 70%;
+		}
+		.form-horizontal {
+			.form-group {
+				margin-left: 0px;
+				margin-right: 0px;
+				margin-bottom: 0px;
+				position: relative;
+				input {
+					height: 34px;
+				}	
+				#searchButton {
+					background-color: @brand-primary-inverse;
+					color: white;
+					position: absolute;
+					top: 0px;
+					right: 0px;
+					.border-radius(4px, 4px, 0px, 0px);
+					.transition( 0.3s, ease);
+					&:hover {
+						color: @brand-primary-inverse-lighter;
+					}
+				}
+			}
+		}
+	}
+}
+#navbar-collapse {
 	border-top: 2px solid @brand-neutral;
 	border-bottom: 1px solid @brand-neutral;
-	text-align:center;
-	ul {
-		float: none;
-		display: inline-block;
+	text-align: right;
+	padding-right: 0px;
+	@media (max-width: (@screen-sm - 1)) {
 		text-align: center;
+	}
+	ul {
+		float: right;
+		//display: inline-block;
+		//text-align: center;
+		@media (max-width: (@screen-sm - 1)) {
+			width: 100%;
+		}
 		li {
 			a {
 				color: @brand-primary-inverse;

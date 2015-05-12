@@ -31,7 +31,7 @@
                             <div id="stars" class="starrr" data-rating='<%# Eval("MedieNote") %>'></div>
                         </asp:LinkButton>
 
-                        <div class="lead-error-messages">
+                        <div class="error-messages">
                             <asp:Label ID="NotLoggedInUser" runat="server" style="display: none;" Text="Trebuie sa fiti autentificat pentru a putea vota!"></asp:Label>    
                             <asp:Label ID="AlreadyVoted" runat="server" style="display: none;" Text="Deja ati votat aceasta carte!"></asp:Label>
                         </div>
@@ -47,64 +47,61 @@
     </asp:Repeater>
     </div>
     
+    <div class="commentsSection-wrapper">
+        <div class="commentsSection">
+            <h4>Comentarii si recenzii:</h4>
 
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>"></asp:SqlDataSource>
+            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" Width="100%" 
+            ShowHeader="False" GridLines="None">
 
-          <h3>Comentarii:</h3>
+            <Columns>
+                <asp:TemplateField  ItemStyle-Width="100%">
+                    <ItemTemplate>
+                        <asp:Table ID="Table1" runat="server" CssClass="comentarii">
+                            <asp:TableRow ID="TableRow1" runat="server" Width="100%">
+                                <asp:TableCell ID="TableCell1" runat="server" rowspan="3" Width="10%"  style="vertical-align: top;">
+                                    <div class="userIcon">
+                                        <asp:Image ID="Image3" runat="server" ImageUrl="~/usericon.png" />
+                                    </div>
+                                </asp:TableCell>
+                                <asp:TableCell ID="TableCell2" runat="server" Width="90%">
+                                    Postat de <i><%#Eval("UserName")%></i> la <i><%#Eval("Data")%></i>:
+                                </asp:TableCell>
+                            </asp:TableRow>
 
-          <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" 
-             DataSourceID="SqlDataSource2" Width="100%" 
-              ShowHeader="False" GridLines="None">
-
-              <Columns>
-                  <asp:TemplateField  ItemStyle-Width="100%">
-                        <ItemTemplate>
-    <asp:Table ID="Table1" runat="server" CssClass="comentarii">
-         
-            <asp:TableRow ID="TableRow1" runat="server" Width="100%">
-                <asp:TableCell ID="TableCell1" runat="server" rowspan="3" Width="10%"  style="vertical-align: top;">
-                <div class="userIcon">
-                    <asp:Image ID="Image3" runat="server" ImageUrl="~/usericon.png" />
-                </div>
-                </asp:TableCell>
-                 <asp:TableCell ID="TableCell2" runat="server" Width="90%">
-                    Postat de <i><%#Eval("UserName")%></i> la <i><%#Eval("Data")%></i>:
-                 </asp:TableCell>
-                </asp:TableRow>
-
-                <asp:TableRow ID="TableRow33" runat="server" Width="100%">
-                 <asp:TableCell ID="TableCell3" runat="server" Width="90%">
-                    <span class="comentariu"><%#Eval("Comentariu_Text")%>
-                 </asp:TableCell>
-                 </asp:TableRow>
+                            <asp:TableRow ID="TableRow33" runat="server" Width="100%">
+                                <asp:TableCell ID="TableCell3" runat="server" Width="90%">
+                                    <span class="comentariu"><%#Eval("Comentariu_Text")%>
+                                </asp:TableCell>
+                            </asp:TableRow>
                 
-                 <asp:TableRow ID="TableRow3" runat="server">
-                 <asp:TableCell ID="TableCell5" runat="server">
-                 <asp:LoginView ID="LoginView2" runat="server">
-                 <RoleGroups>
-    <asp:RoleGroup Roles="Admin">
-    <ContentTemplate>
-                  
-                  
-    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/DeleteComm.aspx?q=" + Eval("Id") %>'>Sterge</asp:HyperLink>
-    </ContentTemplate>
-    </asp:RoleGroup>
-    </RoleGroups>
-    </asp:LoginView>
-    </asp:TableCell>
-                 </asp:TableRow>
+                            <asp:TableRow ID="TableRow3" runat="server">
+                                <asp:TableCell ID="TableCell5" runat="server">
+                                    <asp:LoginView ID="LoginView2" runat="server">
+                                        <RoleGroups>
+                                            <asp:RoleGroup Roles="Admin">
+                                                <ContentTemplate>
+                                                    <asp:HyperLink ID="HyperLink1" runat="server" 
+                                                    NavigateUrl='<%# "~/DeleteComm.aspx?q=" + Eval("Id") %>'>Sterge</asp:HyperLink>
+                                                </ContentTemplate>
+                                            </asp:RoleGroup>
+                                        </RoleGroups>
+                                </asp:LoginView>
+                            </asp:TableCell>
+                        </asp:TableRow>
     
-                 </asp:Table>
-                        </ItemTemplate>
+                    </asp:Table>
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+        <EmptyDataTemplate>
+            <asp:Label ID="Label14" runat="server" Text="0 comentarii"></asp:Label>
+        </EmptyDataTemplate>
+    </asp:GridView>
 
-                    </asp:TemplateField>
-                    </Columns>
-              <EmptyDataTemplate>
-                  <asp:Label ID="Label14" runat="server" Text="0 comentarii"></asp:Label>
-              </EmptyDataTemplate>
-              </asp:GridView>
-          
-
-         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>"></asp:SqlDataSource>
+        </div>
+    </div>
           
 
          <asp:Label ID="Label13" runat="server" Text="Adaugati un comentariu:" 
@@ -171,7 +168,7 @@
                         width = carousel.innerWidth();
 
                 if (width >= 600) {
-                    width = width / 4;
+                    width = width / 5;
                 } else if (width >= 350) {
                     width = width / 2;
                 }

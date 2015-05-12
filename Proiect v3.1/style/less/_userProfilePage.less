@@ -45,6 +45,10 @@
 			.make-row();
 			.userProfile-datas {
 				.make-sm-column(12);
+				@media (min-width: @screen-sm) {
+					padding-left: 0px;
+					padding-right: 0px;
+				}
 			}
 		}
 	}
@@ -52,6 +56,17 @@
 		.make-sm-column(9);
 	}
 }
+
+ #changePass {
+	.form-control {
+		width: 94%;
+		display: inline-block;
+	}
+	.validators {
+		display: inline;
+	}
+ }
+
 /*
 .transition( 0.3s, ease);
 					&:hover {
