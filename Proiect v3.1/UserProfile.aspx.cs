@@ -8,6 +8,7 @@ using System.Web.Security;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.Threading;
 
 public partial class UserProfile : System.Web.UI.Page
 {
@@ -66,25 +67,18 @@ public partial class UserProfile : System.Web.UI.Page
                 }
                 else
                 {
-                    //Schimbare username --- nu merge
-                    /*string update = "UPDATE aspnet_Users set UserName = @unamenou, LoweredUserName = @unamelower where UserName = @unamevechi";
+                    string update = "UPDATE aspnet_Users set UserName = @unamenou, LoweredUserName = @unamelower where UserName = @unamevechi";
                     SqlCommand com2 = new SqlCommand(update, con);
                     com2.Parameters.AddWithValue("@unamevechi", usernameC);
                     com2.Parameters.AddWithValue("@unamelower", usernameNou.ToLower());
                     com2.Parameters.AddWithValue("@unamenou", usernameNou);
-                    com2.ExecuteNonQuery();*/
-                    //Response.Write("Actualizare realizata cu succes!");
-                    //UsernameTaken.Attributes.Add("style", "display: none");
-                    Response.Redirect(Request.RawUrl);
-                    //Response.Write(usernameNou);
+                    com2.ExecuteNonQuery();
+                    FormsAuthentication.SetAuthCookie(usernameNou, false);
                 }
             }
-            else
-            {
-            }
             con.Close();
-        }
-        catch (Exception err)
+            Response.Redirect(Request.RawUrl);        }
+       catch (Exception err) 
         {
         }
     }
@@ -92,7 +86,17 @@ public partial class UserProfile : System.Web.UI.Page
     {
         try
         {
-
+            MembershipUser u = Membership.GetUser(User.Identity.Name);
+            if (!u.ChangePassword(OldPass.Text, NewPass.Text))
+            {
+                passErrorMessage.Attributes.Add("style", "display: block");
+            }
+            else
+            {
+                //Response.Write("parola schimbata cu succes");
+                passErrorMessage.Attributes.Add("style", "display: none");
+                Response.Redirect(Request.RawUrl);
+            }
         }
         catch (Exception err)
         {

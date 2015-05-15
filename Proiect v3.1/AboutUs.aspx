@@ -9,8 +9,8 @@
         <h2>Salut! Bine ai venit #LaOCarte!</h2>
         <p>
             Nu stii ce sa mai citesti? Ai nevoie de o mica biblioteca virtuala?<br />
-            Noi suntem aici pentru toti cititorii inraiti, pentru omuletii cu ADHD care vor 
-            sa-si tina evidenta la tot ceea ce au citit, citesc in prezent si vor sa mai citeasca 
+            Noi suntem aici pentru toti cititorii inraiti, pentru omuletii cu nevoia de organizare care vor 
+            sa-si tina evidenta la tot ceea ce au citit, citesc in prezent si vor sa mai citeasca,
             si pentru toti pasionatii si iubitorii de carti in general. <br />
             Aici veti gasi o colectie de peste 100 de carti din toate genurile, de la cei mai cunoscuti
             autori. 
@@ -31,8 +31,8 @@
             <div class="explanation2">
                 <strong>Pasul 2:</strong> <br />
                 Cauta-ti cartile preferate, adauga-le la favorite, scrie recenzii despre ele,
-                voteaza-le pe cele care care iti plac. De asemenea, Poti posta citatele tale 
-                preferate din carti iar restul lumii le poate vota.
+                voteaza-le pe cele care care iti plac. De asemenea, poti adauga cartile pe care vrei sa le citesti 
+                pe viitor sau cele pe care deja le-ai citit.
             </div>
 
             <div class="explanation3">

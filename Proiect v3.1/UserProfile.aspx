@@ -34,91 +34,80 @@
         <div class="userProfile-books">
 
         </div>
-     <!--
-        <div class="userProfile-datas">
-
-             <div class="form-group">
-                <label>Nume vechi utilizator:</label>
-                <asp:TextBox ID="OldUsername" runat="server"  CssClass="form-control" />
-             </div>
-             <asp:Button ID="btnSubmit" runat="server" Text="Schimba nume utilizator" CssClass="btn primary-button"/>
-
-             <!--
-             <div class="form-group">
-                <label class="col-sm-4 control-label">Nume nou utilizator:</label>
-                <div class="col-sm-8 input-tb">
-                    <asp:TextBox ID="NewUsername" runat="server"  CssClass="form-control" />
-                </div>
-             </div>
-
-             <div class="form-group">
-                <label class="col-sm-4 control-label">Email vechi:</label>
-                <div class="col-sm-8 input-tb">
-                    <asp:TextBox ID="OldEmail" runat="server"  CssClass="form-control" />
-                </div>
-             </div>
-
-             <div class="form-group">
-                <label class="col-sm-4 control-label">Email nou:</label>
-                <div class="col-sm-8 input-tb">
-                    <asp:TextBox ID="NewEmail" runat="server"  CssClass="form-control" />
-                </div>
-             </div>
-
-             <div class="form-group">
-                <label class="col-sm-4 control-label">Parola veche:</label>
-                <div class="col-sm-8 input-tb">
-                    <asp:TextBox ID="OldPassword" runat="server"  CssClass="form-control" />
-                </div>
-             </div>
-
-             <div class="form-group">
-                <label class="col-sm-4 control-label">Parola noua:</label>
-                <div class="col-sm-8 input-tb">
-                    <asp:TextBox ID="NewPassword" runat="server"  CssClass="form-control" />
-                </div>
-             </div>
-             </div>-->
 
 </div>
-
-<div class="modal fade" id="changePass">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title">
-                    <i class="fa fa-key"></i>
-                    Schimba parola
-                </h3>
-            </div>
-            <div class="modal-body">
+            <div class="modal fade" id="changePass">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title">
+                                <i class="fa fa-key"></i>
+                                Schimba parola
+                            </h3>
+                        </div>
+                        <div class="modal-body">
                               
-                <div class="form-group">
-                    <label>Parola veche:</label>
-                    <asp:TextBox ID="OldPass" runat="server" CssClass="form-control" type="password"></asp:TextBox> 
-                    
-                    <div class="validators">
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*"
-                        ControlToValidate="OldPass" ValidationGroup="pass" />
-                    </div> 
-                </div>                  
+                            <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+                                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                    <ContentTemplate>
+                                        <asp:ChangePassword ID="ChangePassword1" runat="server">
+    </asp:ChangePassword>
+                                    <!--
+                                        <div class="form-group">
 
-                <div class="form-group">
-                    <label>Parola Noua:</label>
-                    <asp:TextBox ID="NewPass" runat="server" CssClass="form-control" type="password"></asp:TextBox>  
 
-                    <div class="validators">
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
-                        ControlToValidate="NewPass" ValidationGroup="pass" />
-                    </div> 
-                </div>  
-                <asp:Button ID="Button3" runat="server" Text="Actualizare" CssClass="btn primary-button" ValidationGroup="pass" OnClick="submit_userPassChange"/>
+
+
+                                        
+                                            <label>Parola veche:</label>
+                                            <asp:TextBox ID="OldPass" runat="server" CssClass="form-control" type="password"></asp:TextBox> 
                     
+                                            <div class="validators">
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*"
+                                                ControlToValidate="OldPass" ValidationGroup="pass" />
+                                            </div> 
+                                        </div>                  
+
+                                        <div class="form-group">
+                                            <label>Parola noua:</label>
+                                            <asp:TextBox ID="NewPass" runat="server" CssClass="form-control" type="password"></asp:TextBox>  
+
+                                            <div class="validators">
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
+                                                ControlToValidate="NewPass" ValidationGroup="pass" />
+                                            </div> 
+                                        </div>  
+
+                                        <div class="form-group">
+                                            <label>Confirma parola:</label>
+                                            <asp:TextBox ID="NewPassRepeat" runat="server" CssClass="form-control" type="password"></asp:TextBox>  
+
+                                            <div class="validators">
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*"
+                                                ControlToValidate="NewPassRepeat" ValidationGroup="pass" />
+                                            </div> 
+                                            <div class="error-messages">
+                                                <asp:CompareValidator ID="CompareValidator1" runat="server" 
+                                                    ErrorMessage="Parolele nu corespund" ControlToCompare="NewPassRepeat" 
+                                                    ControlToValidate="NewPass" Display="Dynamic"></asp:CompareValidator>
+                                            </div>
+                                        </div>  
+
+                                        <div class="form-group">
+                                            <div class="error-messages">
+                                                <asp:Label ID="passErrorMessage" CssClass="chFailText" style="display: none;" runat="server" Text="Ceva nu a mers bine. Reincearca din nou!"></asp:Label>
+                                            </div>
+                                        </div>
+                                        <asp:Button ID="Button3" runat="server" Text="Actualizare" CssClass="btn primary-button" ValidationGroup="pass" OnClick="submit_userPassChange"/>
+                    -->
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                        </div>
+                    </div>
+                 </div>
             </div>
-        </div>
-     </div>
-</div>
+ 
 
 </asp:Content>
 
