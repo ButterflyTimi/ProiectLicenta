@@ -164,10 +164,17 @@
 	border: none;
 	.box-shadow( inset 1px 1px 20px 0px rgba(0, 0, 0, 0.1));
 	.transition( 0.3s, ease);
-	&:hover {
-		color: @brand-primary-inverse-lighter;
+	&:hover, &:focus {
+		color: @brand-primary;
 	}
 	&:focus {
 		color: white;
 	}
+}
+
+.titles {
+	font-family: Georgia, serif;
+	font-size: 38px;
+	font-style: bold;
+	color: @brand-primary;
 }

@@ -8,8 +8,10 @@
         <div class="userProfile-personalDatas">
             <div class="userProfile-picture-wrapper">
                 <div class="userProfile-picture">
-                    <asp:Image CssClass="imgUser" ID="Image1" runat="server" ImageUrl="pozeUseri/DefaultUserIcon.png" />
-                    <asp:Button ID="Button2" runat="server" Text="Schimba poza" CssClass="btn primary-button changePicture"/>
+
+                    <asp:Image CssClass="imgUser" ID="UserImage" runat="server" />
+                    <button Text="Schimba poza" class="btn primary-button changePicture">Schimba poza</button>
+                    <asp:FileUpload ID="UserProfilePicture" runat="server" ClientIDMode="Static" onchange="this.form.submit()"  CssClass="actualChangePictureButton" />
                 </div>
             </div>
 
@@ -25,9 +27,6 @@
                     </div>
                     <asp:Button ID="Button1" runat="server" Text="Actualizeaza datele" CssClass="btn primary-button" OnClick="submit_userInformation"/>
                     <asp:Label ID="changePassword" runat="server" Text="Schimba parola" CssClass="link" data-toggle="modal" data-target="#changePass"></asp:Label>
-                    <div class="error-messages">
-                        <asp:Label ID="UsernameTaken" runat="server" style="display: none;" Text="Nume utilizator deja existent!"></asp:Label>
-                    </div>
                 </div>
             </div>
         </div>
@@ -52,55 +51,8 @@
                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                     <ContentTemplate>
                                         <asp:ChangePassword ID="ChangePassword1" runat="server">
-    </asp:ChangePassword>
-                                    <!--
-                                        <div class="form-group">
-
-
-
-
-                                        
-                                            <label>Parola veche:</label>
-                                            <asp:TextBox ID="OldPass" runat="server" CssClass="form-control" type="password"></asp:TextBox> 
-                    
-                                            <div class="validators">
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*"
-                                                ControlToValidate="OldPass" ValidationGroup="pass" />
-                                            </div> 
-                                        </div>                  
-
-                                        <div class="form-group">
-                                            <label>Parola noua:</label>
-                                            <asp:TextBox ID="NewPass" runat="server" CssClass="form-control" type="password"></asp:TextBox>  
-
-                                            <div class="validators">
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
-                                                ControlToValidate="NewPass" ValidationGroup="pass" />
-                                            </div> 
-                                        </div>  
-
-                                        <div class="form-group">
-                                            <label>Confirma parola:</label>
-                                            <asp:TextBox ID="NewPassRepeat" runat="server" CssClass="form-control" type="password"></asp:TextBox>  
-
-                                            <div class="validators">
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*"
-                                                ControlToValidate="NewPassRepeat" ValidationGroup="pass" />
-                                            </div> 
-                                            <div class="error-messages">
-                                                <asp:CompareValidator ID="CompareValidator1" runat="server" 
-                                                    ErrorMessage="Parolele nu corespund" ControlToCompare="NewPassRepeat" 
-                                                    ControlToValidate="NewPass" Display="Dynamic"></asp:CompareValidator>
-                                            </div>
-                                        </div>  
-
-                                        <div class="form-group">
-                                            <div class="error-messages">
-                                                <asp:Label ID="passErrorMessage" CssClass="chFailText" style="display: none;" runat="server" Text="Ceva nu a mers bine. Reincearca din nou!"></asp:Label>
-                                            </div>
-                                        </div>
-                                        <asp:Button ID="Button3" runat="server" Text="Actualizare" CssClass="btn primary-button" ValidationGroup="pass" OnClick="submit_userPassChange"/>
-                    -->
+                                        </asp:ChangePassword>
+                                 
                                 </ContentTemplate>
                             </asp:UpdatePanel>
                         </div>

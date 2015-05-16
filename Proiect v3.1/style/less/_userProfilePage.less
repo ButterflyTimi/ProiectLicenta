@@ -20,6 +20,7 @@
 					}
 					.changePicture {
 						display: block;
+						color: @brand-primary;
 					}
 				}
 				.imgUser {
@@ -29,7 +30,8 @@
 					right: 0px;
 					top: 0px;
 					bottom: 0px;
-					//.transition( 0.3s, ease);
+					min-height: 100%;
+					min-width: 100%;
 				}
 				.changePicture {
 					display: none;
@@ -38,6 +40,19 @@
 					left: 50%;
 					margin-left: -57px;
 					.transition( 0.3s, ease);
+				}
+				.actualChangePictureButton {
+					width: 100%;
+					position: absolute;
+					left: 0px;
+					right: 0px;
+					top: 0px;
+					bottom: 0px;
+					z-index: 100;
+					opacity: 0;
+					&:hover {
+						cursor: pointer;
+					}
 				}
 			}
 		}

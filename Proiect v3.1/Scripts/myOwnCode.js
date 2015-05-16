@@ -14,11 +14,23 @@ for (var i = 0; i < ui.length; i++) {
     $(ui[i]).css("background-color", randomColor);
 }
 
+function errorMessages(messageText) {
+    $.notify({
+        // options
+        message: messageText
+    }, {
+        // settings
+        type: 'danger',
+        placement: {
+		    from: "top",
+		    align: "center"
+	    },
+    });
+}
+
 $(document).ready(function () {
 
-    $("#LoginView1_registrationButton").click(function () {
-        window.location = "RegistrationPage.aspx";
-    })
+
 
     $("#inserareAutori").click(function () {
         $("#ContentPlaceHolder1_TabelAutori").css("display", "initial");
@@ -44,6 +56,4 @@ $(document).ready(function () {
         $("#ContentPlaceHolder1_TabelEdituri").css("display", "none");
         $("#ContentPlaceHolder1_TabelGenuri").css("display", "none");
     })
-
-
 });

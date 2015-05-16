@@ -60,7 +60,7 @@ public partial class EditBooks : System.Web.UI.Page
                 int id_gen = int.Parse(DDLGen.SelectedValue);
                 string titlu = TBTitlu.Text;
                 string descriere = TBDescriere.Text;
-                descriere = descriere.Replace("(new_line)", "<br />");
+                descriere = descriere.Replace("(new_line)", "<br /><br />");
                 string sql = "UPDATE Carti SET Titlu = @Titlu, Id_Autor = @Id_Autor, Id_Gen = @Id_Gen, Text_Descriere = @Text_Descriere WHERE Id = @id";
                 SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.MDF;Integrated Security=True;User Instance=True");
                 con.Open();
