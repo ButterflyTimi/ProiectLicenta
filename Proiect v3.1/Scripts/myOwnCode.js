@@ -14,13 +14,13 @@ for (var i = 0; i < ui.length; i++) {
     $(ui[i]).css("background-color", randomColor);
 }
 
-function errorMessages(messageText) {
+function errorMessages(messageText, messageType) {
     $.notify({
         // options
         message: messageText
     }, {
         // settings
-        type: 'danger',
+        type: messageType,
         placement: {
 		    from: "top",
 		    align: "center"

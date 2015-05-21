@@ -163,7 +163,7 @@ public partial class UserProfile : System.Web.UI.Page
                 int temp = (int)com.ExecuteScalar();
                 if (temp > 0)
                 {
-                    Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Nume utilizator deja existent!');", true);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Nume utilizator deja existent!','danger');", true);
                 }
                 else
                 {

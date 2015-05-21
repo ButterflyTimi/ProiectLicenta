@@ -71,10 +71,6 @@
              <div class="form-group">
                 <div class="col-sm-8 col-sm-offset-3 validators warning-message">
 
-                    <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator23"
-                    SetFocusOnError="true" Text="Email invalid" ControlToValidate="YourEmail"
-                    ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" Display="Dynamic"
-                    ValidationGroup="save" />
                 </div>
             </div>
             <div class="form-group">

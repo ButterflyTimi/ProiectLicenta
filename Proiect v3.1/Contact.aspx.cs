@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net;
 using System.Web.Security;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 public partial class Contact : System.Web.UI.Page
 {
@@ -23,7 +25,18 @@ public partial class Contact : System.Web.UI.Page
         }
             
     }
-
+    bool IsValidEmail(string email)
+    {
+        try
+        {
+            var addr = new System.Net.Mail.MailAddress(email);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
     protected void SendMail()
     {
         // Gmail Address from where you send the mail
@@ -60,14 +73,21 @@ public partial class Contact : System.Web.UI.Page
     {
         try
         {
-            //here on button click what will done 
-            SendMail();
-            DisplayMessage.Text = "Felicitari! Mesajul a fost trimis cu succes!";
-            DisplayMessage.Visible = true;
-            YourSubject.Text = "";
-            YourEmail.Text = "";
-            YourName.Text = "";
-            Comments.Text = "";
+            var verif = YourEmail.Text.ToString();
+            if (IsValidEmail(verif))
+            {
+                SendMail();
+                YourSubject.Text = "";
+                YourEmail.Text = "";
+                YourName.Text = "";
+                Comments.Text = "";
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Felicitari! Mesajul a fost trimis cu succes!','success');", true);
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Email invalid!','danger');", true);
+            }
+            
         }
         catch (Exception) { }
     }
