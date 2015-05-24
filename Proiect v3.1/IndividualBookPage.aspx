@@ -22,7 +22,7 @@
                 <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
     
                 <div class="book-gen">
-                    <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="bookType"></asp:Label>
+                    <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="bookType gen"></asp:Label>
                     <asp:Label ID="Gen" runat="server" CssClass="bookType" Text='<%# Bind("Gen") %>'></asp:Label>
                 </div>
                 <div class="book-rating">
@@ -49,7 +49,7 @@
     
     <div class="commentsSection-wrapper">
         <div class="commentsSection">
-            <h4>Comentarii si recenzii:</h4>
+            <h3>Comentarii si recenzii:</h3>
 
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>"></asp:SqlDataSource>
             <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" Width="100%" 
@@ -58,40 +58,37 @@
             <Columns>
                 <asp:TemplateField  ItemStyle-Width="100%">
                     <ItemTemplate>
-                        <asp:Table ID="Table1" runat="server" CssClass="comentarii">
-                            <asp:TableRow ID="TableRow1" runat="server" Width="100%">
-                                <asp:TableCell ID="TableCell1" runat="server" rowspan="3" Width="10%"  style="vertical-align: top;">
-                                    <div class="userIcon">
-                                        <asp:Image ID="Image3" runat="server" ImageUrl="~/usericon.png" />
-                                    </div>
-                                </asp:TableCell>
-                                <asp:TableCell ID="TableCell2" runat="server" Width="90%">
-                                    Postat de <i><%#Eval("UserName")%></i> la <i><%#Eval("Data")%></i>:
-                                </asp:TableCell>
-                            </asp:TableRow>
+                        <div class="comment-wrapper">
+                            <div class="userIcon">
+                                <asp:Image ID="Image3" runat="server" ImageUrl='<%# "~/pozeUseri/" + ProcessImageUser(Eval("Poza_User")) %>' />
+                            </div>
 
-                            <asp:TableRow ID="TableRow33" runat="server" Width="100%">
-                                <asp:TableCell ID="TableCell3" runat="server" Width="90%">
-                                    <span class="comentariu"><%#Eval("Comentariu_Text")%>
-                                </asp:TableCell>
-                            </asp:TableRow>
-                
-                            <asp:TableRow ID="TableRow3" runat="server">
-                                <asp:TableCell ID="TableCell5" runat="server">
+
+                            <div class="text-wrapper">
+                                <div class="text">
+                                    <div class="info">
+                                        Postat de <strong><%#Eval("UserName")%></strong> la <strong><%#Eval("Data")%></strong>:
+                                    </div>
+
+                                    <div class="comentariu">
+                                        <%#Eval("Comentariu_Text")%>
+                                    </div>
+
                                     <asp:LoginView ID="LoginView2" runat="server">
                                         <RoleGroups>
                                             <asp:RoleGroup Roles="Admin">
                                                 <ContentTemplate>
+                                                    <div class="moderator">
                                                     <asp:HyperLink ID="HyperLink1" runat="server" 
-                                                    NavigateUrl='<%# "~/DeleteComm.aspx?q=" + Eval("Id") %>'>Sterge</asp:HyperLink>
+                                                    NavigateUrl='<%# "~/DeleteComm.aspx?q=" + Eval("Id") %>'>Sterge Comentariu</asp:HyperLink>
+                                                    </div>
                                                 </ContentTemplate>
                                             </asp:RoleGroup>
                                         </RoleGroups>
-                                </asp:LoginView>
-                            </asp:TableCell>
-                        </asp:TableRow>
-    
-                    </asp:Table>
+                                    </asp:LoginView>
+                                </div>
+                            </div>
+                    </div>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
@@ -100,40 +97,42 @@
         </EmptyDataTemplate>
     </asp:GridView>
 
-        </div>
     </div>
-          
+</div>
 
-         <asp:Label ID="Label13" runat="server" Text="Adaugati un comentariu:" 
-             Font-Size="Large" Font-Bold="True"></asp:Label><br />
-                
+<div class="userIcon">
+                        <asp:Image ID="ImgUserPicture" runat="server" ImageUrl="~/pozeUseri/DefaultUserIcon.png" />
+                    </div>
+
+<div class="commentsInput-wrapper">
+    <div class="commentsInput">
+
         <asp:LoginView ID="LoginView1" runat="server">
-        <AnonymousTemplate>
-                
-                <asp:Label ID="Label13" runat="server" Text="Trebuie sa va logati pentru a putea comenta" 
-             Font-Size="Medium"></asp:Label><br />
+            <AnonymousTemplate>
+                Pentru a scrie un comentariu trebuie sa fii autentificat. Click 
+                <asp:Label ID="loginButton" runat="server" Text="aici" CssClass="" data-toggle="modal" data-target="#loginModal"></asp:Label>
+                pentru a te autentifica.
+            </AnonymousTemplate>
 
-        </AnonymousTemplate>
-        <LoggedInTemplate>
+            <LoggedInTemplate>
          
-         <asp:Table ID="Table1" runat="server" style="margin: 10px;">
-         
-            <asp:TableRow ID="TableRow1" runat="server" Width="100%">
-                <asp:TableCell ID="TableCell1" runat="server" rowspan="2" Width="10%"  style="vertical-align: top;">
-                <div class="userIcon">
-                    <asp:Image ID="Image2" runat="server" ImageUrl="~/usericon.png" />
+                <div class="commentsInput-row">
+                    <div class="userIcon">
+                        <asp:Image ID="ImgUserPicture2" runat="server" ImageUrl="~/pozeUseri/DefaultUserIcon.png" />
+                    </div>
+
+                    <div class="userInputText">
+                        <asp:TextBox id="TBComentariu" TextMode="MultiLine" Rows="4" Columns="200" runat="server" placeHolder="Adauga un comentariu" CssClass="form-control" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="" ControlToValidate="TBComentariu"></asp:RequiredFieldValidator>                
+                        <asp:Button ID="Button1" runat="server" Text="Posteaza" OnClientClick="adaugareComm()" OnClick="post_comment" CssClass="btn primary-button" />
+                    </div>
                 </div>
-                </asp:TableCell>
-                 <asp:TableCell ID="TableCell2" runat="server" Width="90%">
-                    
-                     <asp:TextBox id="TBComentariu" TextMode="MultiLine" Rows="3" Columns="200" style="resize:none;" runat="server" CssClass="form-control input-lg" />
-                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="" ControlToValidate="TBComentariu"></asp:RequiredFieldValidator>                
-                    </asp:TableCell></asp:TableRow><asp:TableRow ID="TableRow2" runat="server">
-                <asp:TableCell>
-                    <asp:Button ID="Button1" runat="server" Text="Posteaza" OnClientClick="adaugareComm()" OnClick="post_comment" CssClass="ButtonPostComment" />
-                
-                </asp:TableCell></asp:TableRow></asp:Table></LoggedInTemplate></asp:LoginView>
-                
+            </LoggedInTemplate>
+        </asp:LoginView>
+    </div>
+</div>
+
+
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>">
     </asp:SqlDataSource>
     <div class="recommendation-wrapper">

@@ -85,7 +85,7 @@ public partial class Contact : System.Web.UI.Page
             }
             else
             {
-                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Email invalid!','danger');", true);
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Adresa de email invalida!','danger');", true);
             }
             
         }

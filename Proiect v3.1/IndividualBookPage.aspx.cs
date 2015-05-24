@@ -9,6 +9,17 @@ using System.Text;
 
 public partial class IndividualBookPage : System.Web.UI.Page
 {
+
+    public string ProcessImageUser(object imageUser)
+    {
+        if (imageUser == null || imageUser == DBNull.Value)
+        {
+            return "DefaultUserIcon.png";
+        }
+
+        return imageUser.ToString();
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!Page.IsPostBack)
@@ -20,18 +31,35 @@ public partial class IndividualBookPage : System.Web.UI.Page
                 {
                     q = Server.UrlDecode(q);
                     SqlDataSource1.SelectCommand = "SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Carti.Text_Descriere, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, ROUND(AVG(ISNULL(NoteDateCartilor.Nota, 0)), 0) AS MedieNote FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id LEFT JOIN NoteDateCartilor ON Carti.Id = NoteDateCartilor.Id_Carte WHERE Carti.Id = @q GROUP BY Carti.Id, Carti.Titlu, Carti.Poza_Coperta, Carti.Text_Descriere, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume";
-
                     SqlDataSource1.SelectParameters.Clear();
                     SqlDataSource1.SelectParameters.Add("q", q);
                     SqlDataSource1.DataBind();
 
 
-                    SqlDataSource2.SelectCommand = " SELECT Comentarii.Id, Comentarii.Comentariu_Text, Comentarii.Data, Comentarii.Id_Carte, aspnet_Users.UserName  FROM aspnet_Users INNER JOIN Comentarii ON aspnet_Users.UserId = Comentarii.Id_User WHERE Comentarii.Id_Carte = @q";
+                    bool check = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+                    if (check)
+                    {
+                        string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
+                        string sqlVerif = "SELECT count(*) from PozeUseri where Id_user = @IdUser";
+                        SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                        con.Open();
+                        SqlCommand com = new SqlCommand(sqlVerif, con);
+                        com.Parameters.AddWithValue("IdUser", user);
+                        int userCount = (int)com.ExecuteScalar();
+                        con.Close();
+                        if (userCount > 0)
+                        {
+                            ImgUserPicture2.ImageUrl = "~/pozeUseri/" + user + ".jpg";
+
+                        }
+                    }
+
+                    SqlDataSource2.SelectCommand = "SELECT Comentarii.Id, Comentarii.Comentariu_Text, Comentarii.Data, Comentarii.Id_Carte, aspnet_Users.UserName, PozeUseri.Poza_User FROM aspnet_Users INNER JOIN Comentarii ON aspnet_Users.UserId = Comentarii.Id_User LEFT OUTER JOIN PozeUseri ON Comentarii.Id_User = PozeUseri.Id_User WHERE Comentarii.Id_Carte = @q";
                     SqlDataSource2.SelectParameters.Clear();
                     SqlDataSource2.SelectParameters.Add("q", q);
                     SqlDataSource2.DataBind();
 
-                    SqlDataSource3.SelectCommand = "SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, Genuri.Gen FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id WHERE (Genuri.Gen = (SELECT Genuri_1.Gen FROM Genuri AS Genuri_1 INNER JOIN Carti AS Carti_1 ON Genuri_1.Id = Carti_1.Id_Gen WHERE (Carti_1.Id = @q))) AND (Carti.Id <> (SELECT Id FROM Carti AS Carti_2 WHERE (Id = @q)))";
+                    SqlDataSource3.SelectCommand = "SELECT TOP 10 Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, Genuri.Gen FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id WHERE (Genuri.Gen = (SELECT Genuri_1.Gen FROM Genuri AS Genuri_1 INNER JOIN Carti AS Carti_1 ON Genuri_1.Id = Carti_1.Id_Gen WHERE (Carti_1.Id = @q))) AND (Carti.Id <> (SELECT Id FROM Carti AS Carti_2 WHERE (Id = @q)))";
                     SqlDataSource3.SelectParameters.Clear();
                     SqlDataSource3.SelectParameters.Add("q", q);
                     SqlDataSource3.DataBind();

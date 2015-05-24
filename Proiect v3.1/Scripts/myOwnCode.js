@@ -5,14 +5,6 @@
     text = text.replace(/\r?\n/g, "(new_line)");
     comm.val(text);
 }
-var colors = ["#FFC6FF", "#FFFFFF", "#C2C9FC", "#89FFAF", "#E6FF89"];
-var ui = $(".userIcon");
-
-for (var i = 0; i < ui.length; i++) {
-    var random = Math.floor((Math.random() * 4)); ;
-    var randomColor = colors[random];
-    $(ui[i]).css("background-color", randomColor);
-}
 
 function errorMessages(messageText, messageType) {
     $.notify({

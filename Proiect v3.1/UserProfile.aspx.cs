@@ -9,11 +9,24 @@ using System.Data.SqlClient;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Reflection;
 
 public partial class UserProfile : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        try
+        {
+            if (Session["status"] != null && Session["status"].ToString().Equals("1"))
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Datele au fost actualizate cu succes!','success');", true);
+                Session.Remove("status");
+            }
+        }
+            catch (Exception err)
+            {
+
+            }
         if (!Page.IsPostBack)
         {
             try
@@ -51,7 +64,6 @@ public partial class UserProfile : System.Web.UI.Page
                         }
                         catch (Exception err)
                         {
-                            Response.Write(err);
                         }
                         con.Close();
                     }
@@ -62,7 +74,7 @@ public partial class UserProfile : System.Web.UI.Page
                 }
                 else
                 {
-                    Response.Redirect("~/Home.aspx");
+                    Response.Redirect("~/Home.aspx", false);
                 }
             }
             catch (Exception err)
@@ -82,7 +94,7 @@ public partial class UserProfile : System.Web.UI.Page
                     decimal size = Math.Round(((decimal)UserProfilePicture.PostedFile.ContentLength / (decimal)1024), 2);
                     if (size > 3500)
                     {
-                        Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Imagine prea mare! Dimensiunea maxima pentru imagine este 3,5MB.');", true);
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Imagine prea mare! Dimensiunea maxima pentru imagine este 3,5MB.', 'danger');", true);
                     }
                     else
                     {
@@ -99,7 +111,6 @@ public partial class UserProfile : System.Web.UI.Page
                             com.Parameters.AddWithValue("IdUser", user);
                             int userCount = (int)com.ExecuteScalar();
                             con.Close();
-                            //Response.Write(userCount);
                             if (userCount > 0)
                             {
                                 string sql = "UPDATE PozeUseri SET Poza_User = @Poza WHERE Id_User = @IdUser";
@@ -126,17 +137,33 @@ public partial class UserProfile : System.Web.UI.Page
                                 con.Close();
                                 UserImage.ImageUrl = "~/pozeUseri/" + urlPoza;
                             }
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Imaginea au fost actualizata cu succes!','success');", true);
+                            Session.Remove("status");
                         }
-                        Response.Redirect(Request.RawUrl, false);
+                        //Response.Redirect(Request.RawUrl);
+                        //Server.TransferRequest(Request.Url.AbsolutePath, false);
                     }
                 }
             }
             catch (Exception err)
             {
-                Response.Write(err);
             }
         }
     }
+
+    bool IsValidEmail(string email)
+    {
+        try
+        {
+            var addr = new System.Net.Mail.MailAddress(email);
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
     protected void submit_userInformation(object sender, EventArgs e)
     {
         try
@@ -144,14 +171,21 @@ public partial class UserProfile : System.Web.UI.Page
             string usernameNou = Username.Text;
             string usernameC = System.Web.Security.Membership.GetUser().UserName.ToString();
             string emailNou = Email.Text;
-
-            //Validare email?
-
             MembershipUser userInfo;
             userInfo = Membership.GetUser(User.Identity.Name);
-            userInfo.Email = emailNou;
-            Membership.UpdateUser(userInfo);
-
+            if (userInfo.Email != emailNou) 
+            {
+                if (IsValidEmail(emailNou))
+                {
+                    userInfo.Email = emailNou;
+                    Membership.UpdateUser(userInfo);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Datele au fost actualizate cu succes!','success');", true);
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Adresa de email invalida!','danger');", true);
+                }
+            }
             SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
             con.Open();
             if (usernameNou != usernameC)
@@ -174,13 +208,15 @@ public partial class UserProfile : System.Web.UI.Page
                     com2.Parameters.AddWithValue("@unamenou", usernameNou);
                     com2.ExecuteNonQuery();
                     FormsAuthentication.SetAuthCookie(usernameNou, false);
-                    Response.Redirect(Request.RawUrl);
+                    Session["status"] = "1";
+                    Response.Redirect(Request.RawUrl, false);
                 }
             }
             con.Close();
                     }
        catch (Exception err) 
         {
+            Response.Write(err);
         }
     }
 }
