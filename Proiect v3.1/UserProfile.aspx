@@ -10,7 +10,7 @@
                 <div class="userProfile-picture">
 
                     <asp:Image CssClass="imgUser" ID="UserImage" runat="server" />
-                    <button Text="Schimba poza" class="btn primary-button changePicture">Schimba poza</button>
+                    <button class="btn primary-button changePicture">Schimba poza</button>
                     <asp:FileUpload ID="UserProfilePicture" runat="server" ClientIDMode="Static" onchange="this.form.submit()"  CssClass="actualChangePictureButton" />
                 </div>
             </div>

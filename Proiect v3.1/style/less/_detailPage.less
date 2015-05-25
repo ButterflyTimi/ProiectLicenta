@@ -133,6 +133,10 @@
 	.commentsInput {
 		.make-sm-column(12);
 		margin-bottom: 25px;
+		.notLoggedInText {
+			font-size: 12px;
+			color: @brand-primary;
+		}
 		.commentsInput-row {
 			.make-row();
 			margin-left: 0;
@@ -187,15 +191,43 @@
 	.make-row();
 	.recommendation {
 		.make-sm-column(12);
+		h3 {
+			.titles;
+			padding: 5px;
+			font-size: 26px;
+			border-bottom: 1px solid @brand-neutral;
+			border-left: 10px solid @brand-neutral;
+			margin-bottom: 10px;
+		}
 		.jcarousel {
 			.make-row();
 			ul {
-				li {
-					.make-sm-column(3);
-					img {
-						display: block;
-						max-width: 100%;
-						height: auto !important;
+				a {
+					color: @brand-primary;
+					&:hover {
+						.title, .name {
+							.transition( 0.3s, ease);
+							color: @brand-primary-inverse-lighter;
+						}
+					}
+					li {
+						.make-sm-column(3);
+						text-align: center;
+						img {
+							display: block;
+							max-width: 100%;
+							height: auto !important;
+							max-height: 241px;
+						}
+						span {
+							display: block;
+							&.title {
+								font-weight: bold;
+							}
+							&.name {
+								font-style: italic;
+							}
+						}
 					}
 				}
 			}

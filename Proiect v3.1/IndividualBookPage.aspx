@@ -30,11 +30,12 @@
                         <asp:LinkButton ID="LinkButton1" CssClass="starRating" runat="server" CausesValidation="False" OnClick="bookRating">
                             <div id="stars" class="starrr" data-rating='<%# Eval("MedieNote") %>'></div>
                         </asp:LinkButton>
-
+                        <!--
                         <div class="error-messages">
                             <asp:Label ID="NotLoggedInUser" runat="server" style="display: none;" Text="Trebuie sa fiti autentificat pentru a putea vota!"></asp:Label>    
                             <asp:Label ID="AlreadyVoted" runat="server" style="display: none;" Text="Deja ati votat aceasta carte!"></asp:Label>
                         </div>
+                        -->
 	                </div>
                 </div>
                 <div class="book-description-wrapper">
@@ -100,18 +101,16 @@
     </div>
 </div>
 
-<div class="userIcon">
-                        <asp:Image ID="ImgUserPicture" runat="server" ImageUrl="~/pozeUseri/DefaultUserIcon.png" />
-                    </div>
-
 <div class="commentsInput-wrapper">
     <div class="commentsInput">
 
         <asp:LoginView ID="LoginView1" runat="server">
             <AnonymousTemplate>
+                <div class="notLoggedInText">
                 Pentru a scrie un comentariu trebuie sa fii autentificat. Click 
-                <asp:Label ID="loginButton" runat="server" Text="aici" CssClass="" data-toggle="modal" data-target="#loginModal"></asp:Label>
+                <asp:Label ID="loginButton" runat="server" class="link" Text="aici" CssClass="" data-toggle="modal" data-target="#loginModal"></asp:Label>
                 pentru a te autentifica.
+                </div>
             </AnonymousTemplate>
 
             <LoggedInTemplate>
@@ -137,23 +136,25 @@
     </asp:SqlDataSource>
     <div class="recommendation-wrapper">
         <div class="recommendation">
+
+            <h3>Din aceeasi categorie:</h3>
             <div class="jcarousel">
                 <ul>
                     <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource3">
                         <ItemTemplate>
+                            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>'>
                             <li class="jcarousel-item">
                                 <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
                                 <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
                                 <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
-
                             </li>
+                            </asp:HyperLink>
                         </ItemTemplate>
                     </asp:Repeater>
                 </ul>
             </div>
-            <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true">‹</a>
-            <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true">›</a>
-            <p class="jcarousel-pagination"></p>
+            <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"><i class="fa fa-chevron-left"></i></a>
+            <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"><i class="fa fa-chevron-right"></i></a>
         </div>
     </div>
 
@@ -167,7 +168,7 @@
                         width = carousel.innerWidth();
 
                 if (width >= 600) {
-                    width = width / 5;
+                    width = width / 6;
                 } else if (width >= 350) {
                     width = width / 2;
                 }

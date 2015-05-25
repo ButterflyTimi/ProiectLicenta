@@ -49,7 +49,7 @@ public partial class IndividualBookPage : System.Web.UI.Page
                         con.Close();
                         if (userCount > 0)
                         {
-                            ImgUserPicture2.ImageUrl = "~/pozeUseri/" + user + ".jpg";
+                            //ImgUserPicture2.ImageUrl = "~/pozeUseri/" + user + ".jpg";
 
                         }
                     }
@@ -129,8 +129,9 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     con.Close();
                     if (userCount > 0)
                     {
-                        Label mesaj1 = Repeater1.Items[0].FindControl("AlreadyVoted") as Label;
-                        mesaj1.Attributes.Add("style", "display: block");
+                        /*Label mesaj1 = Repeater1.Items[0].FindControl("AlreadyVoted") as Label;
+                        mesaj1.Attributes.Add("style", "display: block");*/
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Deja ati votat aceasta carte!','danger');", true);
                     }
                     else
                     {
@@ -151,8 +152,9 @@ public partial class IndividualBookPage : System.Web.UI.Page
                 }
                 else
                 {
-                    Label mesaj1 = Repeater1.Items[0].FindControl("NotLoggedInUser") as Label;
-                    mesaj1.Attributes.Add("style", "display: block");
+                    /*Label mesaj1 = Repeater1.Items[0].FindControl("NotLoggedInUser") as Label;
+                    mesaj1.Attributes.Add("style", "display: block");*/
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Trebuie sa fiti autentificat pentru a putea vota!','danger');", true);
                 }
             }
             catch (Exception err)

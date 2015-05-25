@@ -20,8 +20,8 @@ public partial class Contact : System.Web.UI.Page
             string email = System.Web.Security.Membership.GetUser().Email.ToString();
             YourName.Text = username;
             YourEmail.Text = email;
-            YourName.ReadOnly = true;
-            YourEmail.ReadOnly = true;
+            //YourName.ReadOnly = true;
+            //YourEmail.ReadOnly = true;
         }
             
     }

@@ -178,3 +178,50 @@
 	font-style: italic;
 	color: @brand-primary;
 }
+
+.input-placeholder (@ffamily: Arial, @size: 13px, @fstyle: italic, @toppadding: 4px, @color: #c5c5c5) {
+    &::-webkit-input-placeholder {
+      font-family: @ffamily;
+      font-size: @size;
+      font-style: @fstyle;
+      padding-top: @toppadding;
+      color: @color;
+    }
+    &:-moz-placeholder {
+      font-family: @ffamily;
+      font-size: @size;
+      font-style: @fstyle;
+      padding-top: @toppadding;
+      color: @color;
+    }
+    &::-moz-placeholder {
+      font-family: @ffamily;
+      font-size: @size;
+      font-style: @fstyle;
+      padding-top: @toppadding;
+      color: @color;
+    }
+    &:-ms-input-placeholder {
+      font-family: @ffamily;
+      font-size: @size;
+      font-style: @fstyle;
+      padding-top: @toppadding;
+      color: @color;
+    }
+}
+.input-primary-style {
+  .input-placeholder();
+  height: 36px;
+  padding: 6px 12px 6px 12px;
+  border-radius: 5px;
+  border: 1px solid #b4b4b4;
+  background-image: -webkit-linear-gradient(top, #f6f6f6, #fff);
+  background-image: -moz-linear-gradient(top, #f6f6f6, #fff);
+  background-image: -o-linear-gradient(top, #f6f6f6, #fff);
+  background-image: -ms-linear-gradient(top, #f6f6f6, #fff);
+  background-image: linear-gradient(to bottom, #f6f6f6, #fff);
+  .box-shadow(inset -1px 1px 1px rgba(1,2,2,.2));
+  &:focus, &:active, &:hover {
+    outline: none;
+  }
+}
