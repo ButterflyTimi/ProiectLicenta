@@ -162,4 +162,9 @@ public partial class IndividualBookPage : System.Web.UI.Page
             }
         }
     }
+
+    protected void userFavourite(object sender, EventArgs e)
+    {
+
+    }
 }

@@ -14,6 +14,24 @@
         <ItemTemplate>
             <div class="book-picture">
                 <asp:Image CssClass="imaginiCoperti" ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+            
+                <div class="user-buttons">
+                    <div class="favorite">         
+                        <asp:LinkButton ID="LinkButton2" CssClass="" runat="server" CausesValidation="False" OnClick="userFavourite">
+                            <asp:Image ID="Image2" runat="server" ImageUrl='~/style/img/star.jpg' />
+                        </asp:LinkButton>
+                    </div>
+                    <div class="citite-decitit">
+                        <asp:DropDownList ID="DropDownList1" runat="server">
+                            <Items>
+                               <asp:ListItem Text="Adauga la" Value="" />
+                               <asp:ListItem Text="Citite" Value="0" />
+                               <asp:ListItem Text="De citit" Value="1" />
+                           </Items>
+                        </asp:DropDownList>
+                    </div>
+                </div>
+            
             </div>
 
             <div class="book-details">
