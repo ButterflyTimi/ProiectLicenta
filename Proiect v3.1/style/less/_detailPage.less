@@ -203,17 +203,17 @@
 		.jcarousel {
 			.make-row();
 			ul {
-				a {
-					color: @brand-primary;
-					&:hover {
-						.title, .name {
-							.transition( 0.3s, ease);
-							color: @brand-primary-inverse-lighter;
+				li {
+					.make-sm-column(3);
+					text-align: center;
+					a {
+						color: @brand-primary;
+						&:hover {
+							.title, .name {
+								.transition( 0.3s, ease);
+								color: @brand-primary-inverse-lighter;
+							}
 						}
-					}
-					li {
-						.make-sm-column(3);
-						text-align: center;
 						img {
 							display: block;
 							max-width: 100%;

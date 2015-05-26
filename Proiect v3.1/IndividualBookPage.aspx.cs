@@ -59,7 +59,7 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     SqlDataSource2.SelectParameters.Add("q", q);
                     SqlDataSource2.DataBind();
 
-                    SqlDataSource3.SelectCommand = "SELECT TOP 10 Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, Genuri.Gen FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id WHERE (Genuri.Gen = (SELECT Genuri_1.Gen FROM Genuri AS Genuri_1 INNER JOIN Carti AS Carti_1 ON Genuri_1.Id = Carti_1.Id_Gen WHERE (Carti_1.Id = @q))) AND (Carti.Id <> (SELECT Id FROM Carti AS Carti_2 WHERE (Id = @q)))";
+                    SqlDataSource3.SelectCommand = "SELECT TOP 10 Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, Genuri.Gen FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id WHERE (Genuri.Gen = (SELECT Genuri_1.Gen FROM Genuri AS Genuri_1 INNER JOIN Carti AS Carti_1 ON Genuri_1.Id = Carti_1.Id_Gen WHERE (Carti_1.Id = @q))) AND (Carti.Id <> (SELECT Id FROM Carti AS Carti_2 WHERE (Id = @q))) ORDER BY NEWID()";
                     SqlDataSource3.SelectParameters.Clear();
                     SqlDataSource3.SelectParameters.Add("q", q);
                     SqlDataSource3.DataBind();
