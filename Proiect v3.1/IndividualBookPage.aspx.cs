@@ -22,6 +22,18 @@ public partial class IndividualBookPage : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        try
+        {
+            if (Session["status"] != null && Session["status"].ToString().Equals("1"))
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Multumim! Votul tau a fost inregistrat','success');", true);
+                Session.Remove("status");
+            }
+        }
+        catch (Exception err)
+        {
+
+        }
         if (!Page.IsPostBack)
         {
             string q = Request.Params["q"];
@@ -49,8 +61,8 @@ public partial class IndividualBookPage : System.Web.UI.Page
                         con.Close();
                         if (userCount > 0)
                         {
-                            //ImgUserPicture2.ImageUrl = "~/pozeUseri/" + user + ".jpg";
-
+                            Image imagine = LoginView1.FindControl("ImgUserPicture2") as Image;
+                            imagine.ImageUrl = "~/pozeUseri/" + user + ".jpg";
                         }
                     }
 
@@ -100,7 +112,8 @@ public partial class IndividualBookPage : System.Web.UI.Page
                 com.Parameters.AddWithValue("Id_Carte", idCarte);
                 com.ExecuteNonQuery();
                 con.Close();
-                Response.Redirect(Request.RawUrl);
+                Session.Remove("status");
+                Response.Redirect(Request.RawUrl, false);
             }
             catch (Exception err)
             {
@@ -132,6 +145,7 @@ public partial class IndividualBookPage : System.Web.UI.Page
                         /*Label mesaj1 = Repeater1.Items[0].FindControl("AlreadyVoted") as Label;
                         mesaj1.Attributes.Add("style", "display: block");*/
                         Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Deja ati votat aceasta carte!','danger');", true);
+                        Session.Remove("status");
                     }
                     else
                     {
@@ -147,14 +161,14 @@ public partial class IndividualBookPage : System.Web.UI.Page
                         com.Parameters.AddWithValue("Nota", nota);
                         com.ExecuteNonQuery();
                         con.Close();
-                        Response.Redirect(Request.RawUrl);
+                        Session["status"] = "1";
+                        Response.Redirect(Request.RawUrl, false);
                     }
                 }
                 else
                 {
-                    /*Label mesaj1 = Repeater1.Items[0].FindControl("NotLoggedInUser") as Label;
-                    mesaj1.Attributes.Add("style", "display: block");*/
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Trebuie sa fiti autentificat pentru a putea vota!','danger');", true);
+                    Session.Remove("status");
                 }
             }
             catch (Exception err)
@@ -165,6 +179,148 @@ public partial class IndividualBookPage : System.Web.UI.Page
 
     protected void userFavourite(object sender, EventArgs e)
     {
+        string q = Request.Params["q"];
+        if (q != null)
+        {
+            try
+            {
+                bool userCheck = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+                if (userCheck) //verificare daca user-ul este autentificat
+                {
+                    string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
+                    string sqlVerif = "SELECT count(*) from CartiFavorite where Id_user = @IdUser and Id_Carte = @IdCarte";
+                    SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                    con.Open();
+                    SqlCommand com = new SqlCommand(sqlVerif, con);
+                    com.Parameters.AddWithValue("IdUser", user);
+                    com.Parameters.AddWithValue("IdCarte", q);
+                    int userCount = (int)com.ExecuteScalar();
+                    con.Close();
+                    if (userCount > 0)
+                    {
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Cartea exista deja la favorite!','danger');", true);
+                    }
+                    else
+                    {
+                        string sql = "INSERT INTO CartiFavorite (Id_Carte, Id_User) VALUES (@Id_Carte, @Id_User)";
+                        con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                        con.Open();
+                        com = new SqlCommand(sql, con);
 
+                        int idCarte = Int32.Parse(Request.Params["q"]);
+                        com.Parameters.AddWithValue("Id_Carte", idCarte);
+                        com.Parameters.AddWithValue("Id_User", user);
+                        com.ExecuteNonQuery();
+                        con.Close();
+                        Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Cartea a fost adaugata cu succes la favorite!','success');", true);
+                    }
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Trebuie sa fiti autentificat pentru aceasta actiune!','danger');", true);
+                }
+                Session.Remove("status");
+            }
+            catch (Exception err)
+            {
+            }
+        }
+    }
+    protected void selectChanged(object sender, EventArgs e)
+    {
+        string q = Request.Params["q"];
+        if (q != null)
+        {
+            try
+            {
+                bool userCheck = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+                if (userCheck) //verificare daca user-ul este autentificat
+                {
+                    string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
+                    DropDownList list = Repeater1.Items[0].FindControl("SelectList") as DropDownList;
+                    string sqlVerif="";
+                    SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                    con.Open();
+                    SqlCommand com;
+                    if (list.SelectedValue == "citite")
+                    {
+                        sqlVerif = "SELECT count(*) from CartiCitite where Id_user = @IdUser and Id_Carte = @IdCarte";
+                        com = new SqlCommand(sqlVerif, con);
+                        com.Parameters.AddWithValue("IdUser", user);
+                        com.Parameters.AddWithValue("IdCarte", q);
+                        int userCount = (int)com.ExecuteScalar();
+                        if (userCount > 0)
+                        {
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Cartea exista in categoria selectata!','danger');", true);
+                        }
+                        else
+                        {
+                            sqlVerif = "SELECT count(*) from CartiDeCitit where Id_user = @IdUser and Id_Carte = @IdCarte";
+                            com = new SqlCommand(sqlVerif, con);
+                            com.Parameters.AddWithValue("IdUser", user);
+                            com.Parameters.AddWithValue("IdCarte", q);
+                            int move = (int)com.ExecuteScalar();
+                            if (move > 0)
+                            {
+                                sqlVerif = "DELETE FROM CartiDeCitit WHERE Id_Carte=@IdCarte AND Id_User=@IdUser";
+                                com = new SqlCommand(sqlVerif, con);
+                                com.Parameters.AddWithValue("IdUser", user);
+                                com.Parameters.AddWithValue("IdCarte", q);
+                                com.ExecuteNonQuery();
+                            }
+                            string sql = "INSERT INTO CartiCitite (Id_Carte, Id_User) VALUES (@IdCarte, @IdUser)";
+                            com = new SqlCommand(sql, con);
+                            com.Parameters.AddWithValue("IdUser", user);
+                            com.Parameters.AddWithValue("IdCarte", q);
+                            com.ExecuteNonQuery();
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Cartea a fost adaugata cu succes in categoria selectata!','success');", true);
+                        }
+                    }
+                    else if (list.SelectedValue == "decitit")
+                    {
+                        sqlVerif = "SELECT count(*) from CartiDeCitit where Id_user = @IdUser and Id_Carte = @IdCarte";
+                        com = new SqlCommand(sqlVerif, con);
+                        com.Parameters.AddWithValue("IdUser", user);
+                        com.Parameters.AddWithValue("IdCarte", q);
+                        int userCount = (int)com.ExecuteScalar();
+                        if (userCount > 0)
+                        {
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Cartea exista in categoria selectata!','danger');", true);
+                        }
+                        else
+                        {
+                            sqlVerif = "SELECT count(*) from CartiCitite where Id_user = @IdUser and Id_Carte = @IdCarte";
+                            com = new SqlCommand(sqlVerif, con);
+                            com.Parameters.AddWithValue("IdUser", user);
+                            com.Parameters.AddWithValue("IdCarte", q);
+                            int move = (int)com.ExecuteScalar();
+                            if (move > 0)
+                            {
+                                sqlVerif = "DELETE FROM CartiCitite WHERE Id_Carte=@IdCarte AND Id_User=@IdUser";
+                                com = new SqlCommand(sqlVerif, con);
+                                com.Parameters.AddWithValue("IdUser", user);
+                                com.Parameters.AddWithValue("IdCarte", q);
+                                com.ExecuteNonQuery();
+                            }
+                            string sql = "INSERT INTO CartiDeCitit (Id_Carte, Id_User) VALUES (@IdCarte, @IdUser)";
+                            com = new SqlCommand(sql, con);
+                            com.Parameters.AddWithValue("IdUser", user);
+                            com.Parameters.AddWithValue("IdCarte", q);
+                            com.ExecuteNonQuery();
+                            Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Cartea a fost adaugata cu succes in categoria selectata!','success');", true);
+                        }
+                    }
+                    con.Close();
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Trebuie sa fiti autentificat pentru aceasta actiune!','danger');", true);
+                }
+            }
+            catch (Exception err)
+            {
+                Response.Write(err);
+            }
+        }    
     }
 }

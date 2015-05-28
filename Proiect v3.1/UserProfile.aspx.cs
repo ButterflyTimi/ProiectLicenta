@@ -71,6 +71,23 @@ public partial class UserProfile : System.Web.UI.Page
                     {
                         UserImage.Attributes["src"] = "pozeUseri/DefaultUserIcon.png";
                     }
+
+                    string userId = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
+
+                    SqlDataSource3.SelectCommand = "SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, Genuri.Gen FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id INNER JOIN CartiFavorite ON Carti.Id = CartiFavorite.Id_Carte WHERE CartiFavorite.Id_User = @user";
+                    SqlDataSource3.SelectParameters.Clear();
+                    SqlDataSource3.SelectParameters.Add("user", userId);
+                    SqlDataSource3.DataBind();
+
+                    SqlDataSource4.SelectCommand = "SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, Genuri.Gen FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id INNER JOIN CartiDeCitit ON Carti.Id = CartiDeCitit.Id_Carte WHERE CartiDeCitit.Id_User = @user";
+                    SqlDataSource4.SelectParameters.Clear();
+                    SqlDataSource4.SelectParameters.Add("user", userId);
+                    SqlDataSource4.DataBind();
+
+                    SqlDataSource5.SelectCommand = "SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, Genuri.Gen FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id INNER JOIN CartiCitite ON Carti.Id = CartiCitite.Id_Carte WHERE CartiCitite.Id_User = @user";
+                    SqlDataSource5.SelectParameters.Clear();
+                    SqlDataSource5.SelectParameters.Add("user", userId);
+                    SqlDataSource5.DataBind();
                 }
                 else
                 {

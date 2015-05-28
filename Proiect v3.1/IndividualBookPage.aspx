@@ -17,16 +17,15 @@
             
                 <div class="user-buttons">
                     <div class="favorite">         
-                        <asp:LinkButton ID="LinkButton2" CssClass="" runat="server" CausesValidation="False" OnClick="userFavourite">
-                            <asp:Image ID="Image2" runat="server" ImageUrl='~/style/img/star.jpg' />
+                        <asp:LinkButton ID="FavouriteLink" CssClass="star" runat="server" CausesValidation="False" OnClick="userFavourite">
                         </asp:LinkButton>
                     </div>
                     <div class="citite-decitit">
-                        <asp:DropDownList ID="DropDownList1" runat="server">
+                        <asp:DropDownList ID="SelectList" runat="server" AutoPostBack="true" OnSelectedIndexChanged="selectChanged">
                             <Items>
-                               <asp:ListItem Text="Adauga la" Value="" />
-                               <asp:ListItem Text="Citite" Value="0" />
-                               <asp:ListItem Text="De citit" Value="1" />
+                               <asp:ListItem Text="Adauga la:" Value="" />
+                               <asp:ListItem Text="Citite" Value="citite" />
+                               <asp:ListItem Text="De citit" Value="decitit" />
                            </Items>
                         </asp:DropDownList>
                     </div>
@@ -48,12 +47,6 @@
                         <asp:LinkButton ID="LinkButton1" CssClass="starRating" runat="server" CausesValidation="False" OnClick="bookRating">
                             <div id="stars" class="starrr" data-rating='<%# Eval("MedieNote") %>'></div>
                         </asp:LinkButton>
-                        <!--
-                        <div class="error-messages">
-                            <asp:Label ID="NotLoggedInUser" runat="server" style="display: none;" Text="Trebuie sa fiti autentificat pentru a putea vota!"></asp:Label>    
-                            <asp:Label ID="AlreadyVoted" runat="server" style="display: none;" Text="Deja ati votat aceasta carte!"></asp:Label>
-                        </div>
-                        -->
 	                </div>
                 </div>
                 <div class="book-description-wrapper">

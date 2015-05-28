@@ -17,10 +17,26 @@
 			margin-top: 15px;
 			.favorite {
 				.make-xs-column(3);
-				img {
+				.star {
+					display: block;
+					position: relative;
+					width: 100%;
 					height: 40px;
+					background-image: url('../img/star.jpg');
+					background-size: contain;
+					background-repeat: no-repeat;
+					.transition( 0.3s, ease);
 					&:hover {
-						zoom:
+						background-image: url('../img/star2.jpg');
+						&:before {
+							content: 'Adauga la favorite';
+							.titles;
+							font-size: 10px;
+							width: 100px;
+							position: absolute;
+							bottom: -15px;
+							left: -17px;
+						}
 					}
 				}
 			}
@@ -228,38 +244,6 @@
 			border-bottom: 1px solid @brand-neutral;
 			border-left: 10px solid @brand-neutral;
 			margin-bottom: 10px;
-		}
-		.jcarousel {
-			.make-row();
-			ul {
-				li {
-					.make-sm-column(3);
-					text-align: center;
-					a {
-						color: @brand-primary;
-						&:hover {
-							.title, .name {
-								.transition( 0.3s, ease);
-								color: @brand-primary-inverse-lighter;
-							}
-						}
-						img {
-							display: block;
-							max-width: 100%;
-							height: 241px!important;
-						}
-						span {
-							display: block;
-							&.title {
-								font-weight: bold;
-							}
-							&.name {
-								font-style: italic;
-							}
-						}
-					}
-				}
-			}
 		}
 	}
 }

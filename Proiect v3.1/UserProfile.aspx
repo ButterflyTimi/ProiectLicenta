@@ -32,7 +32,81 @@
         </div>
         <div class="userProfile-books">
 
+        <div class="categories-wrapper">
+
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>">
+            </asp:SqlDataSource>
+            <div class="favourites">
+                <h3>Carti favorite</h3>
+                <div class="jcarousel">
+                    <ul>
+                        <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource3">
+                            <ItemTemplate>
+                                <li class="jcarousel-item">
+                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>'>
+                                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
+                                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
+                                    </asp:HyperLink>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </ul>
+                </div>
+                <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"><i class="fa fa-chevron-left"></i></a>
+                <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"><i class="fa fa-chevron-right"></i></a>
+        
+            </div>
+
+            <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>">
+            </asp:SqlDataSource>
+            <div class="deCitit">
+                <h3>Carti de citit</h3>
+                <div class="jcarousel">
+                    <ul>
+                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource4">
+                            <ItemTemplate>
+                                <li class="jcarousel-item">
+                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>'>
+                                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
+                                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
+                                    </asp:HyperLink>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </ul>
+                </div>
+                <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"><i class="fa fa-chevron-left"></i></a>
+                <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"><i class="fa fa-chevron-right"></i></a>
+        
+            </div>
+
+            <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>">
+            </asp:SqlDataSource>
+            <div class="citite">
+                <h3>Carti citite</h3>
+                <div class="jcarousel">
+                    <ul>
+                        <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSource5">
+                            <ItemTemplate>
+                                <li class="jcarousel-item">
+                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>'>
+                                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
+                                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
+                                    </asp:HyperLink>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </ul>
+                </div>
+                <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"><i class="fa fa-chevron-left"></i></a>
+                <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"><i class="fa fa-chevron-right"></i></a>
+        
+            </div>
         </div>
+    </div>
 
 </div>
             <div class="modal fade" id="changePass">
@@ -60,6 +134,59 @@
                  </div>
             </div>
  
+
+ <script type="text/javascript">
+     (function ($) {
+         $(function () {
+             var jcarousel = $('.jcarousel');
+
+             jcarousel.on('jcarousel:reload jcarousel:create', function () {
+                 var carousel = $(this),
+                        width = carousel.innerWidth();
+
+                 if (width >= 600) {
+                     width = width / 4;
+                 } else if (width >= 350) {
+                     width = width / 2;
+                 }
+
+                 carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
+             })
+            .jcarousel({
+                items: '.jcarousel-item',
+                transitions: true
+
+            });
+
+             $('.jcarousel-control-prev')
+            .jcarouselControl({
+                target: '-=1'
+            });
+
+             $('.jcarousel-control-next')
+            .jcarouselControl({
+                target: '+=1'
+            });
+
+             $('.jcarousel-pagination')
+            .on('jcarouselpagination:active', 'a', function () {
+                $(this).addClass('active');
+            })
+            .on('jcarouselpagination:inactive', 'a', function () {
+                $(this).removeClass('active');
+            })
+            .on('click', function (e) {
+                e.preventDefault();
+            })
+            .jcarouselPagination({
+                perPage: 1,
+                item: function (page) {
+                    return '<a href="#' + page + '">' + page + '</a>';
+                }
+            });
+         });
+     })(jQuery);
+    </script>
 
 </asp:Content>
 
