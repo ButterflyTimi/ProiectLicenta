@@ -4,6 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
+<asp:CheckBoxList ID="CheckBoxGen"runat="server"></asp:CheckBoxList>
+<asp:CheckBoxList ID="CheckBoxList1"runat="server"></asp:CheckBoxList>
+
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
         SelectCommand="SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Text_Descriere, Carti.Poza_Coperta, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor FROM Autori INNER JOIN Genuri INNER JOIN Carti ON Genuri.Id = Carti.Id_Gen ON Autori.Id = Carti.Id_Autor">
@@ -12,24 +15,31 @@
 <div class="books-wrapper">
 
     <div class="filtre">
-        <h3>Filtre:</h3>
+        <h3>Genuri</h3>
         <div class="genuri">
+        
+            <asp:CheckBoxList ID="CheckBoxGen2" runat="server" AutoPostBack="true" EnableViewState="true" 
+            onselectedindexchanged="Select_Gen">
+
             <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
                 ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
-                SelectCommand="SELECT Genuri.Gen, COUNT(*) AS NumarGenuri 
+                SelectCommand="SELECT Genuri.Gen, Genuri.Id, COUNT(*) AS NumarGenuri 
                                 FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id 
-                                GROUP BY Genuri.Gen">
+                                GROUP BY Genuri.Gen, Genuri.Id">
             </asp:SqlDataSource>
 
             <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource3">
                 <ItemTemplate>
-                    <asp:CheckBox ID="Genuri" runat="server" CssClass="numeAutor" Text='<%# Eval("Gen") %>' />
+                    <asp:CheckBox ID="Genuri" runat="server" CssClass="numeAutor"  Text='<%# Eval("Gen") %>' 
+                    AutoPostBack="true" EnableViewState="true" onselectedindexchanged="Select_Gen"/>
+                    <asp:HiddenField ID="GenId" runat="server" Value='<%# Eval("Id") %>'/>
                     (<asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("NumarGenuri") %>' />)
                     <br />
                 </ItemTemplate>
             </asp:Repeater>
         </div>
         
+        <h3>Autori</h3>
         <div class="autori">
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
                 ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
