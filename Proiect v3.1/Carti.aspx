@@ -1,5 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master"  %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Carti.aspx.cs" Inherits="Carti" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>
@@ -9,6 +8,64 @@
         ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
         SelectCommand="SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Text_Descriere, Carti.Poza_Coperta, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor FROM Autori INNER JOIN Genuri INNER JOIN Carti ON Genuri.Id = Carti.Id_Gen ON Autori.Id = Carti.Id_Autor">
     </asp:SqlDataSource>
+
+<div class="books-wrapper">
+
+    <div class="filtre">
+        <h3>Filtre:</h3>
+        <div class="genuri">
+            <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
+                SelectCommand="SELECT Genuri.Gen, COUNT(*) AS NumarGenuri 
+                                FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id 
+                                GROUP BY Genuri.Gen">
+            </asp:SqlDataSource>
+
+            <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource3">
+                <ItemTemplate>
+                    <asp:CheckBox ID="Genuri" runat="server" CssClass="numeAutor" Text='<%# Eval("Gen") %>' />
+                    (<asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("NumarGenuri") %>' />)
+                    <br />
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
+        
+        <div class="autori">
+            <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
+                SelectCommand="SELECT Autori.Prenume +' '+Autori.Nume AS NumeAutor, COUNT(*) AS NumarAutori 
+                                FROM Autori INNER JOIN Carti ON Autori.Id = Carti.Id_Autor 
+                                GROUP BY Autori.Prenume,Autori.Nume">
+            </asp:SqlDataSource>
+
+            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2">
+                <ItemTemplate>
+                    <asp:CheckBox ID="NumeAutor" runat="server" CssClass="numeAutor" Text='<%# Eval("NumeAutor") %>' />
+                    (<asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("NumarAutori") %>' />)
+                    <br />
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
+    </div>
+    <div class="carti">
+        <div class="carti-grid-wrapper">
+            <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSource1">
+                <ItemTemplate>
+                    <div class="carti-grid">
+
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>'>
+                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
+                        </asp:HyperLink>
+
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+        </div>
+    </div>
+</div>
+
 
 <div class="carti-wrapper-grid1">
     <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1" 
@@ -40,31 +97,6 @@
 
 </div>
 
-<div class="carti-wrapper-grid2">
-        <asp:DataList ID="DataList2" runat="server" DataSourceID="SqlDataSource1" 
-        DataKeyField="CartiId">
-        <ItemTemplate>
-        <div class="row">
-            <div class="col-sm-4">
-                    <asp:Image CssClass="imaginiCoperti" ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
-            </div>
-            <div class="col-sm-8">
-                <h4>
-                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("CartiTitlu") %>' />
-                </h4>
-                <h5>
-                    <asp:Label ID="NumeAutorLabel" runat="server" Text='<%# Eval("NumeAutor") %>' />
-                </h5>
-                <small>
-                    Gen: <asp:Label ID="GenLabel" runat="server" Text='<%# Eval("Gen") %>' />
-                </small>
-            </div>
-        </div>
-                
-        </ItemTemplate>
-
-        </asp:DataList>
-</div>
 
 </asp:Content>
 

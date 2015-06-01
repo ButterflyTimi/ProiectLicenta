@@ -1,4 +1,65 @@
-﻿.carti-wrapper-grid1 {
+﻿.books-wrapper {
+	.make-row();
+	.filtre {
+		.make-sm-column(3);
+		h3 {
+			.titles;
+			padding: 5px;
+			font-size: 26px;
+			border-bottom: 1px solid @brand-neutral;
+			border-left: 10px solid @brand-neutral;
+			margin-bottom: 10px;
+		}
+		.autori {
+			max-height: 400px;
+			overflow: scroll;
+			.numeAutor {
+				font-size: 12px;
+				
+			}
+		}
+	}
+	.carti {
+		.make-sm-column(9);
+		.carti-grid-wrapper {
+			.make-row();
+			@media (min-width: @screen-sm) {
+				margin-left: 0px;
+				border-left: 1px solid @brand-primary;
+			}
+			.carti-grid {
+				.make-sm-column(3);
+				text-align: center;
+				height: 360px!important;
+				a {
+					color: @brand-primary;
+					&:hover {
+						.title, .name {
+							.transition( 0.3s, ease);
+							color: @brand-primary-inverse-lighter;
+						}
+					}
+					img {
+						display: block;
+						max-width: 100%;
+						height: 241px!important;
+					}
+					span {
+						display: block;
+						&.title {
+							font-weight: bold;
+						}
+						&.name {
+							font-style: italic;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.carti-wrapper-grid1 {
 	table {
 		tr {
 			.make-row();

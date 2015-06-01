@@ -1,7 +1,3 @@
--rating carte (design, implementare + baza de date)
-
--in partea de jos a paginii, ultimele 5 carti adaugate
-
 -pe homepage, cele mai populare carti (pe baza rating-ului)
 
 -------------------
@@ -13,13 +9,6 @@ Paleta culori:
 http://www.colourlovers.com/palette/723615/clairedelune
 + un gri deschis pentru hover butoane
 
------LOGIN MODAL-ul
-Cand este eroare de login da refresh la pagina si dispare modalul... trebuie sa dai click din nou pe login ca sa vezi mesajul de eroare
-
------------- Carousel
-Cate 3-4 li-uri pe item active
-cu diferite genuri
-la carousel-caption scriu genul
 
 http://sorgalla.com/jcarousel/docs/plugins/autoscroll/
 
@@ -28,3 +17,5 @@ Pentru Rating:
 http://bootsnipp.com/snippets/featured/font-awesome-star-ratings
 
 http://bootsnipp.com/snippets/featured/font-awesome-star-ratings
+
+https://webthinker.wordpress.com/2007/11/21/aspnet-membership-schema/
