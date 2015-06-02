@@ -12,6 +12,30 @@ public partial class InsertDatas : System.Web.UI.Page
     {
 
     }
+    protected void submit_editura(object sender, EventArgs e)
+    {
+        try
+        {
+            string ed = TBEditura.Text; //da
+            string link = TBLinkEditura.Text; //da
+            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+            con.Open();
+
+
+
+            string sql = "INSERT INTO EDITURI (EDITURA, SITE_EDITURA) VALUES (@nume, @link)";
+            SqlCommand com = new SqlCommand(sql, con);
+            com.Parameters.AddWithValue("nume", ed);
+            com.Parameters.AddWithValue("link", link);
+            com.ExecuteNonQuery();
+            con.Close();
+            Response.Redirect(Request.RawUrl);
+        }
+        catch (Exception err)
+        {
+            ErrorLabel.Text = ErrorLabel.Text + err;
+        }
+    }
     protected void submit_autor(object sender, EventArgs e)
     {
         try
@@ -85,6 +109,27 @@ public partial class InsertDatas : System.Web.UI.Page
                 con.Close();
                 Response.Redirect(Request.RawUrl);
             }
+        }
+        catch (Exception err)
+        {
+            ErrorLabel.Text = ErrorLabel.Text + err;
+        }
+    }
+    protected void submit_carteEditura(object sender, EventArgs e)
+    {
+        try
+        {
+            int id_carte = int.Parse(DDLCarte.SelectedValue);
+            int id_editura = int.Parse(DDLEditura.SelectedValue);
+            string sql = "INSERT INTO CartiApartinDeEdituri (ID_CARTE, ID_EDITURA) VALUES (@ID_CARTE, @ID_EDITURA)";
+            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+            con.Open();
+            SqlCommand com = new SqlCommand(sql, con);
+            com.Parameters.AddWithValue("ID_CARTE", id_carte);
+            com.Parameters.AddWithValue("ID_EDITURA", id_editura);
+            com.ExecuteNonQuery();
+            con.Close();
+            Response.Redirect(Request.RawUrl);
         }
         catch (Exception err)
         {

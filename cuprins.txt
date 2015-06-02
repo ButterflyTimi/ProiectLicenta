@@ -1,22 +1,29 @@
-uite cuprinsul Capitolul 1. Introducere	3
+Capitolul 1. Introducere	3
 Capitolul 2. Contextul curent	5
 2.1 Aplicatii web	5
 2.2 Definirea problemei	6
 2.3 Modelele teoretice	7
 2.4 Solutii existente vs solutie propusa	8
+
+
 Capitolul 3. Tehnologii utilizate în implementarea aplicatiei	12
 3.1 Baze de date	12
+
 3.2 Tehnologii utilizate in proiectarea si design-ul site-urilor Web	15
 3.2.1 HTML	15
 3.2.2 CSS	16
 3.2.3 JavaScript	16
+
 3.3 Pagini Web dinamice	17
 3.3.1 Pagini web dinamice client-side	18
 3.3.2 Pagini web dinamice server-side	18
+
 3.4 Tehnologia .NET	19
 3.5 Limbajul C#	20
+
 3.5.1 Introducere	20
 3.5.2 Avantaje	21
+
 3.6 Programarea web utilizând ASP.NET	21
 3.6.1 Introducere	21
 3.6.2 Structura unei paigini ASP.NET	22
