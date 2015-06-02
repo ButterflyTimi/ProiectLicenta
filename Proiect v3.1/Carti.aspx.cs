@@ -15,7 +15,7 @@ public partial class Carti : System.Web.UI.Page
         {
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                /*SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
                 con.Open();
                 string sql = "SELECT Genuri.Gen, Genuri.Id, COUNT(*) AS NumarGenuri FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id GROUP BY Genuri.Gen, Genuri.Id";
                 SqlCommand com = new SqlCommand(sql, con);
@@ -24,7 +24,7 @@ public partial class Carti : System.Web.UI.Page
                 CheckBoxGen.DataTextField = "Gen";
                 CheckBoxGen.DataSource = dr;
                 CheckBoxGen.DataBind();
-                con.Close();
+                con.Close();*/
             }
             catch (Exception err)
             {

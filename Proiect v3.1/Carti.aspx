@@ -4,9 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<asp:CheckBoxList ID="CheckBoxGen"runat="server"></asp:CheckBoxList>
-<asp:CheckBoxList ID="CheckBoxList1"runat="server"></asp:CheckBoxList>
-
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
         ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
         SelectCommand="SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Text_Descriere, Carti.Poza_Coperta, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor FROM Autori INNER JOIN Genuri INNER JOIN Carti ON Genuri.Id = Carti.Id_Gen ON Autori.Id = Carti.Id_Autor">
@@ -18,8 +15,6 @@
         <h3>Genuri</h3>
         <div class="genuri">
         
-            <asp:CheckBoxList ID="CheckBoxGen2" runat="server" AutoPostBack="true" EnableViewState="true" 
-            onselectedindexchanged="Select_Gen">
 
             <asp:SqlDataSource ID="SqlDataSource3" runat="server" 
                 ConnectionString="<%$ ConnectionStrings:ASPNETDB %>" 
