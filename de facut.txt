@@ -17,6 +17,6 @@ http://sorgalla.com/jcarousel/docs/plugins/autoscroll/
 Pentru Rating:
 http://bootsnipp.com/snippets/featured/font-awesome-star-ratings
 
-http://bootsnipp.com/snippets/featured/font-awesome-star-ratings
-
 https://webthinker.wordpress.com/2007/11/21/aspnet-membership-schema/
+
+http://devproconnections.com/aspnet/aspnet-web-security-protect-user-passwords-hashing-and-salt
