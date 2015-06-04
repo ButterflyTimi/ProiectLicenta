@@ -8,10 +8,10 @@
 
 function errorMessages(messageText, messageType) {
     $.notify({
-        // options
+        // optiuni
         message: messageText
     }, {
-        // settings
+        // setari
         type: messageType,
         placement: {
 		    from: "top",
