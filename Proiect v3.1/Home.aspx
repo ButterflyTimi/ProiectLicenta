@@ -15,12 +15,20 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        tagCloudResizeWindow();
-        $(window).resize(tagCloudResizeWindow);
+        /*tagCloudResizeWindow();
+        $(window).resize(tagCloudResizeWindow);*/
+
+        var words = $(".object").val();
+
+        var array = JSON.parse(words);
+        $('#tagCloud').jQCloud(array, {
+            colors: ["#413E4A", "#81B3B1"],
+            autoResize: true
+        });
+
 
     });
     function tagCloudResizeWindow() {
-        //$("#tagCloud").empty();
 
         $('#tagCloud').jQCloud('destroy');
         var words = $(".object").val();
@@ -29,6 +37,7 @@
 
         $('#tagCloud').jQCloud(array, {
             colors: ["#413E4A", "#81B3B1"],
+            autoResize: true
         });
         
     }
