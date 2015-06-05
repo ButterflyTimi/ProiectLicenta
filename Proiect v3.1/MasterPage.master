@@ -12,11 +12,12 @@
     <script type="text/javascript" src="Scripts/jquery-2.1.1.js"></script>
     <script type="text/javascript" src="Scripts/jquery.jcarousel.js"></script>
     <script type="text/javascript" src="Scripts/bootstrap-notify.js"></script>
+    <script type="text/javascript" src="Scripts/jqcloud.js"></script>
     <!--Bootstrat CSS-->
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="Content/animate.css">
     <link rel="stylesheet" type="text/css" href="style/css/main.css">
-
+    <link rel="stylesheet" type="text/css" href="style/css/jqcloud.css">
 
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
