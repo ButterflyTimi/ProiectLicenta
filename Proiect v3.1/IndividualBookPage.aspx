@@ -34,7 +34,7 @@
             </div>
 
             <div class="book-details">
-                <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
+                <asp:Label ID="Label1" runat="server" Text='<%# Eval("CartiTitlu") %>' CssClass="title"></asp:Label>
                 de 
                 <asp:HyperLink ID="HyperLink2" runat="server" CssClass="link" NavigateUrl='<%# "~/Search.aspx?q=" + Eval("NumeAutor") %>'>
                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
@@ -43,7 +43,7 @@
                 <div class="book-gen">
                     <asp:Label ID="Label6" runat="server" Text="Gen: " CssClass="bookType gen"></asp:Label>
                     <asp:HyperLink ID="HyperLink1" runat="server" CssClass="link" NavigateUrl='<%# "~/Search.aspx?q=" + Eval("Gen") %>'>
-                        <asp:Label ID="Gen" runat="server" CssClass="bookType" Text='<%# Bind("Gen") %>'></asp:Label>
+                        <asp:Label ID="Gen" runat="server" CssClass="bookType" Text='<%# Eval("Gen") %>'></asp:Label>
                     </asp:HyperLink>
                 </div>
                 <div class="book-rating">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="book-description-wrapper">
                     <div class="book-description">
-                        <asp:Label ID="Label4" CssClass="description" runat="server" Text='<%# Bind("Text_Descriere") %>'></asp:Label>
+                        <asp:Label ID="Label4" CssClass="description" runat="server" Text='<%# Eval("Text_Descriere") %>'></asp:Label>
                     </div>
                 </div>
             </div>

@@ -71,7 +71,7 @@
     </div>
 </div>
 
-
+<!--
 <div class="carti-wrapper-grid1">
     <asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSource1" 
         DataKeyField="CartiId" RepeatColumns="4" RepeatDirection="Horizontal" Width="100%">
@@ -100,7 +100,7 @@
         </ItemTemplate>
     </asp:DataList>
 
-</div>
+</div>-->
 
 
 </asp:Content>
