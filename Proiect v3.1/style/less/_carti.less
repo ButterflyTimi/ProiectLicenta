@@ -2,6 +2,11 @@
 	.make-row();
 	.filtre {
 		.make-sm-column(3);
+		@media (max-width: @screen-sm) {
+			margin-bottom: 15px;
+			padding-bottom: 15px;
+			border-bottom: 1px solid @brand-neutral;
+		}
 		h3 {
 			.titles;
 			font-size: 26px;
@@ -12,13 +17,20 @@
 			margin-bottom: 10px;
 		}
 		.genuri {
-			
+			label {
+				display: inline;
+				font-weight: normal;
+			}
 		}
 		.autori {
 			max-height: 400px;
 			overflow-y: scroll;
 			.numeAutor {
 				
+			}
+			label {
+				display: inline;
+				font-weight: normal;
 			}
 		}
 	}
@@ -31,7 +43,13 @@
 				border-left: 2px solid @brand-neutral;
 			}
 			.carti-grid {
-				.make-sm-column(3);
+				.make-xs-column(3);
+				@media (max-width: @screen-sm) {
+					.make-xs-column(4);
+				}
+				@media (max-width: @screen-xs) {
+					.make-xs-column(6);
+				}
 				text-align: center;
 				height: 360px!important;
 				a {

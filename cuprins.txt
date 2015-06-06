@@ -19,14 +19,14 @@ Capitolul 3. Tehnologii utilizate în implementarea aplicatiei	12
 3.3.2 Pagini web dinamice server-side	18
 
 3.4 Tehnologia .NET	19
-3.5 Limbajul C#	20
 
+3.5 Limbajul C#	20
 3.5.1 Introducere	20
 3.5.2 Avantaje	21
 
 3.6 Programarea web utilizând ASP.NET	21
 3.6.1 Introducere	21
-3.6.2 Structura unei paigini ASP.NET	22
+3.6.2 Structura unei pagini ASP.NET	22
 3.6.3 Pastrarea informatiilor în aplicatiile web	23
 3.6.4 Validarea datelor	24
 3.6.5 Securitatea în ASP.NET	24

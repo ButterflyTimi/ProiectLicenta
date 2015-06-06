@@ -13,11 +13,11 @@
         <div class="form-horizontal">
              <div class="form-group">
                 <label class="col-sm-3 control-label">Nume utilizator:</label>
-                <div class="col-sm-8 input-tb">
+                <div class="col-sm-8 col-xs-11 input-tb">
                     <asp:TextBox ID="YourName" runat="server"  CssClass="form-control" />
 
                 </div>
-                <div class="col-sm-1 validators">
+                <div class="col-sm-1 col-xs-1 validators">
 
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ErrorMessage="*"
                     ControlToValidate="YourName" ValidationGroup="save" />
@@ -27,11 +27,11 @@
 
              <div class="form-group">
                 <label class="col-sm-3 control-label">Email:</label>
-                <div class="col-sm-8 input-tb">
+                <div class="col-sm-8 col-xs-11 input-tb">
                     <asp:TextBox ID="YourEmail" runat="server" CssClass="form-control" />
 
                 </div>
-                <div class="col-sm-1 validators">
+                <div class="col-sm-1 col-xs-1 validators">
 
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="*"
                     ControlToValidate="YourEmail" ValidationGroup="save" />
@@ -40,12 +40,12 @@
              </div>
 
              <div class="form-group">
-                <label class="col-sm-3 control-label">Subiect:</label>
-                <div class="col-sm-8 input-tb">
+                <label class="col-sm-3  control-label">Subiect:</label>
+                <div class="col-sm-8 col-xs-11 input-tb">
                     <asp:TextBox ID="YourSubject" runat="server" CssClass="form-control"/>
 
                 </div>
-                <div class="col-sm-1 validators">
+                <div class="col-sm-1 col-xs-1 validators">
 
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="*"
                     ControlToValidate="YourSubject" ValidationGroup="save" />
@@ -55,12 +55,12 @@
 
              <div class="form-group">
                 <label class="col-sm-3 control-label">Mesaj/Intrebare:</label>
-                <div class="col-sm-8 input-tb">
+                <div class="col-sm-8 col-xs-11 input-tb">
 
                     <asp:TextBox ID="Comments" runat="server" CssClass="form-control"
                         TextMode="MultiLine" Rows="10"/>
                 </div>
-                <div class="col-sm-1 validators">
+                <div class="col-sm-1 col-xs-1 validators">
 
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="*"
                     ControlToValidate="Comments" ValidationGroup="save" />
@@ -68,11 +68,6 @@
                 </div>
              </div>
 
-             <div class="form-group">
-                <div class="col-sm-8 col-sm-offset-3 validators warning-message">
-
-                </div>
-            </div>
             <div class="form-group">
                 <div class="col-sm-8 col-sm-offset-3">
                     <asp:Button ID="btnSubmit" runat="server" Text="Trimite" CssClass="btn primary-button"

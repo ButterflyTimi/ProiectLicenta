@@ -102,7 +102,6 @@
 			.make-row();
 			.book-description {
 				.make-sm-column(12);
-				text-align: justify;
 				.description {
 					font-size: 14px;
 					color: @brand-primary;
@@ -134,7 +133,10 @@
 			margin-right: 0;
 			margin-bottom: 15px;
 			.userIcon {
-				.make-xs-column(1);
+				.make-sm-column(2);
+				@media (max-width: @screen-sm) {
+					.make-xs-column(3);
+				}
 				overflow: hidden;
 				border: 1px solid @brand-primary-inverse-lighter;
 				padding: 0;
@@ -152,7 +154,10 @@
 				}
 			}
 			.text-wrapper {
-				.make-xs-column(11);
+				.make-sm-column(10);
+				@media (max-width: @screen-sm) {
+					.make-xs-column(9);
+				}
 				.text {
 					.make-row();
 					.info {
