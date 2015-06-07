@@ -7,6 +7,9 @@
 			padding-bottom: 15px;
 			border-bottom: 1px solid @brand-neutral;
 		}
+		@media (min-width: @screen-sm) {
+			border-right: 2px solid @brand-neutral;
+		}
 		h3 {
 			.titles;
 			font-size: 26px;
@@ -40,7 +43,9 @@
 			.make-row();
 			@media (min-width: @screen-sm) {
 				margin-left: 0px;
-				border-left: 2px solid @brand-neutral;
+			}
+			.noResultsMessage {
+				font-size: 16px;
 			}
 			.carti-grid {
 				.make-xs-column(3);
@@ -76,6 +81,24 @@
 					}
 				}
 			}
+		}
+		.paginare-wrapper {
+				.make-row();
+				.paginare {
+					.make-xs-column(12);
+					text-align: center;
+					.numerePaginare {
+						color: white;
+						font-size: 16px;
+						background-color: @brand-primary-inverse;
+						.border-radius(4px, 4px, 4px, 4px);
+						padding: 5px 10px;
+						.transition( 0.3s, ease);
+						&:hover {
+							color: @brand-primary-inverse-lighter;
+						}
+					}
+				}
 		}
 	}
 }

@@ -25,8 +25,8 @@
 
             <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource3">
                 <ItemTemplate>
-                    <asp:CheckBox ID="Genuri" runat="server" CssClass="numeAutor"  Text='<%# Eval("Gen") %>' 
-                    AutoPostBack="true" EnableViewState="true" onselectedindexchanged="Select_Gen"/>
+                    <asp:CheckBox ID="Genuri" runat="server" CssClass="numeGen"  Text='<%# Eval("Gen") %>' 
+                    AutoPostBack="true" EnableViewState="true" OnCheckedChanged="Select_Gen"/>
                     <asp:HiddenField ID="GenId" runat="server" Value='<%# Eval("Id") %>'/>
                     (<asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("NumarGenuri") %>' />)
                     <br />
@@ -45,7 +45,8 @@
 
             <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2">
                 <ItemTemplate>
-                    <asp:CheckBox ID="NumeAutor" runat="server" CssClass="numeAutor" Text='<%# Eval("NumeAutor") %>' />
+                    <asp:CheckBox ID="NumeAutor" runat="server" CssClass="numeAutor" Text='<%# Eval("NumeAutor") %>' 
+                    AutoPostBack="true" EnableViewState="true" OnCheckedChanged="Select_Autor"/>
                     (<asp:Label ID="DescriptionLabel" runat="server" Text='<%# Eval("NumarAutori") %>' />)
                     <br />
                 </ItemTemplate>
@@ -54,7 +55,7 @@
     </div>
     <div class="carti">
         <div class="carti-grid-wrapper">
-            <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSource1">
+            <asp:Repeater ID="Repeater3" runat="server">
                 <ItemTemplate>
                     <div class="carti-grid">
 
@@ -66,7 +67,21 @@
 
                     </div>
                 </ItemTemplate>
+                <FooterTemplate>
+                     <asp:Label ID="Label3"  CssClass="noResultsMessage" Visible='<%# Repeater3.Items.Count == 0 %>' runat="server" Text="Nu exista rezultate"></asp:Label>
+                </FooterTemplate>
             </asp:Repeater>
+        </div>
+        <div class="paginare-wrapper">
+            <div class="paginare">
+                <asp:Repeater ID="rptPaging" runat="server" OnItemCommand="rptPaging_ItemCommand">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnPage" CssClass="numerePaginare" CommandName="Page" CommandArgument="<%# Container.DataItem %>" runat="server">
+                            <%# Container.DataItem %>
+                        </asp:LinkButton>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </div>
         </div>
     </div>
 </div>

@@ -94,8 +94,9 @@
                                     <div class="login-buttons">
                                         <span id="loggedInText">Bine ai venit, 
                                             <asp:HyperLink ID="Link1" runat="server"  CssClass="link" NavigateUrl='~/UserProfile.aspx'>
-                                                <asp:LoginName ID="LoginName1" CssClass="link" runat="server" /></asp:HyperLink>!
-                                            <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="logOut"/>
+                                                <asp:LoginName ID="LoginName1" CssClass="link" runat="server" />
+                                            </asp:HyperLink>!
+                                            <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="logOut" LogoutAction="Redirect" LogoutPageUrl="~/Home.aspx"/>
                                         </span>
                                     </div>
                                 </ContentTemplate>
@@ -107,7 +108,7 @@
                                 <span id="loggedInText"> Bine ai venit, 
                                     <asp:HyperLink ID="Link1" runat="server"  CssClass="link" NavigateUrl='~/UserProfile.aspx'>
                                     <asp:LoginName ID="LoginName1" runat="server" /></asp:HyperLink>!
-                                    <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="logOut"/>
+                                    <asp:LoginStatus ID="LoginStatus" runat="server" CssClass="logOut"  LogoutAction="Redirect" LogoutPageUrl="~/Home.aspx"/>
                                 </span>
                             </div>
                         </LoggedInTemplate>
