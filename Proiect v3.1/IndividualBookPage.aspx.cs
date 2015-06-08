@@ -53,7 +53,7 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     {
                         string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
                         string sqlVerif = "SELECT count(*) from PozeUseri where Id_user = @IdUser";
-                        SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                        SqlConnection con = ConnectionFactory.getNewSqlConnection();
                         con.Open();
                         SqlCommand com = new SqlCommand(sqlVerif, con);
                         com.Parameters.AddWithValue("IdUser", user);
@@ -96,7 +96,7 @@ public partial class IndividualBookPage : System.Web.UI.Page
         string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
         DateTime data = DateTime.Now;
         string sql = "INSERT INTO Comentarii (Comentariu_Text, Data, Id_User, Id_Carte) VALUES (@Comentariu_Text, @Data, @Id_User, @Id_Carte)";
-        SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+        SqlConnection con = ConnectionFactory.getNewSqlConnection();
         con.Open();
         SqlCommand com = new SqlCommand(sql, con);
 
@@ -133,7 +133,7 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     //verificare daca user-ul deja a votat
                     string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
                     string sqlVerif = "SELECT count(*) from NoteDateCartilor where Id_user = @IdUser and Id_Carte = @IdCarte";
-                    SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                    SqlConnection con = ConnectionFactory.getNewSqlConnection();
                     con.Open();
                     SqlCommand com = new SqlCommand(sqlVerif, con);
                     com.Parameters.AddWithValue("IdUser", user);
@@ -151,7 +151,7 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     {
                         string nota = TBcount.Text;
                         string sql = "INSERT INTO NoteDateCartilor (Id_Carte, Nota, Id_User) VALUES (@Id_Carte, @Nota, @Id_User)";
-                        con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                        con = ConnectionFactory.getNewSqlConnection();
                         con.Open();
                         com = new SqlCommand(sql, con);
 
@@ -189,7 +189,7 @@ public partial class IndividualBookPage : System.Web.UI.Page
                 {
                     string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
                     string sqlVerif = "SELECT count(*) from CartiFavorite where Id_user = @IdUser and Id_Carte = @IdCarte";
-                    SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                    SqlConnection con = ConnectionFactory.getNewSqlConnection();
                     con.Open();
                     SqlCommand com = new SqlCommand(sqlVerif, con);
                     com.Parameters.AddWithValue("IdUser", user);
@@ -203,7 +203,7 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     else
                     {
                         string sql = "INSERT INTO CartiFavorite (Id_Carte, Id_User) VALUES (@Id_Carte, @Id_User)";
-                        con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                        con = ConnectionFactory.getNewSqlConnection();
                         con.Open();
                         com = new SqlCommand(sql, con);
 
@@ -239,7 +239,7 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     string user = System.Web.Security.Membership.GetUser().ProviderUserKey.ToString();
                     DropDownList list = Repeater1.Items[0].FindControl("SelectList") as DropDownList;
                     string sqlVerif="";
-                    SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                    SqlConnection con = ConnectionFactory.getNewSqlConnection();
                     con.Open();
                     SqlCommand com;
                     if (list.SelectedValue == "citite")

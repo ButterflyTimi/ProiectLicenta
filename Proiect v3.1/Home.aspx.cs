@@ -15,7 +15,7 @@ public partial class Home : System.Web.UI.Page
             try
             {
                 string sql = "SELECT Gen, COUNT(*) AS NumarGenuri FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id GROUP BY Genuri.Gen";
-                SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                SqlConnection con = ConnectionFactory.getNewSqlConnection();
                 con.Open();
                 SqlCommand com = new SqlCommand(sql, con);
                 SqlDataReader reader = com.ExecuteReader();

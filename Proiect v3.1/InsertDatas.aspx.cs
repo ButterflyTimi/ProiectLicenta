@@ -18,7 +18,7 @@ public partial class InsertDatas : System.Web.UI.Page
         {
             string ed = TBEditura.Text; //da
             string link = TBLinkEditura.Text; //da
-            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+            SqlConnection con = ConnectionFactory.getNewSqlConnection();
             con.Open();
 
 
@@ -42,7 +42,7 @@ public partial class InsertDatas : System.Web.UI.Page
         {
             string num = TBNume.Text; //da
             string pren = TBPrenume.Text; //da
-            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+            SqlConnection con = ConnectionFactory.getNewSqlConnection();
             con.Open();
 
             /*string sqlCheck = "SELECT NUME, PRENUME FROM AUTORI";*/
@@ -67,7 +67,7 @@ public partial class InsertDatas : System.Web.UI.Page
         {
             string g = TBGen.Text;
             string sql = "INSERT INTO GENURI (GEN) VALUES (@GEN)";
-            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+            SqlConnection con = ConnectionFactory.getNewSqlConnection();
             con.Open();
             SqlCommand com = new SqlCommand(sql, con);
             com.Parameters.AddWithValue("gen", g);
@@ -96,7 +96,7 @@ public partial class InsertDatas : System.Web.UI.Page
             {
                 FileUploadPozaCoperta.SaveAs(Server.MapPath("~") + "/pozeCoperti/" + t + ".jpg");
                 string sql = "INSERT INTO Carti (TITLU, POZA_COPERTA, ID_GEN, ID_AUTOR, TEXT_DESCRIERE) VALUES (@TITLU, @POZA, @ID_GEN, @ID_AUTOR, @TEXT_DESCRIERE)";
-                SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                SqlConnection con = ConnectionFactory.getNewSqlConnection();
                 con.Open();
                 SqlCommand com = new SqlCommand(sql, con);
                 com.Parameters.AddWithValue("TITLU", t);
@@ -122,7 +122,7 @@ public partial class InsertDatas : System.Web.UI.Page
             int id_carte = int.Parse(DDLCarte.SelectedValue);
             int id_editura = int.Parse(DDLEditura.SelectedValue);
             string sql = "INSERT INTO CartiApartinDeEdituri (ID_CARTE, ID_EDITURA) VALUES (@ID_CARTE, @ID_EDITURA)";
-            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+            SqlConnection con = ConnectionFactory.getNewSqlConnection();
             con.Open();
             SqlCommand com = new SqlCommand(sql, con);
             com.Parameters.AddWithValue("ID_CARTE", id_carte);

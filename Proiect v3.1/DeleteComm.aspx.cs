@@ -25,7 +25,7 @@ public partial class DeleteComm : System.Web.UI.Page
                 string x = Request.Params["q"];
                 int id = int.Parse(x);
                 string sql = "DELETE FROM Comentarii WHERE Id = @id";
-                SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.MDF;Integrated Security=True;User Instance=True");
+                SqlConnection con = ConnectionFactory.getNewSqlConnection();
                 con.Open();
                 SqlCommand com = new SqlCommand(sql, con);
                 com.Parameters.AddWithValue("id", id);

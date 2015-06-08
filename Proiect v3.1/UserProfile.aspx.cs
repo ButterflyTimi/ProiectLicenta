@@ -41,7 +41,7 @@ public partial class UserProfile : System.Web.UI.Page
                     Email.Text = email;
 
                     string sqlVerif = "SELECT count(*) from PozeUseri where Id_User = @IdUser";
-                    SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                    SqlConnection con = ConnectionFactory.getNewSqlConnection();
                     con.Open();
                     SqlCommand com = new SqlCommand(sqlVerif, con);
                     com.Parameters.AddWithValue("IdUser", user);
@@ -50,7 +50,7 @@ public partial class UserProfile : System.Web.UI.Page
                     if (userCount > 0)
                     {
                         string sql = "SELECT Poza_User FROM PozeUseri WHERE Id_User = @IdUser";
-                        con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                        con = ConnectionFactory.getNewSqlConnection();
                         con.Open();
                         com = new SqlCommand(sql, con);
                         com.Parameters.AddWithValue("IdUser", user);
@@ -122,7 +122,7 @@ public partial class UserProfile : System.Web.UI.Page
                             UserProfilePicture.SaveAs(Server.MapPath("~/pozeUseri/") + user + ".jpg");
 
                             string sqlVerif = "SELECT count(*) from PozeUseri where Id_User = @IdUser";
-                            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                            SqlConnection con = ConnectionFactory.getNewSqlConnection();
                             con.Open();
                             SqlCommand com = new SqlCommand(sqlVerif, con);
                             com.Parameters.AddWithValue("IdUser", user);
@@ -131,7 +131,7 @@ public partial class UserProfile : System.Web.UI.Page
                             if (userCount > 0)
                             {
                                 string sql = "UPDATE PozeUseri SET Poza_User = @Poza WHERE Id_User = @IdUser";
-                                con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                                con = ConnectionFactory.getNewSqlConnection();
                                 con.Open();
                                 com = new SqlCommand(sql, con);
                                 com.Parameters.AddWithValue("IdUser", user);
@@ -144,7 +144,7 @@ public partial class UserProfile : System.Web.UI.Page
                             else
                             {
                                 string sql = "INSERT INTO PozeUseri (Id_User, Poza_User) VALUES (@IdUser, @Poza)";
-                                con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+                                con = ConnectionFactory.getNewSqlConnection();
                                 con.Open();
                                 com = new SqlCommand(sql, con);
                                 com.Parameters.AddWithValue("IdUser", user);
@@ -203,7 +203,7 @@ public partial class UserProfile : System.Web.UI.Page
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Adresa de email invalida!','danger');", true);
                 }
             }
-            SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+            SqlConnection con = ConnectionFactory.getNewSqlConnection();
             con.Open();
             if (usernameNou != usernameC)
             {
@@ -230,7 +230,8 @@ public partial class UserProfile : System.Web.UI.Page
                 }
             }
             con.Close();
-                    }
+            
+        }
        catch (Exception err) 
         {
             Response.Write(err);

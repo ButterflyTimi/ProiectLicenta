@@ -19,7 +19,7 @@ public partial class EditBooks : System.Web.UI.Page
                 {
                     int id = int.Parse(q);
                     string sql = "SELECT Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Carti.Id_Gen, Carti.Id_Autor, Genuri.Gen, Autori.Prenume +' ' + Autori.Nume AS NumeAutor, Carti.Text_Descriere FROM Autori INNER JOIN Carti ON Autori.Id = Carti.Id_Autor INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id WHERE Carti.Id = @id";
-                    SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.MDF;Integrated Security=True;User Instance=True");
+                    SqlConnection con = ConnectionFactory.getNewSqlConnection();
                     con.Open();
                     SqlCommand com = new SqlCommand(sql, con);
                     com.Parameters.AddWithValue("id", id);
@@ -62,7 +62,7 @@ public partial class EditBooks : System.Web.UI.Page
                 string descriere = TBDescriere.Text;
                 descriere = descriere.Replace("(new_line)", "<br /><br />");
                 string sql = "UPDATE Carti SET Titlu = @Titlu, Id_Autor = @Id_Autor, Id_Gen = @Id_Gen, Text_Descriere = @Text_Descriere WHERE Id = @id";
-                SqlConnection con = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.MDF;Integrated Security=True;User Instance=True");
+                SqlConnection con = ConnectionFactory.getNewSqlConnection();
                 con.Open();
                 SqlCommand com = new SqlCommand(sql, con);
                 com.Parameters.AddWithValue("id", id);

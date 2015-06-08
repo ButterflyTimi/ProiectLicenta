@@ -128,7 +128,7 @@ public partial class Carti : System.Web.UI.Page
     {
         //Do your database connection stuff and get your data
         
-        SqlConnection cn = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\ASPNETDB.mdf;Integrated Security=True;User Instance=True");
+        SqlConnection cn = ConnectionFactory.getNewSqlConnection();
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = cn;
         SqlDataAdapter ad = new SqlDataAdapter(cmd);
