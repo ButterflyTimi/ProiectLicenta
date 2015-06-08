@@ -50,6 +50,9 @@
                                     </asp:HyperLink>
                                 </li>
                             </ItemTemplate>
+                            <FooterTemplate>
+                                 <asp:Label ID="Label3"  CssClass="noResultsMessage" Visible='<%# Repeater2.Items.Count == 0 %>' runat="server" Text="Nu aveti carti in aceasta categorie"></asp:Label>
+                            </FooterTemplate>
                         </asp:Repeater>
                     </ul>
                 </div>
@@ -74,6 +77,9 @@
                                     </asp:HyperLink>
                                 </li>
                             </ItemTemplate>
+                            <FooterTemplate>
+                                <asp:Label ID="Label3"  CssClass="noResultsMessage" Visible='<%# Repeater1.Items.Count == 0 %>' runat="server" Text="Nu aveti carti in aceasta categorie"></asp:Label>
+                            </FooterTemplate>
                         </asp:Repeater>
                     </ul>
                 </div>
@@ -98,6 +104,9 @@
                                     </asp:HyperLink>
                                 </li>
                             </ItemTemplate>
+                            <FooterTemplate>
+                                 <asp:Label ID="Label3"  CssClass="noResultsMessage" Visible='<%# Repeater3.Items.Count == 0 %>' runat="server" Text="Nu aveti carti in aceasta categorie"></asp:Label>
+                            </FooterTemplate>
                         </asp:Repeater>
                     </ul>
                 </div>
@@ -137,6 +146,22 @@
 
  <script type="text/javascript">
      (function ($) {
+
+         if ($('.favourites ul li').length == 0) {
+             $('.favourites .fa-chevron-left').hide();
+             $('.favourites .fa-chevron-right').hide();
+         }
+
+         if ($('.deCitit ul li').length == 0) {
+             $('.deCitit .fa-chevron-left').hide();
+             $('.deCitit .fa-chevron-right').hide();
+         }
+
+         if ($('.citite ul li').length == 0) {
+             $('.citite .fa-chevron-left').hide();
+             $('.citite .fa-chevron-right').hide();
+         }
+
          $(function () {
              var jcarousel = $('.jcarousel');
 

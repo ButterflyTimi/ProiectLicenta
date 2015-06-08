@@ -19,7 +19,6 @@
 
         var object = JSON.parse(inputString);
         $('#tagCloud').jQCloud(object, {
-            colors: ["#413E4A", "#81B3B1"],
             autoResize: true
         });
 

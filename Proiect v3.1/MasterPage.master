@@ -16,9 +16,9 @@
     <!--Bootstrat CSS-->
     <link rel="stylesheet" type="text/css" href="Content/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="Content/animate.css">
-    <link rel="stylesheet" type="text/css" href="style/css/main.css">
     <link rel="stylesheet" type="text/css" href="style/css/jqcloud.css">
-
+    <link rel="stylesheet" type="text/css" href="style/css/main.css">
+    
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -212,6 +212,23 @@
     <script type="text/javascript" src="Scripts/bootstrap.js"></script>
     <script type="text/javascript" src="Scripts/myOwnCode.js"></script>
     <script type="text/javascript" src="Scripts/ratingBook.js"></script>
+
+    <script type="text/javascript">
+
+            function stickFooterAtBottom() {
+                var docHeight = $(window).height();
+                var footerHeight = $('footer').height();
+                var footerTop = $('footer').position().top + footerHeight;
+
+                if (footerTop < docHeight) {
+                    $('footer').css('margin-top', 0 + (docHeight - footerTop) + 'px');
+                }
+            }
+
+            $(document).ready(stickFooterAtBottom());
+            $(window).resize(stickFooterAtBottom());
+    </script>
+
     </form>
 
 </body>
