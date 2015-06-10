@@ -1,0 +1,25 @@
+﻿.book_box {
+	text-align: center;
+	a {
+		color: @brand-primary;
+		&:hover {
+			.title, .name {
+				.transition( 0.3s, ease);
+				color: @brand-primary-inverse-lighter;
+			}
+		}
+		img {
+			display: block;
+			max-width: 100%;
+		}
+		span {
+			display: block;
+			&.title {
+				font-weight: bold;
+			}
+			&.name {
+				font-style: italic;
+			}
+		}
+	}
+}

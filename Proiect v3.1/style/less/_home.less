@@ -1,5 +1,12 @@
 ﻿.tagCloud-wrapper {
 	.make-row();
+	h2 {
+		.titles;
+		text-align: center;
+		color: @brand-primary;
+		border-bottom : 2px solid @brand-neutral;
+		font-size: 32px;
+	}
 	#tagCloud {
 		.make-sm-column(12);
 		height: 600px;
@@ -8,4 +15,35 @@
 
 .object {
 	display: none;
+}
+
+.home-recommendation-wrapper {
+	.make-row();
+	h3 {
+		.titles;
+		padding: 5px;
+		font-size: 26px;
+		border-bottom: 1px solid @brand-neutral;
+		border-left: 10px solid @brand-neutral;
+		margin-bottom: 10px;
+	}
+	.recommendation {
+		.make-md-column(2);
+		height: 360px;
+		img {
+			height: 241px;
+		}
+		@media (max-width: @screen-md) {
+			.make-xs-column(3);
+			img {
+				height: 320px;
+			}
+		}
+		@media (max-width: @screen-sm) {
+			.make-xs-column(6);
+			img {
+				//height: 320px;
+			}
+		}
+	}
 }
