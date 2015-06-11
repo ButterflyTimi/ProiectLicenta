@@ -17,7 +17,8 @@
     </asp:SqlDataSource>
 
 <div class="home-recommendation-wrapper">
-    <h3>Topul celor mai bine cotate carti</h3>
+    <h3 ID="recom" runat="server">Recomandate pentru tine</h3>
+    <h3 ID="popular" runat="server">Topul celor mai bine cotate carti</h3>
     <asp:Repeater ID="Repeater3" runat="server"  DataSourceID="SqlDataSource1">
         <ItemTemplate>
             <div class="recommendation book_box">
