@@ -80,13 +80,13 @@
 
                         </div>
                         <div class="form-group">
-                            <div class="col-sm-9 col-sm-push-3 validators messages">
+                            <div class="col-sm-9 col-sm-push-3 validators warning-message">
                                 <asp:CompareValidator ID="PasswordCompare" runat="server" 
                                     ControlToCompare="Password" ControlToValidate="ConfirmPassword" 
                                     Display="Dynamic" ErrorMessage="Parolele trebuie sa corespunda." 
                                     ValidationGroup="CreateUserWizard1"></asp:CompareValidator>
                             </div>
-                            <div class="col-sm-9 col-sm-push-3 validators messages">
+                            <div class="col-sm-9 col-sm-push-3 validators warning-message">
                                 <asp:Literal ID="ErrorMessage" runat="server" EnableViewState="False"></asp:Literal>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                 <CustomNavigationTemplate>
                     <div class="form-horizontal">
                         <div class="form-group">
-                            <div class="col-sm-9 col-sm-push-3 wizardButton">
+                            <div class="col-sm-9 col-sm-push-3">
                                 <asp:Button ID="StepNextButton" runat="server" CommandName="MoveNext" CssClass="btn primary-button"
                                         Text="Inregistrare" ValidationGroup="CreateUserWizard1" />
                             </div>

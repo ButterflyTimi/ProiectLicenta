@@ -33,7 +33,8 @@
                 <ContentTemplate>
                     <div class="adminPanel-wrapper">
                         <div class="adminPanel">
-                            Home | Adauga date |
+                            <span class="insertDataLink">Tablou de bord (admin) | </span>
+                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/InsertDatas.aspx" CssClass="insertDataLink">Adauga date</asp:HyperLink>
                         </div>
                     </div>
                 </ContentTemplate>
@@ -76,14 +77,62 @@
                                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                                 <ContentTemplate>
 
-                                                    <asp:Login ID="Login" runat="server" 
+                                                     <asp:Login ID="Login" runat="server" 
                                                         LoginButtonText="Intra in cont" 
                                                         PasswordLabelText="Parola:" 
                                                         UserNameLabelText="Nume utilizator:" 
                                                         RememberMeText="Tine minte" TitleText="" 
                                                         FailureText="Login nereusit. Va rugam incercati din nou."
                                                         CssClass="login-form-table">
-                                                    <LoginButtonStyle CssClass="btn primary-button" />
+                                                    <LayoutTemplate>
+
+                                                    <div class="form-horizontal">
+                                                        <div class="form-group">
+                                                            <asp:Label ID="UserNameLabel" runat="server" CssClass="col-sm-4 control-label" AssociatedControlID="UserName">Nume utilizator:</asp:Label>
+                                                                    
+                                                            <div class="col-sm-7 col-xs-11 input-tb">
+                                                                <asp:TextBox ID="UserName" runat="server" CssClass="form-control"></asp:TextBox>
+                                                            </div>
+                                                            <div class="col-sm-1 col-xs-1 validators">
+                                                               <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" 
+                                                                   ControlToValidate="UserName" ErrorMessage="User Name is required." 
+                                                                   ToolTip="User Name is required." ValidationGroup="ctl00$Login">*</asp:RequiredFieldValidator>
+                                                                            
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <asp:Label ID="PasswordLabel" runat="server" CssClass="col-sm-4 control-label" AssociatedControlID="Password">Parola:</asp:Label>
+                                                            <div class="col-sm-7 col-xs-11 input-tb">
+                                                                <asp:TextBox ID="Password" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                                                            </div>
+                                                            <div class="col-sm-1 col-xs-1 validators">
+                                                                <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" 
+                                                                    ControlToValidate="Password" ErrorMessage="Password is required." 
+                                                                    ToolTip="Password is required." ValidationGroup="ctl00$Login">*</asp:RequiredFieldValidator>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="col-sm-8 col-sm-push-4">
+                                                                <asp:CheckBox ID="RememberMe" runat="server" Text="Tine minte" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-8 col-sm-push-4 validators warning-message">
+                                                                    <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-sm-8 col-sm-push-4">
+                                                                <asp:Button ID="LoginButton" runat="server" CommandName="Login" 
+                                                                    CssClass="btn primary-button" Text="Intra in cont" 
+                                                                    ValidationGroup="ctl00$Login" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    </LayoutTemplate>
                                                     </asp:Login>
 
                                                 </ContentTemplate>
@@ -100,11 +149,7 @@
                             <asp:RoleGroup Roles="Admin">
                                 <ContentTemplate>
                                 <!--
-                                    <div class="panou-admin">
-                                        <span class="insertDataLink">Tablou de bord (admin) | </span>
-                                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/InsertDatas.aspx" CssClass="insertDataLink">Adauga date</asp:HyperLink>
-
-                                    </div>
+                                    
                                     -->
                                     <div class="login-buttons">
                                         <span id="loggedInText">Bine ai venit, 
@@ -208,7 +253,6 @@
                 </ul>
             </div>
     </nav>
-
 
     <div class="container">
         <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">

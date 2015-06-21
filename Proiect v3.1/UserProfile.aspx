@@ -133,7 +133,103 @@
                             <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                     <ContentTemplate>
-                                        <asp:ChangePassword ID="ChangePassword1" runat="server">
+                                        <asp:ChangePassword ID="ChangePassword1" runat="server" 
+                                            
+                                            ChangePasswordFailureText="Parola incorecta. Numar minim de caractere pentru parola: {0}." 
+                                            SuccessPageUrl="~/UserProfile.aspx">
+                                            <ChangePasswordTemplate>
+                                                
+                                                 <div class="form-horizontal">
+                                                    <div class="form-group">
+
+                                                        <asp:Label ID="CurrentPasswordLabel" runat="server" CssClass="col-sm-4 control-label"
+                                                        AssociatedControlID="CurrentPassword">Parola:</asp:Label>
+                                                                    
+                                                        <div class="col-sm-7 col-xs-11 input-tb">
+                                                            <asp:TextBox ID="CurrentPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-sm-1 col-xs-1 validators">
+                                                                <asp:RequiredFieldValidator ID="CurrentPasswordRequired" runat="server" 
+                                                                    ControlToValidate="CurrentPassword" ErrorMessage="Password is required." 
+                                                                    ToolTip="Password is required." ValidationGroup="ChangePassword1">*</asp:RequiredFieldValidator>
+                                                                    
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <asp:Label ID="NewPasswordLabel" runat="server" CssClass="col-sm-4 control-label"
+                                                            AssociatedControlID="NewPassword">Parola Noua:</asp:Label>
+                                                                           
+                                                        <div class="col-sm-7 col-xs-11 input-tb">
+                                                            <asp:TextBox ID="NewPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-sm-1 col-xs-1 validators">
+                                                            <asp:RequiredFieldValidator ID="NewPasswordRequired" runat="server" 
+                                                                ControlToValidate="NewPassword" ErrorMessage="New Password is required." 
+                                                                ToolTip="New Password is required." ValidationGroup="ChangePassword1">*</asp:RequiredFieldValidator>
+                                                                    
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <asp:Label ID="ConfirmNewPasswordLabel" runat="server" CssClass="col-sm-4 control-label"
+                                                            AssociatedControlID="ConfirmNewPassword">Confirma Parola:</asp:Label>            
+                                                        <div class="col-sm-7 col-xs-11 input-tb">
+                                                            <asp:TextBox ID="ConfirmNewPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                                                        </div>
+                                                        <div class="col-sm-1 col-xs-1 validators">
+                                                            <asp:RequiredFieldValidator ID="ConfirmNewPasswordRequired" runat="server" 
+                                                                ControlToValidate="ConfirmNewPassword" 
+                                                                ErrorMessage="Confirm New Password is required." 
+                                                                ToolTip="Confirm New Password is required." ValidationGroup="ChangePassword1">*</asp:RequiredFieldValidator>
+                                                                    
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="col-sm-8 col-sm-push-4 validators warning-message">
+                                                           <asp:CompareValidator ID="NewPasswordCompare" runat="server" 
+                                                               ControlToCompare="NewPassword" ControlToValidate="ConfirmNewPassword" 
+                                                               Display="Dynamic" 
+                                                               ErrorMessage="Parolele nu corespund." 
+                                                               ValidationGroup="ChangePassword1"></asp:CompareValidator>
+                                                        </div>
+                                                        <div class="col-sm-8 col-sm-push-4 validators warning-message">
+                                                            <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <div class="col-sm-8 col-sm-push-4">
+                                                            <asp:Button ID="ChangePasswordPushButton" runat="server" 
+                                                                CommandName="ChangePassword" Text="Schimba Parola" CssClass="btn primary-button" 
+                                                                ValidationGroup="ChangePassword1" />
+
+                                                            <asp:Button ID="CancelPushButton" runat="server" CausesValidation="False" 
+                                                                CommandName="Cancel" Text="Cancel" CssClass="hidden" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </ChangePasswordTemplate>
+
+                                            <SuccessTemplate>
+                                                <div class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-12 text-center">
+                                                            Parola a fost schimbata cu succes!
+                                                        </div>
+                                                        <div class="col-sm-12 text-center">
+                                                            <asp:Button ID="ContinuePushButton" runat="server" CausesValidation="False" 
+                                                                CommandName="Continue" Text="Continua" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </SuccessTemplate>
                                         </asp:ChangePassword>
                                  
                                 </ContentTemplate>

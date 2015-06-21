@@ -16,38 +16,8 @@
 				}
 			}
 			.modal-body {
-				.login-form-table {
-					margin: 0 auto;
-					font-size: 16px;
-					td {
-						padding: 10px;
-						vertical-align: top;
-						@media (max-width: @screen-xs) {
-							padding: 5px;
-						}
-						#LoginView1_Login_Password, #LoginView1_Login_UserName {
-							.form-control;
-							display: inline-block;
-							width: 90%;
-						}
-						span {
-							color: red;
-						}
-					}
-					&>tbody>tr>td {
-						@media (max-width: @screen-xs) {
-							padding: 0px;
-						}
-					}
-				}
-				.primaryButton {
-					 background-color: @brand-primary;
-					 color: White; 
-					 .border-radius(4px, 4px, 4px, 4px);
-					 padding: 6px 8px;
-					 &:hover {
-						background-color: @brand-primary-lighter; 
-					 }
+				table {
+					width: 100%;
 				}
 			}
 		}
