@@ -29,6 +29,12 @@ public partial class IndividualBookPage : System.Web.UI.Page
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Multumim! Votul tau a fost inregistrat','success');", true);
                 Session.Remove("status");
             }
+
+            if (Session["editBook"] != null && Session["editBook"].ToString().Equals("1"))
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Date cartii au fost actualizate cu succes!','success');", true);
+                Session.Remove("editBook");
+            }
         }
         catch (Exception err)
         {
@@ -75,7 +81,12 @@ public partial class IndividualBookPage : System.Web.UI.Page
                     SqlDataSource3.SelectParameters.Clear();
                     SqlDataSource3.SelectParameters.Add("q", q);
                     SqlDataSource3.DataBind();
-                    
+
+                    SqlDataSource4.SelectCommand = "SELECT Edituri.Editura, Edituri.Site_Editura FROM CartiApartinDeEdituri INNER JOIN Edituri ON CartiApartinDeEdituri.Id_Editura = Edituri.Id INNER JOIN Carti ON CartiApartinDeEdituri.Id_Carte = Carti.Id WHERE Carti.Id = @q";
+                    SqlDataSource4.SelectParameters.Clear();
+                    SqlDataSource4.SelectParameters.Add("q", q);
+                    SqlDataSource4.DataBind();
+
                 }
                 catch (Exception err)
                 {

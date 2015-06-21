@@ -41,15 +41,14 @@
                 <div class="form-group">
                     <asp:Label ID="LabelDescriere" CssClass="col-sm-4 control-label" runat="server" Text="Descriere"></asp:Label>
                     <div class="col-sm-8 input-tb">
-                        <asp:TextBox id="TBDescriere" TextMode="multiline" Columns="50" Rows="5" runat="server" />
+                        <asp:TextBox id="TBDescriere" TextMode="multiline" CssClass="form-control" Columns="50" Rows="5" runat="server" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-sm-4 col-push-3 input-tb">
+                    <div class="col-sm-8 col-sm-push-3 input-tb">
                         <asp:Button ID="ButtonInsertData" runat="server" CssClass="btn primary-button" Text="Modifica" OnClick="submit_updateCarte"/>
-                    </div>
-                    <div class="col-sm-4 input-tb">
-                     <asp:Button ID="Button2" runat="server" Text="Inapoi la pagina" CssClass="btn primary-button" onclick="back_home" />
+
+                        <asp:Button ID="Button2" runat="server" Text="Inapoi la pagina" CssClass="btn primary-button" onclick="back_home" />
                      </div>
                 </div>
             </div>

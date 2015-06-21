@@ -115,9 +115,9 @@
 	display: none;
 }
 
-.commentsSection-wrapper {
+.commentsSection-wrapper, .publishings-wrapper {
 	.make-row();
-	.commentsSection {
+	.commentsSection, .publishings {
 		.make-sm-column(12);
 		h3 {
 			.titles;
@@ -126,6 +126,29 @@
 			border-bottom: 1px solid @brand-neutral;
 			border-left: 10px solid @brand-neutral;
 			margin-bottom: 10px;
+		}
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			li {
+				font-size: 20px;
+				background: url("../img/star-small.jpg") no-repeat scroll 0px 6px;
+				margin: 10px 0;
+				padding-left: 20px;
+				.transition( 0.3s, ease);
+				&:hover {
+					background-image: url("../img/star2-small.jpg");
+					a {
+						color: @brand-primary-inverse-lighter;
+					}
+				}
+			}
+			a {
+				&:focus, &:active {
+					color: @brand-primary-inverse;
+				}
+			}
 		}
 		.comment-wrapper {
 			.make-row();

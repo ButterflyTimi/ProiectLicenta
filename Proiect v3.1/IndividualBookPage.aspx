@@ -81,6 +81,26 @@
     </asp:Repeater>
     </div>
     
+    <div class="publishings-wrapper">
+        <div class="publishings">
+            <h3>Edituri unde se poate gasi cartea:</h3>
+
+            <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>"></asp:SqlDataSource>
+
+            <ul>
+            <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSource4">
+                <ItemTemplate>
+                <li>
+                    <asp:HyperLink ID="HyperLink1" runat="server" Target="_blank" CssClass="link" NavigateUrl='<%# Eval("Site_Editura") %>'>
+                        <asp:Label ID="Gen" runat="server" CssClass="bookType" Text='<%# Eval("Editura") %>'></asp:Label>
+                    </asp:HyperLink>
+                </li>
+                </ItemTemplate>
+            </asp:Repeater>
+            </ul>
+        </div>
+    </div>
+
     <div class="commentsSection-wrapper">
         <div class="commentsSection">
             <h3>Comentarii si recenzii:</h3>

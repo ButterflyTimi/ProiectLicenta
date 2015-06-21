@@ -30,33 +30,58 @@ public partial class Delete : System.Web.UI.Page
     }
     protected void Button2_Click(object sender, EventArgs e)
     {
-        Response.Redirect("~/Home.aspx");
+        string q = Request.Params["id"];
+        Response.Redirect("IndividualBookPage.aspx?q=" + q);
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
          if (Request.Params["id"] != null)
             try
             {
+                string sql;
                 string x = Request.Params["id"];
                 int id = int.Parse(x);
-                string sql = "DELETE FROM Carti WHERE Id = @id";
                 SqlConnection con = ConnectionFactory.getNewSqlConnection();
                 con.Open();
+
+                sql = "DELETE FROM Comentarii WHERE Id_Carte = @id";
                 SqlCommand com = new SqlCommand(sql, con);
                 com.Parameters.AddWithValue("id", id);
                 com.ExecuteNonQuery();
-                con.Close();
 
-                sql = "DELETE FROM Comentarii WHERE Id_Carte = @id";
-                con.Open();
+                sql = "DELETE FROM CartiApartinDeEdituri WHERE Id_Carte = @id";
                 com = new SqlCommand(sql, con);
                 com.Parameters.AddWithValue("id", id);
                 com.ExecuteNonQuery();
-                con.Close();
 
-                //String path = Server.MapPath("~/pozeCoperti/");
-                //if (System.IO.File.Exists(path)) { System.IO.File.Delete(path); }
+                sql = "DELETE FROM CartiCitite WHERE Id_Carte = @id";
+                com = new SqlCommand(sql, con);
+                com.Parameters.AddWithValue("id", id);
+                com.ExecuteNonQuery();
 
+                sql = "DELETE FROM CartiDeCitit WHERE Id_Carte = @id";
+                com = new SqlCommand(sql, con);
+                com.Parameters.AddWithValue("id", id);
+                com.ExecuteNonQuery();
+
+                sql = "DELETE FROM CartiFavorite WHERE Id_Carte = @id";
+                com = new SqlCommand(sql, con);
+                com.Parameters.AddWithValue("id", id);
+                com.ExecuteNonQuery();
+                
+                sql = "DELETE FROM NoteDateCartilor WHERE Id_Carte = @id";
+                com = new SqlCommand(sql, con);
+                com.Parameters.AddWithValue("id", id);
+                com.ExecuteNonQuery();
+
+                sql = "DELETE FROM Carti WHERE Id = @id";
+                com = new SqlCommand(sql, con);
+                com.Parameters.AddWithValue("id", id);
+                com.ExecuteNonQuery();
+
+                Session["deleteBook"] = "1";
+
+                Response.Redirect("~/Home.aspx");
             }
             catch (Exception err)
             {
@@ -66,7 +91,6 @@ public partial class Delete : System.Web.UI.Page
          {
              Response.Redirect("~/Home.aspx");
          }
-        Response.Redirect("~/Home.aspx");
-         
+ 
     }
 }

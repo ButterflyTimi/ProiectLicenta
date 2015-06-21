@@ -11,6 +11,18 @@ public partial class Home : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        try
+        {
+            if (Session["deleteBook"] != null && Session["deleteBook"].ToString().Equals("1"))
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Cartea a fost stearsa din baza de date!','success');", true);
+                Session.Remove("deleteBook");
+            }
+        }
+        catch (Exception err)
+        {
+
+        }
         if (!Page.IsPostBack)
         {
             try

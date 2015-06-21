@@ -46,6 +46,10 @@ public partial class EditBooks : System.Web.UI.Page
                     ErrorLabel.Text = ErrorLabel.Text + err;
                 }
             }
+            else
+            {
+                Response.Redirect("~/Home.aspx");
+            }
         }
     }
     protected void submit_updateCarte(object sender, EventArgs e)
@@ -72,17 +76,21 @@ public partial class EditBooks : System.Web.UI.Page
                 com.Parameters.AddWithValue("Text_Descriere", descriere);
                 com.ExecuteNonQuery();
                 con.Close();
+
+                Session["editBook"] = "1";
+                q = Request.Params["id"];
+                Response.Redirect("IndividualBookPage.aspx?q=" + q);
             }
             catch (Exception err)
             {
                 ErrorLabel.Text = ErrorLabel.Text + err;
             }
-            //Response.Redirect("~/Home.aspx");
         }
     }
     protected void back_home(object sender, EventArgs e)
     {
-        Response.Redirect("~/Home.aspx");
+        string q = Request.Params["id"];
+        Response.Redirect("IndividualBookPage.aspx?q=" + q);
     }
     
 }
