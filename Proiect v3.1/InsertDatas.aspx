@@ -4,18 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<asp:LoginView ID="LoginView1" runat="server">
-    <AnonymousTemplate>
-
-        <h1>
-            Eroare - Nu aveti acces pe pagina curenta!
-        </h1>
-
-    </AnonymousTemplate>
-        
-    <RoleGroups>
-        <asp:RoleGroup Roles="Admin">
-            <ContentTemplate>
 
                 <div class="insertDatas-wrapper">
                     <div class="options">
@@ -209,8 +197,4 @@
                     </div>
                 </div>
                 <asp:Label ID="ErrorLabel" runat="server"></asp:Label>
-            </ContentTemplate>
-        </asp:RoleGroup>
-    </RoleGroups>
-</asp:LoginView>
 </asp:Content>

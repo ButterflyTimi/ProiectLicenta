@@ -323,4 +323,17 @@ public partial class IndividualBookPage : System.Web.UI.Page
             }
         }    
     }
+
+    protected void Edit_Book(object sender, EventArgs e)
+    {
+        string q = Request.Params["q"];
+        q = Server.UrlDecode(q);
+        Response.Redirect("EditBooks.aspx?id=" + q);
+    }
+    protected void Delete_Book(object sender, EventArgs e)
+    {
+        string q = Request.Params["q"];
+        q = Server.UrlDecode(q);
+        Response.Redirect("Delete.aspx?id=" + q);
+    }
 }

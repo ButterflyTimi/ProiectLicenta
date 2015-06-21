@@ -20,3 +20,54 @@
 	cursor: pointer;
 	margin-right: 20px;
 }
+
+.adminBookPanel {
+	position: fixed;
+	left: 5px;
+	top: 200px;
+	#editBook, #deleteBook {
+		.primary-button;
+		padding: 3px 10px;
+		margin-bottom: 5px;
+		text-align: center;
+		vertical-align: middle;
+	}
+	.editBook, .deleteBook {
+		font-size: 22px;
+		.transition( 0.3s, ease);
+		text-shadow: -2px 2px 5px rgba(0,0,0,0.15);
+		&:hover {
+			color: @brand-primary-inverse-lighter;
+		}
+		&:before {
+			font-family: FontAwesome;
+			font-size: 22px;
+		}
+	}
+	.editBook {
+		&:before {
+			content: "\f040";
+		}
+	}
+	.deleteBook {
+		&:before {
+			content: "\f014";
+		}
+	}
+}
+
+.editBook-wrapper {
+	.make-row();
+	.editBook-image {
+		.make-sm-column(3);
+		@media (max-width: @screen-md) {
+			.make-sm-column(4);
+		}
+	}
+	.editBook-details {
+		.make-sm-column(9);
+		@media (max-width: @screen-md) {
+			.make-sm-column(8);
+		}
+	}
+}

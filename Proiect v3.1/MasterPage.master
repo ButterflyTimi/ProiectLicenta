@@ -25,6 +25,7 @@
 <body>
     <form id="form1" runat="server">
 
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <header class="container-fluid">
 
     <asp:LoginView id="LoginView2" runat="server">
@@ -73,7 +74,6 @@
                                         </div>
                                         <div class="modal-body">
 
-                                            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                                             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                                                 <ContentTemplate>
 

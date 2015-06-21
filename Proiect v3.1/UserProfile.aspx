@@ -129,8 +129,6 @@
                             </h3>
                         </div>
                         <div class="modal-body">
-                              
-                            <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
                                 <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                     <ContentTemplate>
                                         <asp:ChangePassword ID="ChangePassword1" runat="server" 

@@ -31,8 +31,10 @@ public partial class UserProfile : System.Web.UI.Page
         {
             try
             {
-                bool userCheck = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
-                if (userCheck)
+                MembershipUser userCheck = System.Web.Security.Membership.GetUser();
+                if (userCheck != null)
+             //   bool userCheck = (System.Web.HttpContext.Current.User != null) && System.Web.HttpContext.Current.User.Identity.IsAuthenticated;
+               // if (userCheck)
                 {
                     string username = System.Web.Security.Membership.GetUser().UserName.ToString();
                     string email = System.Web.Security.Membership.GetUser().Email.ToString();

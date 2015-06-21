@@ -5,12 +5,31 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Web.Security;
 
 public partial class InsertDatas : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        try
+        {
+            //System.Web.Security.Membership.GetUser().P
+            MembershipUser user = System.Web.Security.Membership.GetUser();
+            if (user != null)
+            {
+                string username = user.ToString();
+                if (!Roles.IsUserInRole(username, "Admin"))
+                    Response.Redirect("Home.aspx");
+            }
+            else
+            {
+                Response.Redirect("Home.aspx");
+            }
+        }
+        catch (Exception err)
+        {
+            Response.Write(err);
+        }
     }
     protected void submit_editura(object sender, EventArgs e)
     {

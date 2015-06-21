@@ -65,20 +65,31 @@ public partial class Home : System.Web.UI.Page
                     reader.Close();
                     con.Close();
 
-                    SqlDataSource1.SelectCommand = "SELECT TOP 6 Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Carti.Text_Descriere, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, ROUND(AVG(ISNULL(NoteDateCartilor.Nota, 0)), 0) AS MedieNote FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id LEFT JOIN NoteDateCartilor ON Carti.Id = NoteDateCartilor.Id_Carte WHERE Genuri.Gen = @gen AND NOT EXISTS (SELECT CartiFavorite.Id_Carte FROM CartiFavorite Where CartiFavorite.Id_Carte = Carti.Id AND CartiFavorite.Id_User = @user) GROUP BY Carti.Id, Carti.Titlu, Carti.Poza_Coperta, Carti.Text_Descriere, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume ORDER BY MedieNote DESC";
-                    SqlDataSource1.SelectParameters.Clear();
-                    SqlDataSource1.SelectParameters.Add("gen", numeCategorie);
-                    SqlDataSource1.SelectParameters.Add("user", userId);
-                    SqlDataSource1.DataBind();
+                    if (numeCategorie == "")
+                    {
+                        SqlDataSource1.SelectCommand = "SELECT TOP 6 Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Carti.Text_Descriere, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, ROUND(AVG(ISNULL(NoteDateCartilor.Nota, 0)), 0) AS MedieNote FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id LEFT JOIN NoteDateCartilor ON Carti.Id = NoteDateCartilor.Id_Carte GROUP BY Carti.Id, Carti.Titlu, Carti.Poza_Coperta, Carti.Text_Descriere, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume ORDER BY MedieNote DESC";
+                        SqlDataSource1.SelectParameters.Clear();
+                        SqlDataSource1.DataBind();
 
-                    popular.Attributes["class"] = "hide";
+                        recom.Attributes["class"] = "hide";
+                    }
+                    else
+                    {
+
+                        SqlDataSource1.SelectCommand = "SELECT TOP 6 Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Carti.Text_Descriere, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, ROUND(AVG(ISNULL(NoteDateCartilor.Nota, 0)), 0) AS MedieNote FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id LEFT JOIN NoteDateCartilor ON Carti.Id = NoteDateCartilor.Id_Carte WHERE Genuri.Gen = @gen AND NOT EXISTS (SELECT CartiFavorite.Id_Carte FROM CartiFavorite Where CartiFavorite.Id_Carte = Carti.Id AND CartiFavorite.Id_User = @user) GROUP BY Carti.Id, Carti.Titlu, Carti.Poza_Coperta, Carti.Text_Descriere, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume ORDER BY MedieNote DESC";
+                        SqlDataSource1.SelectParameters.Clear();
+                        SqlDataSource1.SelectParameters.Add("gen", numeCategorie);
+                        SqlDataSource1.SelectParameters.Add("user", userId);
+                        SqlDataSource1.DataBind();
+
+                        popular.Attributes["class"] = "hide";
+                    }
                 }
                 else
                 {
                     SqlDataSource1.SelectCommand = "SELECT TOP 6 Carti.Id AS CartiId, Carti.Titlu AS CartiTitlu, Carti.Poza_Coperta, Carti.Text_Descriere, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume AS NumeAutor, ROUND(AVG(ISNULL(NoteDateCartilor.Nota, 0)), 0) AS MedieNote FROM Carti INNER JOIN Genuri ON Carti.Id_Gen = Genuri.Id INNER JOIN Autori ON Carti.Id_Autor = Autori.Id LEFT JOIN NoteDateCartilor ON Carti.Id = NoteDateCartilor.Id_Carte GROUP BY Carti.Id, Carti.Titlu, Carti.Poza_Coperta, Carti.Text_Descriere, Genuri.Gen, Autori.Prenume + ' ' + Autori.Nume ORDER BY MedieNote DESC";
                     SqlDataSource1.SelectParameters.Clear();
                     SqlDataSource1.DataBind();
-
 
                     recom.Attributes["class"] = "hide";
                 }

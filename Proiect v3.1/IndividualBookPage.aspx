@@ -7,6 +7,24 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>">
     </asp:SqlDataSource>
 
+    <asp:LoginView id="LoginView2" runat="server">
+        <RoleGroups>
+            <asp:RoleGroup Roles="Admin">
+                <ContentTemplate>
+                    <div class="adminBookPanel">
+                        <div id="editBook">
+                            <asp:LinkButton ID="EditBook" runat="server" CssClass="editBook" Text="" onclick="Edit_Book" ValidationGroup="separat"/>
+                        </div>
+
+                        <div id="deleteBook">
+                            <asp:LinkButton ID="Button2" runat="server" CssClass="deleteBook" Text="" onclick="Delete_Book" ValidationGroup="separat"/>
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:RoleGroup>
+        </RoleGroups>
+    </asp:LoginView>
+
      <div class="detail-book-wrapper">
         <asp:TextBox ID="TBcount" CssClass="count" runat="server">0</asp:TextBox>
 
