@@ -16,8 +16,8 @@ public partial class RegistrationPage : System.Web.UI.Page
             Response.Redirect("~/Home.aspx");
         }
     }
-    protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
+    protected void CreateUserWizard1_CreatedUser1(object sender, EventArgs e)
     {
-        //Roles.AddUserToRole(CreateUserWizard1.UserName, "User");
+        Roles.AddUserToRole(CreateUserWizard1.UserName, "Admin");
     }
 }

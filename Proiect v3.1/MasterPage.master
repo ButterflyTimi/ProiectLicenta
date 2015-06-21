@@ -26,6 +26,21 @@
     <form id="form1" runat="server">
 
     <header class="container-fluid">
+
+    <asp:LoginView id="LoginView2" runat="server">
+        <RoleGroups>
+            <asp:RoleGroup Roles="Admin">
+                <ContentTemplate>
+                    <div class="adminPanel-wrapper">
+                        <div class="adminPanel">
+                            Home | Adauga date |
+                        </div>
+                    </div>
+                </ContentTemplate>
+            </asp:RoleGroup>
+        </RoleGroups>
+    </asp:LoginView>
+
         <div class="header-wrapper">
             <div class="header-logo">
                 <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl='~/Home.aspx'>        

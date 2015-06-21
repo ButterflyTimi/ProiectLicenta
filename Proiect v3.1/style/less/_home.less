@@ -5,7 +5,11 @@
 		text-align: center;
 		color: @brand-primary;
 		border-bottom : 2px solid @brand-neutral;
-		font-size: 32px;
+		padding-bottom: 10px;
+		//font-size: 32px;
+		@media (max-width: @screen-xs) {
+			font-size: 30px;	
+		}
 	}
 	#tagCloud {
 		.make-sm-column(12);

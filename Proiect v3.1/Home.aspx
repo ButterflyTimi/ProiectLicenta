@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
-<div class="tagCloud-wrapper">
+    <div class="tagCloud-wrapper">
     <h2>Nu stii ce sa mai cauti? Te ajutam noi!</h2>
     <div id="tagCloud">
 
