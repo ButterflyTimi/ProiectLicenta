@@ -15,7 +15,7 @@
                         <div id="editBook">
                             <asp:LinkButton ID="EditBook" runat="server" CssClass="editBook" Text="" onclick="Edit_Book" ValidationGroup="separat"/>
                         </div>
-
+                        
                         <div id="deleteBook">
                             <asp:LinkButton ID="Button2" runat="server" CssClass="deleteBook" Text="" onclick="Delete_Book" ValidationGroup="separat"/>
                         </div>
@@ -106,15 +106,17 @@
             <h3>Comentarii si recenzii:</h3>
 
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>"></asp:SqlDataSource>
-            <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" Width="100%" 
-            ShowHeader="False" GridLines="None">
-
-            <Columns>
-                <asp:TemplateField  ItemStyle-Width="100%">
-                    <ItemTemplate>
-                        <div class="comment-wrapper">
+            
+            <asp:Repeater ID="Repeater4" runat="server" DataSourceID="SqlDataSource2">
+                <ItemTemplate>
+            
+                    <div class="comment-wrapper">
                             <div class="userIcon">
-                                <asp:Image ID="Image3" runat="server" ImageUrl='<%# "~/pozeUseri/" + ProcessImageUser(Eval("Poza_User")) %>' />
+                                <div class="userIcon-row">
+                                    <div class="userIcon-col">
+                                        <asp:Image ID="Image3" runat="server" ImageUrl='<%# "~/pozeUseri/" + ProcessImageUser(Eval("Poza_User")) %>' />
+                                    </div>
+                                </div>
                             </div>
 
 
@@ -143,13 +145,12 @@
                                 </div>
                             </div>
                     </div>
+
                 </ItemTemplate>
-            </asp:TemplateField>
-        </Columns>
-        <EmptyDataTemplate>
-            <asp:Label ID="Label14" runat="server" Text="0 comentarii"></asp:Label>
-        </EmptyDataTemplate>
-    </asp:GridView>
+                <FooterTemplate>
+                         <asp:Label ID="Label3"  CssClass="noResultsMessage" Visible='<%# Repeater4.Items.Count == 0 %>' runat="server" Text="0 comentarii"></asp:Label>
+                </FooterTemplate>
+            </asp:Repeater>
 
     </div>
 </div>
@@ -170,7 +171,11 @@
          
                 <div class="commentsInput-row">
                     <div class="userIcon">
-                        <asp:Image ID="ImgUserPicture2" runat="server" ImageUrl="~/pozeUseri/DefaultUserIcon.png" />
+                        <div class="userIcon-row">
+                            <div class="userIcon-col">
+                                <asp:Image ID="ImgUserPicture2" runat="server" ImageUrl="~/pozeUseri/DefaultUserIcon.png" />
+                            </div>
+                        </div>
                     </div>
 
                     <div class="userInputText">
@@ -197,7 +202,9 @@
                         <ItemTemplate>
                             <li class="jcarousel-item">
                                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>'>
-                                    <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                    <div class="image">
+                                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                    </div>
                                     <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
                                     <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
                                 </asp:HyperLink>

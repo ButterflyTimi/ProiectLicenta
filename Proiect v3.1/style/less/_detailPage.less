@@ -152,34 +152,42 @@
 		}
 		.comment-wrapper {
 			.make-row();
-			margin-left: 0;
-			margin-right: 0;
 			margin-bottom: 15px;
 			.userIcon {
-				.make-sm-column(2);
-				@media (max-width: @screen-sm) {
+				.make-xs-column(2);
+				@media (max-width: @screen-xs) {
 					.make-xs-column(3);
+					padding-left: 5px;
 				}
-				overflow: hidden;
-				border: 1px solid @brand-primary-inverse-lighter;
-				padding: 0;
-				padding-bottom: 182px;;
-				position: relative;
-				img {
-					width: 100%;
-					position: absolute;
-					left: 0px;
-					right: 0px;
-					top: 0px;
-					bottom: 0px;
-					min-height: 100%;
-					min-width: 100%;
+				.userIcon-row {
+					.make-row();
+					margin-left: 0;
+					margin-right: 0;
+					.userIcon-col {
+						.make-xs-column(12);
+						overflow: hidden;
+						border: 1px solid @brand-primary-inverse-lighter;
+						padding: 0;
+						padding-bottom: 100%;
+						position: relative;
+						img {
+							width: 100%;
+							position: absolute;
+							left: 0px;
+							right: 0px;
+							top: 0px;
+							bottom: 0px;
+							min-height: 100%;
+							min-width: 100%;
+						}
+					}
 				}
 			}
 			.text-wrapper {
-				.make-sm-column(10);
-				@media (max-width: @screen-sm) {
+				.make-xs-column(10);
+				@media (max-width: @screen-xs) {
 					.make-xs-column(9);
+					padding-left: 5px;
 				}
 				.text {
 					.make-row();
@@ -213,28 +221,42 @@
 		}
 		.commentsInput-row {
 			.make-row();
-			margin-left: 0;
-			margin-right: 0;
 			.userIcon {
-				.make-xs-column(1);
-				overflow: hidden;
-				border: 1px solid @brand-primary-inverse-lighter;
-				padding: 0;
-				padding-bottom: 95px;;
-				position: relative;
-				img {
-					width: 100%;
-					position: absolute;
-					left: 0px;
-					right: 0px;
-					top: 0px;
-					bottom: 0px;
-					min-height: 100%;
-					min-width: 100%;
+				.make-xs-column(2);
+				@media (max-width: @screen-xs) {
+					.make-xs-column(3);
+					padding-right: 5px;
+				}
+				.userIcon-row {
+					.make-row();
+					margin-left: 0;
+					margin-right: 0;
+					.userIcon-col {
+						.make-xs-column(12);
+						overflow: hidden;
+						border: 1px solid @brand-primary-inverse-lighter;
+						padding: 0;
+						padding-bottom: 100%;
+						position: relative;
+						img {
+							width: 100%;
+							position: absolute;
+							left: 0px;
+							right: 0px;
+							top: 0px;
+							bottom: 0px;
+							min-height: 100%;
+							min-width: 100%;
+						}
+					}
 				}
 			}
 			.userInputText {
-				.make-sm-column(11);
+				.make-xs-column(10);
+				@media (max-width: @screen-xs) {
+					.make-xs-column(9);
+					padding-left: 5px;
+				}
 				position: relative;
 				.form-control {
 					padding-right: 64px;	
