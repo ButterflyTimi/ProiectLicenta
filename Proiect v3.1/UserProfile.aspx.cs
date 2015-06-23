@@ -156,8 +156,11 @@ public partial class UserProfile : System.Web.UI.Page
                                 con.Close();
                                 UserImage.ImageUrl = "~/pozeUseri/" + urlPoza;
                             }
-                            Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Imaginea au fost actualizata cu succes!','success');", true);
-                            Session.Remove("status");
+                            //Page.ClientScript.RegisterStartupScript(this.GetType(), "ErrorFunction", "errorMessages('Imaginea au fost actualizata cu succes!','success');", true);
+                            //Session.Remove("status");
+
+                            Session["status"] = "1";
+                            Response.Redirect(Request.RawUrl, false);
                         }
                         //Response.Redirect(Request.RawUrl);
                         //Server.TransferRequest(Request.Url.AbsolutePath, false);

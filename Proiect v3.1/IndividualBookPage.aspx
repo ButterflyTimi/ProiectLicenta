@@ -227,14 +227,20 @@
                     var carousel = $(this),
                         width = carousel.innerWidth();
 
-                if (width >= 600) {
-                    width = width / 6;
-                } else if (width >= 350) {
-                    width = width / 2;
-                }
+                    if (width >= 1200) {
+                        width = width / 6;
 
-                carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
-            })
+                        var cw = $('.jcarousel-item').width();
+                        cw = cw + 200;
+                        $('.image').css({ 'height': cw + 'px' });
+                    } else if (width >= 768) {
+                        width = width / 5;
+                    } else if (width >= 480) {
+                        width = width / 2;
+                    }
+
+                    carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
+                })
             .jcarousel({
                 wrap: 'circular',
                 items: '.jcarousel-item',
@@ -269,6 +275,10 @@
                 }
             });
             });
+
+
+
+
         })(jQuery);
     </script>
 </asp:Content>

@@ -27,7 +27,16 @@
 				}
 				.image {
 					overflow: hidden;
-					height: 243px;
+					//height: 302px;
+					@media (max-width: (@screen-lg - 1)) {
+						height: 240px;
+					}
+					@media (max-width: (@screen-md - 1)) {
+						height: 172px;
+					}
+					@media (max-width: (@screen-sm - 1)) {
+						height: 500px;
+					}
 					width: 100%;
 					img {
 						width: 100%;	

@@ -5,7 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 
     <div class="tagCloud-wrapper">
-    <h2>Nu stii ce sa mai cauti? Te ajutam noi!</h2>
+    <div class="col-xs-12">
+        <h2>Nu stii ce sa mai cauti? Te ajutam noi!</h2>
+    </div>
     <div id="tagCloud">
 
 
@@ -17,8 +19,10 @@
     </asp:SqlDataSource>
 
 <div class="home-recommendation-wrapper">
-    <h3 ID="recom" runat="server">Recomandate pentru tine</h3>
-    <h3 ID="popular" runat="server">Topul celor mai bine cotate carti</h3>
+    <div class="col-xs-12">
+        <h3 ID="recom" runat="server">Recomandate pentru tine</h3>
+        <h3 ID="popular" runat="server">Topul celor mai bine cotate carti</h3>
+    </div>
     <asp:Repeater ID="Repeater3" runat="server"  DataSourceID="SqlDataSource1">
         <ItemTemplate>
             <div class="recommendation book_box">

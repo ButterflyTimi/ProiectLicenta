@@ -34,7 +34,7 @@
                 <ContentTemplate>
                     <div class="adminPanel-wrapper">
                         <div class="adminPanel">
-                            <span class="insertDataLink">Tablou de bord (admin) | </span>
+                            <i class="fa fa-unlock-alt"></i> |
                                 <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/InsertDatas.aspx" CssClass="insertDataLink">Adauga date</asp:HyperLink>
                         </div>
                     </div>
