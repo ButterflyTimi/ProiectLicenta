@@ -196,89 +196,40 @@
         <div class="recommendation">
 
             <h3>Din aceeasi categorie:</h3>
-            <div class="jcarousel">
-                <ul>
-                    <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource3">
-                        <ItemTemplate>
-                            <li class="jcarousel-item">
-                                <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>'>
-                                    <div class="image">
-                                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
-                                    </div>
-                                    <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
-                                    <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
-                                </asp:HyperLink>
-                            </li>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                </ul>
+
+            <div id="liquid" class="liquid">
+	            <span class="previous"></span>
+	            <div class="wrapper">
+		            <ul>
+                        <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource3">
+                            <ItemTemplate>
+			                    <li>
+                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>'>
+                                        <div class="image">
+                                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                        </div>
+                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
+                                        <br />
+                                        <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
+                                    </asp:HyperLink>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+		            </ul>
+	            </div>
+	            <span class="next"></span>
             </div>
-            <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"><i class="fa fa-chevron-left"></i></a>
-            <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"><i class="fa fa-chevron-right"></i></a>
+
         </div>
     </div>
 
     <script type="text/javascript">
-        (function ($) {
-            $(function () {
-                var jcarousel = $('.jcarousel');
-
-                jcarousel.on('jcarousel:reload jcarousel:create', function () {
-                    var carousel = $(this),
-                        width = carousel.innerWidth();
-
-                    if (width >= 1200) {
-                        width = width / 6;
-
-                        var cw = $('.jcarousel-item').width();
-                        cw = cw + 200;
-                        $('.image').css({ 'height': cw + 'px' });
-                    } else if (width >= 768) {
-                        width = width / 5;
-                    } else if (width >= 480) {
-                        width = width / 2;
-                    }
-
-                    carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
-                })
-            .jcarousel({
-                wrap: 'circular',
-                items: '.jcarousel-item',
-                transitions: true
-
+        $(document).ready(function () {
+            $('#liquid').liquidcarousel({
+                height: 350, 	//the height of the list
+                duration: 600,	
+                hidearrows: true	//hide arrows if all of the list items are visible
             });
-
-                $('.jcarousel-control-prev')
-            .jcarouselControl({
-                target: '-=1'
-            });
-
-                $('.jcarousel-control-next')
-            .jcarouselControl({
-                target: '+=1'
-            });
-
-                $('.jcarousel-pagination')
-            .on('jcarouselpagination:active', 'a', function () {
-                $(this).addClass('active');
-            })
-            .on('jcarouselpagination:inactive', 'a', function () {
-                $(this).removeClass('active');
-            })
-            .on('click', function (e) {
-                e.preventDefault();
-            })
-            .jcarouselPagination({
-                perPage: 1,
-                item: function (page) {
-                    return '<a href="#' + page + '">' + page + '</a>';
-                }
-            });
-            });
-
-
-
-
-        })(jQuery);
+        });
     </script>
 </asp:Content>

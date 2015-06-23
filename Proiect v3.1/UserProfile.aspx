@@ -38,13 +38,17 @@
             </asp:SqlDataSource>
             <div class="favourites">
                 <h3>Carti favorite</h3>
-                <div class="jcarousel">
-                    <ul>
+                <div id="liquid1" class="liquid">
+	            <span class="previous"></span>
+	            <div class="wrapper">
+		            <ul>
                         <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource3">
                             <ItemTemplate>
-                                <li class="jcarousel-item">
+                                <li>
                                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>'>
-                                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                        <div class="image">
+                                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                        </div>
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
                                         <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
                                     </asp:HyperLink>
@@ -54,24 +58,27 @@
                                  <asp:Label ID="Label3"  CssClass="noResultsMessage" Visible='<%# Repeater2.Items.Count == 0 %>' runat="server" Text="Nu aveti carti in aceasta categorie"></asp:Label>
                             </FooterTemplate>
                         </asp:Repeater>
-                    </ul>
-                </div>
-                <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"><i class="fa fa-chevron-left"></i></a>
-                <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"><i class="fa fa-chevron-right"></i></a>
-        
+                  </ul>
+	            </div>
+	            <span class="next"></span>
+            </div>
             </div>
 
             <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>">
             </asp:SqlDataSource>
             <div class="deCitit">
                 <h3>Carti de citit</h3>
-                <div class="jcarousel">
-                    <ul>
+                <div id="liquid2" class="liquid">
+	            <span class="previous"></span>
+	            <div class="wrapper">
+		            <ul>
                         <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource4">
                             <ItemTemplate>
-                                <li class="jcarousel-item">
+                                <li>
                                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>'>
-                                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                        <div class="image">
+                                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                        </div>
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
                                         <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
                                     </asp:HyperLink>
@@ -81,24 +88,27 @@
                                 <asp:Label ID="Label3"  CssClass="noResultsMessage" Visible='<%# Repeater1.Items.Count == 0 %>' runat="server" Text="Nu aveti carti in aceasta categorie"></asp:Label>
                             </FooterTemplate>
                         </asp:Repeater>
-                    </ul>
-                </div>
-                <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"><i class="fa fa-chevron-left"></i></a>
-                <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"><i class="fa fa-chevron-right"></i></a>
-        
+                  </ul>
+	            </div>
+	            <span class="next"></span>
+            </div>
             </div>
 
             <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ASPNETDB %>">
             </asp:SqlDataSource>
             <div class="citite">
                 <h3>Carti citite</h3>
-                <div class="jcarousel">
-                    <ul>
+                <div id="liquid3" class="liquid">
+	                <span class="previous"></span>
+	                    <div class="wrapper">
+		                    <ul>
                         <asp:Repeater ID="Repeater3" runat="server" DataSourceID="SqlDataSource5">
                             <ItemTemplate>
-                                <li class="jcarousel-item">
+                                <li>
                                     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl='<%# "~/IndividualBookPage.aspx?q=" + Eval("CartiId") %>'>
-                                        <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                        <div class="image">
+                                            <asp:Image ID="Image1" runat="server" ImageUrl='<%# "~/pozeCoperti/" + Eval("Poza_Coperta") %>' />
+                                        </div>
                                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("CartiTitlu") %>' CssClass="title"></asp:Label>
                                         <asp:Label ID="Label3" runat="server" Text='<%# Eval("NumeAutor") %>' CssClass="name"></asp:Label>
                                     </asp:HyperLink>
@@ -108,15 +118,13 @@
                                  <asp:Label ID="Label3"  CssClass="noResultsMessage" Visible='<%# Repeater3.Items.Count == 0 %>' runat="server" Text="Nu aveti carti in aceasta categorie"></asp:Label>
                             </FooterTemplate>
                         </asp:Repeater>
-                    </ul>
-                </div>
-                <a href="#" class="jcarousel-control-prev" data-jcarouselcontrol="true"><i class="fa fa-chevron-left"></i></a>
-                <a href="#" class="jcarousel-control-next" data-jcarouselcontrol="true"><i class="fa fa-chevron-right"></i></a>
-        
+                     </ul>
+	            </div>
+	            <span class="next"></span>
             </div>
         </div>
     </div>
-
+    </div>
 </div>
             <div class="modal fade" id="changePass">
                 <div class="modal-dialog">
@@ -239,72 +247,38 @@
  
 
  <script type="text/javascript">
-     (function ($) {
+     $(document).ready(function () {
+         $('#liquid1').liquidcarousel({
+             height: 350, 	//the height of the list
+             duration: 600,
+             hidearrows: true	//hide arrows if all of the list items are visible
+         });
+
+         $('#liquid2').liquidcarousel({
+             height: 350, 	//the height of the list
+             duration: 600,
+             hidearrows: true	//hide arrows if all of the list items are visible
+         });
+
+         $('#liquid3').liquidcarousel({
+             height: 350, 	//the height of the list
+             duration: 600,
+             hidearrows: true	//hide arrows if all of the list items are visible
+         });
 
          if ($('.favourites ul li').length == 0) {
-             $('.favourites .fa-chevron-left').hide();
-             $('.favourites .fa-chevron-right').hide();
+             $('#liquid1').height(50);
+             //.css("height", "50px!important");
          }
 
          if ($('.deCitit ul li').length == 0) {
-             $('.deCitit .fa-chevron-left').hide();
-             $('.deCitit .fa-chevron-right').hide();
+             $('#liquid2').height(50);
          }
 
          if ($('.citite ul li').length == 0) {
-             $('.citite .fa-chevron-left').hide();
-             $('.citite .fa-chevron-right').hide();
+             $('#liquid3').height(50);
          }
-
-         $(function () {
-             var jcarousel = $('.jcarousel');
-
-             jcarousel.on('jcarousel:reload jcarousel:create', function () {
-                 var carousel = $(this),
-                        width = carousel.innerWidth();
-
-                 if (width >= 600) {
-                     width = width / 4;
-                 } else if (width >= 350) {
-                     width = width / 2;
-                 }
-
-                 carousel.jcarousel('items').css('width', Math.ceil(width) + 'px');
-             })
-            .jcarousel({
-                items: '.jcarousel-item',
-                transitions: true
-
-            });
-
-             $('.jcarousel-control-prev')
-            .jcarouselControl({
-                target: '-=1'
-            });
-
-             $('.jcarousel-control-next')
-            .jcarouselControl({
-                target: '+=1'
-            });
-
-             $('.jcarousel-pagination')
-            .on('jcarouselpagination:active', 'a', function () {
-                $(this).addClass('active');
-            })
-            .on('jcarouselpagination:inactive', 'a', function () {
-                $(this).removeClass('active');
-            })
-            .on('click', function (e) {
-                e.preventDefault();
-            })
-            .jcarouselPagination({
-                perPage: 1,
-                item: function (page) {
-                    return '<a href="#' + page + '">' + page + '</a>';
-                }
-            });
-         });
-     })(jQuery);
+     });
     </script>
 
 </asp:Content>
